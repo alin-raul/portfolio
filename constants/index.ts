@@ -1,3 +1,5 @@
+import { useTheme } from "next-themes";
+
 export const Socials = [
   {
     name: "Linkedin",
@@ -13,143 +15,144 @@ export const Frontend_skill = [
   {
     skill_name: "Html 5",
     Image: "/assets/html.webp",
-    width: 60,
-    height: 60,
-  },
-  {
-    skill_name: "Css",
-    Image: "/assets/css.webp",
-    width: 60,
-    height: 60,
-  },
-  {
-    skill_name: "Java Script",
-    Image: "/assets/js.webp",
-    width: 55,
-    height: 55,
-  },
-  {
-    skill_name: "Tailwind Css",
-    Image: "/assets/tailwind.webp",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "shadcn",
-    Image: "/assets/shadcn.webp",
     width: 40,
     height: 40,
   },
   {
+    skill_name: "Css",
+    Image: "/assets/css.webp",
+    width: 40,
+    height: 40,
+  },
+  {
+    skill_name: "Java Script",
+    Image: "/assets/js.webp",
+    width: 45,
+    height: 45,
+  },
+  {
+    skill_name: "Tailwind Css",
+    Image: "/assets/tailwind.webp",
+    width: 60,
+    height: 60,
+  },
+  {
+    skill_name: "shadcn",
+    Image: "/assets/shadcn.webp",
+    width: 30,
+    height: 30,
+    dynamicClass: true,
+  },
+  {
     skill_name: "React",
     Image: "/assets/react.webp",
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
   },
   {
     skill_name: "Redux",
     Image: "/assets/redux.webp",
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
   },
   {
     skill_name: "React Query",
     Image: "/assets/reactquery.webp",
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
   },
   {
     skill_name: "Type Script",
     Image: "/assets/ts.webp",
-    width: 55,
-    height: 55,
+    width: 40,
+    height: 40,
   },
   {
-    skill_name: "Next js 13",
+    skill_name: "Next js 15",
     Image: "/assets/next.webp",
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
+    dynamicClass: true,
   },
 ];
 
 export const Backend_skill = [
   {
-    skill_name: "Node js",
-    Image: "/assets/node-js.webp",
-    width: 80,
-    height: 80,
-  },
-  {
     skill_name: "Express js",
     Image: "/assets/express.webp",
-    width: 80,
-    height: 80,
+    width: 40,
+    height: 40,
+    dynamicClass: true,
   },
   {
     skill_name: "Mongo db",
     Image: "/assets/mongodb.webp",
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
   },
   {
     skill_name: "Fire base",
     Image: "/assets/Firebase.webp",
-    width: 55,
-    height: 55,
+    width: 40,
+    height: 40,
   },
   {
-    skill_name: "My SQL",
-    Image: "/assets/mysql.webp",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Prisma",
-    Image: "/assets/prisma.webp",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Graphql",
-    Image: "/assets/graphql.webp",
-    width: 80,
-    height: 80,
-  },
-];
-
-export const Full_stack = [
-  {
-    skill_name: "React Native",
-    Image: "/assets/ReactNative .webp",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Tauri",
-    Image: "/assets/tauri.svg",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Docker",
-    Image: "/assets/docker.webp",
-    width: 70,
-    height: 70,
-  },
-
-  {
-    skill_name: "Figma",
-    Image: "/assets/figma.webp",
+    skill_name: "SQLite",
+    Image: "/assets/sqlite.webp",
     width: 50,
     height: 50,
   },
 ];
 
-export const Other_skill = [
+export const projects = [
   {
-    skill_name: "Go",
-    Image: "/assets/go.webp",
-    width: 60,
-    height: 60,
+    name: "Favorite Cities",
+    description:
+      "A complete full-stack application where users can search for cities, display city information, and plan journeys (still in progress). This app leverages modern technologies for a seamless user experience.",
+    tags: [
+      { name: "react", color: "text-cyan-600" },
+      { name: "nextjs", color: "" },
+      { name: "typeorm", color: "text-red-500" },
+      { name: "sqlite", color: "text-blue-500" },
+      { name: "tailwind", color: "text-cyan-500" },
+      { name: "shadcn/ui", color: "" },
+    ],
+    image: {
+      light: "/assets/projects/favCities-light.webp",
+      dark: "/assets/projects/favCities-dark.webp",
+    },
+    source_code_link: "https://github.com/ssupream/favoriteCities",
+  },
+  {
+    name: "Next Quiz",
+    description:
+      "A modern, feature-rich platform for creating, managing, and taking quizzes. Built with cutting-edge technologies, it provides a seamless user experience and a robust backend to handle your data needs.",
+    tags: [
+      { name: "react", color: "text-cyan-600" },
+      { name: "nextjs", color: "" },
+      { name: "mongodb", color: "text-green-700" },
+      { name: "tailwind", color: "text-cyan-500" },
+    ],
+    image: {
+      light: "/assets/projects/quiz.webp",
+      dark: "/assets/projects/quiz.webp",
+    },
+    source_code_link: "https://github.com/ssupream/InteractiveQuizApp",
+  },
+  {
+    name: "Journal",
+    description:
+      "A beautiful and functional diary application inspired by Apple's design philosophy. This project is built using modern web technologies to provide a smooth and intuitive user experience.",
+    tags: [
+      { name: "react", color: "text-cyan-600" },
+      { name: "redux", color: "text-violet-700" },
+      { name: "firebase", color: "text-yellow-500" },
+      { name: "tailwind", color: "text-cyan-500" },
+    ],
+    image: {
+      light: "/assets/projects/diary-light.webp",
+      dark: "/assets/projects/diary-dark.webp",
+    },
+    source_code_link: "https://github.com/ssupream/apple-like-diary",
   },
 ];

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const Encryption = () => {
   return (
-    <div className="flex relative items-center justify-center min-h-[40rem] w-full h-full max-w-screen-xl mx-auto">
+    <div className="flex relative items-center justify-center min-h-[40rem] w-full h-full max-w-screen-xl mx-auto mt-40">
       <div className="absolute w-auto h-auto top-0 z-[5]">
         <motion.div
           className="text-4xl font-medium text-center"

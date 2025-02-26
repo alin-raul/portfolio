@@ -61,6 +61,8 @@
       ),
       rgba(195, 226, 255, 0.3);
     --bg-dynamic: #ffffff30;
+    --bg-dynamic-1: #ffffff80;
+    --bg-dynamic-2: #dddddd80;
     --nav-bg-dynamic: #ffffff30;
     --dynamic-border: #00000020;
     --dynamic-shadow: 0 5px 15px -3px rgba(192, 192, 192, 0.288),
@@ -134,6 +136,8 @@
       ),
       rgba(113, 47, 255, 0.24);
     --bg-dynamic: #00000030;
+    --bg-dynamic-1: #00000060;
+    --bg-dynamic-2: #2e2e2e80;
     --nav-bg-dynamic: #16003a30;
     --dynamic-border: #ffffff10;
     --dynamic-shadow: 0 6px 15px -3px rgba(42, 14, 97, 0.5),
@@ -159,36 +163,53 @@
   }
 }
 
+@layer utilities {
+  .c-space {
+    @apply sm:px-10 px-5;
+  }
+
+  /* button component */
+
+  .btn-ping {
+    @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
+  }
+
+  .btn-ping_dot {
+    @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
+  }
+
+  /* contact section */
+  .contact-container {
+    @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
+  }
+
+  .field-label {
+    @apply text-lg text-white-600;
+  }
+
+  .field-input {
+    @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
+  }
+
+  .field-btn {
+    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
+  }
+
+  .field-btn_arrow {
+    @apply w-2.5 h-2.5 object-contain invert brightness-0;
+  }
+
+  /*  footer */
+  .social-icon {
+    @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
+  }
+}
+
 .nav-bg-dynamic {
   background: var(--nav-bg-dynamic);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--dynamic-border);
   box-shadow: var(--dynamic-shadow);
-}
-
-@media (max-width: 768px) {
-  .nav-bg-dynamic {
-    background: none;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
-  }
-}
-
-.nav-bg-dynamic-small {
-  background: var(--nav-bg-dynamic);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--dynamic-border);
-  box-shadow: var(--dynamic-shadow);
-}
-
-@media (min-width: 768px) {
-  .nav-bg-dynamic-small {
-    background: none;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
-  }
 }
 
 .bg-dynamic {
@@ -272,6 +293,78 @@ html {
 ::selection {
   background-color: var(--text-select);
   color: white;
+}
+
+canvas {
+  z-index: 10 !important;
+}
+
+.canvas-loader {
+  z-index: 20 !important;
+  position: relative;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--dynamic-border);
+  border-radius: 2rem;
+  background: var(--bg-dynamic-1);
+  backdrop-filter: blur(12px);
+}
+
+.card-w-space {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--dynamic-border);
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem;
+  background: var(--bg-dynamic-1);
+  backdrop-filter: blur(12px);
+}
+
+.btn {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--dynamic-border);
+  background: var(--bg-dynamic-2);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  margin: 1rem auto 0 auto;
+}
+
+.link-btn {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 100%;
+  border: 1px solid var(--dynamic-border);
+  background: var(--bg-dynamic-2);
+  backdrop-filter: blur(12px);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.icon {
+  width: auto;
+  height: auto;
+  filter: invert();
+}
+
+.dark .icon {
+  filter: none;
 }
 
 /* Animations  */
@@ -392,5 +485,42 @@ html {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-bg-dynamic {
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.nav-bg-dynamic-small {
+  background: var(--nav-bg-dynamic);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--dynamic-border);
+  box-shadow: var(--dynamic-shadow);
+}
+
+@media (min-width: 768px) {
+  .nav-bg-dynamic-small {
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+  }
+  .grid-container {
+    padding: 1.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

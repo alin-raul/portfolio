@@ -3,9 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/global/ThemeProvider";
 import { SidebarProvider } from "@/context/SidebarContext";
-import { Sidebar } from "./components/main/Navbar/Sidebar";
+import { Sidebar } from "./components/main/sections/Navbar/Sidebar";
 import StarsCanvas from "./components/main/StarBackground";
-import Navbar from "./components/main/Navbar/Navbar";
+import Navbar from "./components/main/sections/Navbar/Navbar";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   variable: "--inter-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
             <Navbar />
             <div className="mx-auto relative">{children}</div>
           </SidebarProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
