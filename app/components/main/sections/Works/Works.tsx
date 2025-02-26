@@ -43,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="card-w-space sm:w-[28rem] w-full z-30"
+      className="card-w-space  w-full z-30"
       variants={slideInFromLeft(index * 1.2)}
       initial="hidden"
       animate="visible"
@@ -95,7 +95,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
 const Works = () => {
   return (
-    <div className="max-w-screen-2xl m-auto" id="projects">
+    <div className="max-w-screen-2xl m-auto p-4 z-50 " id="projects">
       <motion.div
         variants={slideInFromLeft(1)}
         initial="hidden"
@@ -108,9 +108,9 @@ const Works = () => {
         variants={slideInFromLeft(1.2)}
         initial="hidden"
         animate="visible"
-        className="mt-3 text-[17px] leading-[30px]"
+        className="mt-3 text-[17px] leading-[30px] z-[30]"
       >
-        <p className="opacity-60 ">
+        <p className="opacity-60">
           Following projects showcases my skills and experience through
           real-world examples of my work. Each project is briefly described with
           links to code repositories and live demos in it. It reflects my
@@ -119,7 +119,12 @@ const Works = () => {
         </p>
       </motion.div>
 
-      <div className="mt-20 flex flex-wrap gap-6">
+      <div
+        className="mt-20 grid gap-6"
+        style={{
+          gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 1fr))",
+        }}
+      >
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
