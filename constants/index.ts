@@ -11,6 +11,46 @@ export const Socials = [
   },
 ];
 
+export const TechStack = [
+  {
+    name: "Next js 15",
+    image: "/assets/next.webp",
+    width: 44,
+    height: 44,
+    dynamic: true,
+  },
+  {
+    name: "Tailwind CSS",
+    image: "/assets/tailwind.webp",
+    width: 60,
+    height: 60,
+  },
+  {
+    name: "Framer Motion",
+    image: "/assets/framer.webp",
+    width: 38,
+    height: 38,
+  },
+  {
+    name: "Type Script",
+    image: "/assets/ts.webp",
+    width: 40,
+    height: 40,
+  },
+  {
+    name: "Three JS",
+    image: "/assets/threejs.webp",
+    width: 60,
+    height: 60,
+  },
+  {
+    name: "React",
+    image: "/assets/react.webp",
+    width: 60,
+    height: 60,
+  },
+];
+
 export const Frontend_skill = [
   {
     skill_name: "Html 5",

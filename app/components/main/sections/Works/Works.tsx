@@ -43,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="card-w-space  w-full z-30"
+      className="card-w-space w-full z-30"
       variants={slideInFromLeft(index * 1.2)}
       initial="hidden"
       animate="visible"
@@ -95,14 +95,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
 const Works = () => {
   return (
-    <div className="max-w-screen-2xl m-auto p-4 z-50 " id="projects">
+    <div className="max-w-screen-2xl m-auto z-50 " id="projects">
       <motion.div
         variants={slideInFromLeft(1)}
         initial="hidden"
         animate="visible"
       >
-        <p className="opacity-80">MY WORKS</p>
-        <p className="text-5xl font-bold">Projects.</p>
+        <p className="opacity-80 font-dot">MY WORKS</p>
+        <p className="text-5xl font-bold font-title">Projects.</p>
       </motion.div>
       <motion.div
         variants={slideInFromLeft(1.2)}

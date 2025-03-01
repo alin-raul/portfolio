@@ -1,18 +1,24 @@
+"use client";
+
 import React from "react";
 
 type Props = {
   name: string;
   isBeam: boolean;
-  containerClass: string;
+  containerClass?: string;
+  click: () => void;
+  icon?: React.ReactNode;
 };
 
 const MyButton: React.FC<Props> = ({
   name,
   isBeam = false,
   containerClass,
+  click,
+  icon,
 }) => {
   return (
-    <button className={`btn ${containerClass}`}>
+    <button className={`btn ${containerClass}`} onClick={click}>
       {isBeam && (
         <span className="relative flex h-3 w-3 ">
           <span className="btn-ping" />
@@ -21,6 +27,7 @@ const MyButton: React.FC<Props> = ({
       )}
 
       {name}
+      {icon}
     </button>
   );
 };

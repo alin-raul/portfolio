@@ -17,12 +17,26 @@ export default {
     "text-green-700",
     "text-violet-700",
     "text-yellow-500",
+    "font-titlesans",
+    "font-inter",
     // Add all possible dynamic classes here
   ],
   theme: {
     extend: {
       fontFamily: {
-        generalsans: ["--inter-sans", "sans-serif"],
+        inter: ["var(--inter-sans)", "sans-serif"],
+        title: ["var(--zen-dots)", "sans-serif"],
+        dot: ["var(--dot-font)", "sans-serif"],
+        david: ["var(--david-libre)", "sans-serif"],
+      },
+      keyframes: {
+        "counter-spin": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(-360deg)" },
+        },
+      },
+      animation: {
+        "counter-spin": "counter-spin 30s linear infinite",
       },
       colors: {
         background: "hsl(var(--background))",

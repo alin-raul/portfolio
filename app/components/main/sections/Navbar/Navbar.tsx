@@ -10,14 +10,14 @@ const Navbar = () => {
 
   return (
     <div className="w-full h-14 sticky top-0 md:top-2 z-50">
-      <nav className="w-full h-full flex items-center justify-between mx-auto max-w-screen-2xl px-6 md:px-4 md:mt-2 nav-bg-dynamic-small">
+      <nav className="w-full h-full flex items-center justify-between mx-auto max-w-screen-2xl px-6 md:px-4 md:mt-2 nav-bg-dynamic-small ">
         <div className="flex font-semibold items-center justify-between py-2 pl-1 md:px-6 relative rounded-full h-full">
-          <span className="font-black text-nowrap text-xl font- ">
-            RAN : // Portfolio
+          <span className="font-black text-nowrap text-xl font-dot">
+            R A N : // FULL-STACK WEB DEVELOPER
           </span>
         </div>
         <div className="nav-bg-dynamic gap-3 md:gap-6 font-semibold py-2 px-4 ml-auto relative md:px-10 rounded-full h-auto hidden md:flex">
-          <NavLinks className="flex gap-4 items-center justify-between" />
+          <NavLinks className="flex gap-4 items-center justify-between font-dot" />
         </div>
         <button onClick={toggleSidebar} className="z-50 relative">
           {!isVisible ? (

@@ -90,9 +90,9 @@ const AstronautModel = ({ url, ...props }: Props & { url: string }) => {
         .add(positionOffset.current);
 
       // Smooth rotation
-      group.current.rotation.x += delta * 0.1;
-      group.current.rotation.y += delta * 0.05;
-      group.current.rotation.z += delta * 0.08;
+      group.current.rotation.x += delta * 0.01;
+      group.current.rotation.y += delta * 0.005;
+      group.current.rotation.z += delta * 0.006;
     }
   });
 

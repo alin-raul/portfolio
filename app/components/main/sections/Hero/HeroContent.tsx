@@ -12,6 +12,39 @@ import { SparklesIcon } from "@heroicons/react/24/solid";
 import { DocumentTextIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
+// const SpinningText = () => {
+//   return (
+//     <motion.div
+//       animate={{ rotate: 0 }}
+//       transition={{
+//         repeat: Infinity,
+//         duration: 20,
+//         ease: "linear",
+//       }}
+//       className="absolute w-80 h-80 top-[-230] right-0 "
+//     >
+//       <svg viewBox="0 0 200 200" className="w-full h-full rotate-[210deg]">
+//         <path
+//           id="curve"
+//           d="M100 25 a75 75 0 1 1 0 150 a75 75 0 1 1 0 -150"
+//           fill="none"
+//         />
+//         <text className="text-[1rem] fill-current font-dot ">
+//           <textPath
+//             href="#curve"
+//             startOffset="50%"
+//             textAnchor="middle"
+//             dominantBaseline="middle"
+//           >
+//             FULL-STACK WEB DEVELOPER •
+//           </textPath>
+//         </text>
+//       </svg>
+//     </motion.div>
+//   );
+// };
 
 function HeroContent() {
   return (
@@ -21,54 +54,62 @@ function HeroContent() {
       animate="visible"
       className="px-4 w-full h-full z-[40] relative max-w-screen-xl mx-auto mt-[8px]"
     >
-      {/* <motion.div
-        variants={slideInFromTop}
-        className="Welcome-box py-3 px-3 border border-[#7042f88b] opacity-[0.9] mx-auto"
-      >
-        <SparklesIcon className="text-[#b49bff] mr-[10px] h-5 w-5" />
-        <h1 className="Welcome-text text-md">Fullstack Developer Portfolio</h1>
-      </motion.div> */}
+      {/* <div className="absolute w-full top-1/2 ">
+        <SpinningText />
+      </div> */}
 
       <div className="flex flex-col items-center justify-center h-full w-full">
         <motion.div
           variants={slideInFromTop}
-          className="w-full h-fit text-center p-2 font-bold"
+          className="w-fit h-fit p-2 relative"
         >
-          <span className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-            <span>
-              Raul-Alin Năstase
-              <br />
-              <span className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl ">
-                Full-Stack Web Developer
-              </span>
-            </span>
-          </span>
-          <motion.p
+          <motion.div
             variants={slideInFromLeft(0.8)}
-            className="text-sm lg:text-lg xl:text-xl my-5 mx-auto max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem] font-bold  "
+            className="text-sm lg:text-lg xl:text-xl my-5 max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
           >
-            <span className="opacity-70">
-              Hey, I&apos;m Raul! A Full Stack Software Engineer with a strong
-              passion for building web applications with great user experience.
-            </span>
-          </motion.p>
+            <div className="border w-fit px-6 py-1 rounded-full btn-border">
+              <span className="font-bold font-dot">2024-25</span>
+            </div>
+          </motion.div>
+
+          <div className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] 2xl:text-[12rem] font-title text-center">
+            <span>Portfolio</span>
+          </div>
+
+          <div className="flex flex-wrap gap-4 mt-4">
+            <motion.div
+              variants={slideInFromLeft(0.8)}
+              className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
+            >
+              <Link href={"#contact"}>
+                <span className="border w-fit px-4 py-1 rounded-full hero-btn flex gap-2 items-center font-bold font-dot">
+                  <ArrowUpRight className="w-6 h-6" /> GET IN CONTACT
+                </span>
+              </Link>
+            </motion.div>
+            <motion.div
+              variants={slideInFromLeft(1)}
+              className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
+            >
+              <Link href={"#contact"}>
+                <span className="border w-fit px-4 py-1 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot ">
+                  <ArrowUpRight className="w-6 h-6" /> GET CV
+                </span>
+              </Link>
+            </motion.div>
+            <motion.div
+              variants={slideInFromLeft(1)}
+              className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
+            >
+              <Link href={"#contact"}>
+                <span className="border w-fit px-4 py-1 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot">
+                  <ArrowUpRight className="w-6 h-6" /> FEELING LUCKY
+                </span>
+              </Link>
+            </motion.div>
+          </div>
         </motion.div>
 
-        <div className="flex my-6 gap-6">
-          <motion.a
-            variants={slideInFromLeft(1)}
-            className="py-3 px-4 button-primary text-center cursor-pointer rounded-2xl max-w-40 shadow-md backdrop-blur-sm"
-          >
-            Get in contact
-          </motion.a>
-          <motion.a
-            variants={slideInFromLeft(1)}
-            className="dynamic-link flex gap-2 py-3 px-4 text-center cursor-pointer hover:underline underline-offset-8 group"
-          >
-            Download CV
-            <DocumentTextIcon className="h-5 w-5 transition-all" />
-          </motion.a>
-        </div>
         <div className="gap-5 flex absolute bottom-8">
           <motion.div variants={slideInFromLeft(1.4)}>
             <Link

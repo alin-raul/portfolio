@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,7 +20,7 @@
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
+    --border: 240 5.9% 70%;
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
     --chart-1: 12 76% 61%;
@@ -65,6 +63,7 @@
     --bg-dynamic-2: #dddddd80;
     --nav-bg-dynamic: #ffffff30;
     --dynamic-border: #00000020;
+    --dynamic-border-contrast: #000000;
     --dynamic-shadow: 0 5px 15px -3px rgba(192, 192, 192, 0.288),
       0 4px 6px -2px rgba(199, 223, 255, 0.247);
     --dynamic-link: rgb(55, 116, 196);
@@ -76,6 +75,16 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --text-reverse: #b6b6b6;
+    --text-muted: #464646;
+
+    --slider-gradient: linear-gradient(
+      to right,
+      oklch(90.17% 0.0289 296.72) 20%,
+      oklch(73.41% 0.15 292.31) 30%,
+      oklch(83.36% 0.07 249.83) 70%,
+      oklch(83.15% 0.12 313.45) 80%
+    );
   }
   .dark {
     --background: 249, 100%, 4%;
@@ -94,7 +103,7 @@
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
+    --border: 240 3.7% 20%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --chart-1: 220 70% 50%;
@@ -136,10 +145,11 @@
       ),
       rgba(113, 47, 255, 0.24);
     --bg-dynamic: #00000030;
-    --bg-dynamic-1: #00000060;
+    --bg-dynamic-1: #11111180;
     --bg-dynamic-2: #2e2e2e80;
     --nav-bg-dynamic: #16003a30;
     --dynamic-border: #ffffff10;
+    --dynamic-border-contrast: #ffffff;
     --dynamic-shadow: 0 6px 15px -3px rgba(42, 14, 97, 0.5),
       0 4px 6px -2px rgba(42, 14, 97, 0.5);
     --dynamic-link: rgb(124 58 237);
@@ -151,6 +161,15 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --text-reverse: #3d3d3d;
+    --text-muted: #c0c0c0;
+    --slider-gradient: linear-gradient(
+      to right,
+      oklch(9.62% 0.0562 285.05) 20%,
+      oklch(48.67% 0.1973 303.35) 30%,
+      oklch(40.66% 0.2074 273.96) 70%,
+      oklch(9.62% 0.0562 285.05) 80%
+    );
   }
 }
 
@@ -178,27 +197,6 @@
     @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
   }
 
-  /* contact section */
-  .contact-container {
-    @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
-  }
-
-  .field-label {
-    @apply text-lg text-white-600;
-  }
-
-  .field-input {
-    @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
-  }
-
-  .field-btn {
-    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
-  }
-
-  .field-btn_arrow {
-    @apply w-2.5 h-2.5 object-contain invert brightness-0;
-  }
-
   /*  footer */
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
@@ -208,8 +206,8 @@
 .nav-bg-dynamic {
   background: var(--nav-bg-dynamic);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--dynamic-border);
-  box-shadow: var(--dynamic-shadow);
+  border: 1px solid var(--dynamic-border);
+  /* box-shadow: var(--dynamic-shadow); */
 }
 
 .bg-dynamic {
@@ -238,9 +236,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.cursive {
-  font-family: "Cedarville Cursive", cursive;
-}
 .Welcome-text {
   background: linear-gradient(
       0deg,
@@ -304,6 +299,19 @@ canvas {
   position: relative;
 }
 
+.btn-border {
+  border: 1px solid var(--dynamic-border-contrast);
+}
+
+.hero-btn {
+  border: 1px solid var(--dynamic-border-contrast);
+  color: var(--text-muted);
+}
+
+.hero-btn:hover {
+  color: var(--foreground);
+}
+
 .card {
   width: 100%;
   height: 100%;
@@ -321,9 +329,14 @@ canvas {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 1rem;
+  padding: 3rem;
   background: var(--bg-dynamic-1);
   backdrop-filter: blur(12px);
+}
+
+.grid-subtext {
+  margin-top: 0.75rem;
+  opacity: 50%;
 }
 
 .btn {
@@ -358,8 +371,6 @@ canvas {
 }
 
 .icon {
-  width: auto;
-  height: auto;
   filter: invert();
 }
 
@@ -367,7 +378,54 @@ canvas {
   filter: none;
 }
 
+.text-shine {
+  background: var(--slider-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 20s ease-in-out infinite alternate;
+}
+
+.text-shine:nth-child(1) {
+  animation-delay: 0s;
+}
+.text-shine:nth-child(2) {
+  animation-delay: 2s;
+}
+.text-shine:nth-child(3) {
+  animation-delay: -18.33s;
+}
 /* Animations  */
+
+.carousel {
+  margin: 0 auto;
+  padding: 20px 0;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex: 0 0 100%;
+  position: relative;
+  -webkit-mask: linear-gradient(90deg, #0000, #000 10% 90%, #0000);
+  mask: linear-gradient(90deg, #0000, #000 10% 90%, #0000);
+}
+
+.group-carousel-links {
+  display: flex;
+  gap: 20px;
+  padding-right: 20px;
+  will-change: transform;
+  animation: scrolling 30s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
 .blob {
   position: absolute;
@@ -406,9 +464,6 @@ canvas {
 .blob-1 {
   position: absolute;
   opacity: 0.4;
-  top: 0;
-  right: -400;
-  width: 500px;
   aspect-ratio: 1/1;
   animation: animate-blob-1 80s cubic-bezier(0.88, 0.85, 0.97, 0.75) infinite
     alternate forwards;
@@ -501,7 +556,7 @@ canvas {
   background: var(--nav-bg-dynamic);
   backdrop-filter: blur(12px);
   border: 1px solid var(--dynamic-border);
-  box-shadow: var(--dynamic-shadow);
+  /* box-shadow: var(--dynamic-shadow); */
 }
 
 @media (min-width: 768px) {
@@ -513,14 +568,5 @@ canvas {
   }
   .grid-container {
     padding: 1.75rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }

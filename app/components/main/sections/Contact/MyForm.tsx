@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { LuArrowUpRight } from "react-icons/lu";
+import { ArrowUpRight } from "lucide-react";
 
 const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
@@ -142,8 +142,11 @@ export default function MyForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full md:w-fit h-12 rounded-2xl ">
-          Send Message <LuArrowUpRight />
+        <Button
+          type="submit"
+          className="w-full md:w-fit h-12 rounded-2xl font-dot flex items-center gap-1 text-lg"
+        >
+          SEND MESSAGE <ArrowUpRight className="!w-6 !h-6" />
         </Button>
       </form>
     </Form>
