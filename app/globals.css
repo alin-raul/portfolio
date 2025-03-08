@@ -321,15 +321,25 @@ canvas {
   backdrop-filter: blur(12px);
 }
 
+.grid-card-w-space {
+  border: 1px solid var(--dynamic-border);
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: 1.25rem;
+  padding: 3rem;
+  background: var(--bg-dynamic-1);
+  backdrop-filter: blur(12px);
+}
+
 .card-w-space {
-  width: 100%;
-  height: 100%;
   border: 1px solid var(--dynamic-border);
   border-radius: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  padding: 3rem;
+  padding: 1rem;
   background: var(--bg-dynamic-1);
   backdrop-filter: blur(12px);
 }
@@ -337,6 +347,15 @@ canvas {
 .grid-subtext {
   margin-top: 0.75rem;
   opacity: 50%;
+}
+
+.globe-container {
+  float: left; /* Position the globe to the left */
+  shape-outside: circle(50%); /* Wrap text around the globe */
+  clip-path: circle(50%); /* Ensure the globe itself is circular */
+  width: 12rem; /* Adjust globe size */
+  height: 12rem;
+  background: #000000;
 }
 
 .btn {
@@ -424,6 +443,25 @@ canvas {
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+.container-wrapper {
+  container-type: inline-size;
+  position: relative;
+  z-index: 30;
+}
+
+.show-if-wide {
+  display: none;
+}
+
+@container (min-width: 324px) {
+  .show-if-wide {
+    display: block;
+  }
+  .hide-if-wide {
+    display: none;
   }
 }
 

@@ -67,7 +67,7 @@ function HeroContent() {
             variants={slideInFromLeft(0.8)}
             className="text-sm lg:text-lg xl:text-xl my-5 max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
           >
-            <div className="border w-fit px-6 py-1 rounded-full btn-border">
+            <div className="border w-fit px-6 py-2 rounded-full btn-border">
               <span className="font-bold font-dot">2024-25</span>
             </div>
           </motion.div>
@@ -82,7 +82,7 @@ function HeroContent() {
               className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <span className="border w-fit px-4 py-1 rounded-full hero-btn flex gap-2 items-center font-bold font-dot">
+                <span className="border w-fit px-4 py-2 rounded-full hero-btn flex gap-2 items-center font-bold font-dot">
                   <ArrowUpRight className="w-6 h-6" /> GET IN CONTACT
                 </span>
               </Link>
@@ -92,7 +92,7 @@ function HeroContent() {
               className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <span className="border w-fit px-4 py-1 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot ">
+                <span className="border w-fit px-4 py-2 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot ">
                   <ArrowUpRight className="w-6 h-6" /> GET CV
                 </span>
               </Link>
@@ -102,7 +102,7 @@ function HeroContent() {
               className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <span className="border w-fit px-4 py-1 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot">
+                <span className="border w-fit px-4 py-2 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot">
                   <ArrowUpRight className="w-6 h-6" /> FEELING LUCKY
                 </span>
               </Link>

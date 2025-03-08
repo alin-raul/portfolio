@@ -13,7 +13,7 @@ const Navbar = () => {
       <nav className="w-full h-full flex items-center justify-between mx-auto max-w-screen-2xl px-6 md:px-4 md:mt-2 nav-bg-dynamic-small ">
         <div className="flex font-semibold items-center justify-between py-2 pl-1 md:px-6 relative rounded-full h-full">
           <span className="font-black text-nowrap text-xl font-dot">
-            R A N : // FULL-STACK WEB DEVELOPER
+            {/* R A N : // FULL-STACK WEB DEVELOPER */}
           </span>
         </div>
         <div className="nav-bg-dynamic gap-3 md:gap-6 font-semibold py-2 px-4 ml-auto relative md:px-10 rounded-full h-auto hidden md:flex">
