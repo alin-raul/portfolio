@@ -57,7 +57,6 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <Sidebar />
-            {/* <StarsCanvas /> */}
             <Navbar />
             <div className="mx-auto relative">{children}</div>
           </SidebarProvider>

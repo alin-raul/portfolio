@@ -65,10 +65,10 @@ function HeroContent() {
         >
           <motion.div
             variants={slideInFromLeft(0.8)}
-            className="text-sm lg:text-lg xl:text-xl my-5 max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
+            className="text-md my-5 max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
           >
-            <div className="border w-fit px-6 py-2 rounded-full btn-border">
-              <span className="font-bold font-dot">2024-25</span>
+            <div className="border-2 w-fit px-6 py-2 rounded-full border-black/60 dark:border-gray-200/50 ">
+              <span className="font-bold font-dot opacity-90">2024-25</span>
             </div>
           </motion.div>
 
@@ -79,32 +79,43 @@ function HeroContent() {
           <div className="flex flex-wrap gap-4 mt-4">
             <motion.div
               variants={slideInFromLeft(0.8)}
-              className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
+              className="text-md max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <span className="border w-fit px-4 py-2 rounded-full hero-btn flex gap-2 items-center font-bold font-dot">
-                  <ArrowUpRight className="w-6 h-6" /> GET IN CONTACT
-                </span>
+                <div className="group border-2 w-fit px-4 py-2 rounded-full flex gap-2 items-center font-bold font-dot border-black/40 dark:border-gray-200/50 hover:border-black hover:dark:border-gray-200 transition-all duration-200">
+                  <span className="opacity-70 group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-200">
+                    <ArrowUpRight className="opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+                    <span className="translate-y-[0.02rem]">
+                      GET IN CONTACT
+                    </span>
+                  </span>
+                </div>
               </Link>
             </motion.div>
             <motion.div
               variants={slideInFromLeft(1)}
-              className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
+              className="text-md max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <span className="border w-fit px-4 py-2 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot ">
-                  <ArrowUpRight className="w-6 h-6" /> GET CV
-                </span>
+                <div className="group border-2 w-fit px-4 py-2 rounded-full flex gap-2 items-center font-bold font-dot border-black/40 dark:border-gray-200/50 hover:border-black hover:dark:border-gray-200 transition-all duration-200">
+                  <span className="opacity-70 group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-200">
+                    <ArrowUpRight className="opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+                    <span className="translate-y-[0.02rem]">GET CV</span>
+                  </span>
+                </div>
               </Link>
             </motion.div>
             <motion.div
               variants={slideInFromLeft(1)}
-              className="text-sm lg:text-lg xl:text-xl max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
+              className="text-md max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <span className="border w-fit px-4 py-2 rounded-full hero-btn flex gap-2 items-center font-bold  backdrop-blur-md font-dot">
-                  <ArrowUpRight className="w-6 h-6" /> FEELING LUCKY
-                </span>
+                <div className="group border-2 w-fit px-4 py-2 rounded-full flex gap-2 items-center font-bold font-dot border-black/40 dark:border-gray-200/50 hover:border-black hover:dark:border-gray-200 transition-all duration-200">
+                  <span className="opacity-70 group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-200">
+                    <ArrowUpRight className="opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+                    <span className="translate-y-[0.02rem]">FEELING LUCKY</span>
+                  </span>
+                </div>
               </Link>
             </motion.div>
           </div>

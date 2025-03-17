@@ -1,28 +1,50 @@
+"use client";
+
 import React from "react";
 import MyForm from "./MyForm";
+import MovingLightShade from "@/app/components/effects/MovingLightShade";
+import Blob from "@/app/components/effects/Blob";
 
 const Contact = () => {
   return (
-    <section className="my-20" id="contact">
-      <div className="relative min-h-[60rem] flex items-center justify-center flex-col">
-        <div className="card px-10 py-16 max-w-screen-lg z-30">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="font-bold font-dot text-4xl text-center">
-              Contact Me
-            </h3>
-            <p className="text-lg mt-8 mb-12 opacity-70">
-              I&apos;d love to hear from you! Whether you have a project in
-              mind, a question, or just want to say hi, feel free to reach out.
-              Let&apos;s connect and create something awesome together!
-            </p>
+    <div className="relative max-w-[160rem] mt-40 mx-auto">
+      <Blob
+        blobClass="blob-2"
+        position={{
+          right: "0rem",
+          top: "30rem",
+        }}
+        width="900px"
+        height="600px"
+      />
+      <section
+        className="flex justify-center items-center rounded-2xl max-w-screen-2xl mx-auto p-8 h-[50rem]"
+        id="contact"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Text Section */}
+          <div className="flex flex-col z-40">
+            <p className="font-medium text-sm opacity-70 mb-8">CONTACT ME</p>
+            <div className="mb-1">
+              <h1 className="text-5xl lg:text-5xl font-bold mb-6">
+                Let’s work together
+              </h1>
+              <p className="text-lg font-semibold ">
+                I&apos;d love to hear from you! Whether you have a project in
+                mind, a question, or just want to say hi, feel free to reach
+                out. Let&apos;s connect and create something awesome together!
+              </p>
+            </div>
           </div>
 
-          <div className="">
+          {/* Form Section */}
+          <div className="relative flex items-center justify-center">
             <MyForm />
           </div>
+          {/* <MovingLightShade fill="rgb(67, 21, 221)" /> */}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

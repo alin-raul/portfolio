@@ -1,4 +1,21 @@
-import { useTheme } from "next-themes";
+import {
+  SiExpress,
+  SiRedux,
+  SiMongodb,
+  SiTailwindcss,
+  SiSqlite,
+  SiShadcnui,
+  SiReactquery,
+  SiReactrouter,
+  SiPostman,
+  SiVite,
+  SiMongoosedotws,
+  SiThreedotjs,
+} from "react-icons/si";
+import { FaReact, FaCss3Alt, FaHtml5, FaNodeJs } from "react-icons/fa";
+import { RiJavascriptFill, RiNextjsFill, RiFirebaseFill } from "react-icons/ri";
+import { BiLogoTypescript } from "react-icons/bi";
+import { TbBrandFramerMotion } from "react-icons/tb";
 
 export const Socials = [
   {
@@ -13,134 +30,122 @@ export const Socials = [
 
 export const TechStack = [
   {
-    name: "Next js 15",
-    image: "/assets/next.webp",
-    width: 44,
-    height: 44,
-    dynamic: true,
+    skill_name: "React",
+    icon: FaReact,
   },
-  {
-    name: "Tailwind CSS",
-    image: "/assets/tailwind.webp",
-    width: 60,
-    height: 60,
-  },
-  {
-    name: "Framer Motion",
-    image: "/assets/framer.webp",
-    width: 38,
-    height: 38,
-  },
-  {
-    name: "Type Script",
-    image: "/assets/ts.webp",
-    width: 40,
-    height: 40,
-  },
-  {
-    name: "Three JS",
-    image: "/assets/threejs.webp",
-    width: 60,
-    height: 60,
-  },
-  {
-    name: "React",
-    image: "/assets/react.webp",
-    width: 60,
-    height: 60,
-  },
-];
-
-export const Frontend_skill = [
   {
     skill_name: "Html 5",
-    Image: "/assets/html.webp",
-    width: 40,
-    height: 40,
+    icon: FaHtml5,
   },
   {
     skill_name: "Css",
-    Image: "/assets/css.webp",
-    width: 40,
-    height: 40,
+    icon: FaCss3Alt,
   },
   {
     skill_name: "Java Script",
-    Image: "/assets/js.webp",
-    width: 45,
-    height: 45,
+    icon: RiJavascriptFill,
   },
   {
     skill_name: "Tailwind Css",
-    Image: "/assets/tailwind.webp",
-    width: 60,
-    height: 60,
+    icon: SiTailwindcss,
   },
   {
-    skill_name: "shadcn",
-    Image: "/assets/shadcn.webp",
-    width: 30,
-    height: 30,
-    dynamicClass: true,
-  },
-  {
-    skill_name: "React",
-    Image: "/assets/react.webp",
-    width: 60,
-    height: 60,
-  },
-  {
-    skill_name: "Redux",
-    Image: "/assets/redux.webp",
-    width: 45,
-    height: 45,
-  },
-  {
-    skill_name: "React Query",
-    Image: "/assets/reactquery.webp",
-    width: 60,
-    height: 60,
-  },
-  {
-    skill_name: "Type Script",
-    Image: "/assets/ts.webp",
-    width: 40,
-    height: 40,
+    skill_name: "Framer Motion",
+    icon: TbBrandFramerMotion,
   },
   {
     skill_name: "Next js 15",
-    Image: "/assets/next.webp",
-    width: 40,
-    height: 40,
-    dynamicClass: true,
+    icon: RiNextjsFill,
+  },
+  {
+    skill_name: "Three js",
+    icon: SiThreedotjs,
   },
 ];
 
-export const Backend_skill = [
+export const Frontend_Skills = [
+  {
+    skill_name: "React",
+    icon: FaReact,
+  },
+  {
+    skill_name: "Html 5",
+    icon: FaHtml5,
+  },
+  {
+    skill_name: "Css",
+    icon: FaCss3Alt,
+  },
+  {
+    skill_name: "Java Script",
+    icon: RiJavascriptFill,
+  },
+  {
+    skill_name: "Tailwind Css",
+    icon: SiTailwindcss,
+  },
+  {
+    skill_name: "Framer Motion",
+    icon: TbBrandFramerMotion,
+  },
+  {
+    skill_name: "Redux",
+    icon: SiRedux,
+  },
+  {
+    skill_name: "Shadcn UI",
+    icon: SiShadcnui,
+  },
+  {
+    skill_name: "Next js 15",
+    icon: RiNextjsFill,
+  },
+  {
+    skill_name: "Three js",
+    icon: SiThreedotjs,
+  },
+  {
+    skill_name: "TypeScript",
+    icon: BiLogoTypescript,
+  },
+];
+
+export const Backend_Skills = [
   {
     skill_name: "Express js",
-    Image: "/assets/express.webp",
-    width: 40,
-    height: 40,
-    dynamicClass: true,
+    icon: SiExpress,
   },
   {
     skill_name: "Mongo db",
-    Image: "/assets/mongodb.webp",
-    width: 30,
-    height: 30,
-  },
-  {
-    skill_name: "Fire base",
-    Image: "/assets/Firebase.webp",
-    width: 40,
-    height: 40,
+    icon: SiMongodb,
   },
   {
     skill_name: "SQLite",
-    Image: "/assets/sqlite.webp",
-    width: 50,
-    height: 50,
+    icon: SiSqlite,
+  },
+  {
+    skill_name: "React Query",
+    icon: SiReactquery,
+  },
+  {
+    skill_name: "Firebase",
+    icon: RiFirebaseFill,
+  },
+  {
+    skill_name: "Postman",
+    icon: SiPostman,
+  },
+  {
+    skill_name: "Vite",
+    icon: SiVite,
+  },
+  {
+    skill_name: "Mongoose",
+    icon: SiMongoosedotws,
+  },
+  {
+    skill_name: "Node",
+    icon: FaNodeJs,
   },
 ];
 
@@ -195,4 +200,18 @@ export const projects = [
     },
     source_code_link: "https://github.com/ssupream/apple-like-diary",
   },
+];
+
+export const Hobbies = [
+  "Old consoles",
+  "Developing",
+  "Photography",
+  "Gaming",
+  "Traveling",
+  "Cars",
+  "Gym",
+  "Exploring",
+  "Music",
+  "Computers",
+  "Reading manga's",
 ];

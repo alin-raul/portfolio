@@ -6,7 +6,11 @@ type WrapperProps = {
 };
 
 const Wrapper: React.FC<WrapperProps> = ({ children, className = "" }) => {
-  return <div className={`m-auto sm:px-10 px-5 ${className}`}>{children}</div>;
+  return (
+    <div className={`m-auto sm:px-10 px-5 relative ${className}`}>
+      {children}
+    </div>
+  );
 };
 
 export default Wrapper;

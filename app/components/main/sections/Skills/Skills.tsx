@@ -1,20 +1,38 @@
 "use client";
 
 import React from "react";
-import { Frontend_skill, Backend_skill } from "@/constants";
 import SkillDataProvider from "./SkillDataProvider";
-import SkillText from "./SkillText";
+import SkillProgression from "./SkillProgression";
+import { SpinningIcons } from "./SpinningIcons";
+import MonochromeCarousel from "@/app/components/global/MonochromeCarousel";
+import { Frontend_Skills, Backend_Skills } from "@/constants";
+import Blob from "@/app/components/effects/Blob";
 
 const Skills = () => {
   return (
-    <section
-      id="skills"
-      className="flex flex-col items-center justify-center gap-3 h-full relative overflow-hidden py-20 pb-40 max-w-screen-xl mx-auto"
-      style={{ transform: "scale(0.9)" }}
-    >
-      <SkillText />
+    <div className="relative max-w-[160rem] mt-40 mx-auto">
+      <Blob
+        blobClass="blob-2"
+        position={{
+          right: "5rem",
+          top: "16rem",
+        }}
+        width="800px"
+        height="700px"
+      />
+      <section
+        id="skills"
+        className="my-20 flex flex-col items-center justify-center h-full w-full relative overflow-hidden max-w-screen-2xl mx-auto"
+      >
+        <SkillProgression />
+        {/* <SpinningIcons /> */}
 
-      <div className="flex justify-around flex-wrap mt-4 gap-5 items-center">
+        {/* <div className="w-full relative my-8">
+        <MonochromeCarousel icons={Frontend_Skills} reverse={false} />
+        <MonochromeCarousel icons={Backend_Skills} reverse={true} />
+      </div> */}
+
+        {/* <div className="flex justify-around flex-wrap mt-4 gap-5 items-center">
         {Frontend_skill.map((image, index) => {
           return (
             <div
@@ -22,7 +40,7 @@ const Skills = () => {
               key={index}
             >
               <SkillDataProvider
-                src={image.Image}
+                src={image.image}
                 width={image.width}
                 height={image.height}
                 index={index}
@@ -40,7 +58,7 @@ const Skills = () => {
               key={index}
             >
               <SkillDataProvider
-                src={image.Image}
+                src={image.image}
                 width={image.width}
                 height={image.height}
                 index={index}
@@ -49,8 +67,9 @@ const Skills = () => {
             </div>
           );
         })}
-      </div>
-    </section>
+      </div> */}
+      </section>
+    </div>
   );
 };
 

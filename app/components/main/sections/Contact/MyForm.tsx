@@ -69,14 +69,9 @@ export default function MyForm() {
     }
   }
 
-  //service_edgkmt3
-
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 max-w-3xl mx-auto "
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
         <div className="flex flex-col md:grid grid-cols-12 gap-4 ">
           <div className="col-span-6 ">
             <FormField
@@ -90,7 +85,7 @@ export default function MyForm() {
                       type="text"
                       {...field}
                       value={field.value || ""}
-                      className="bg-secondary h-14 md:h-12 rounded-xl"
+                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white/80  focus:dark:dark:bg-black-200/60 backdrop-blur-md h-14 md:h-12 rounded-xl"
                     />
                   </FormControl>
 
@@ -112,7 +107,7 @@ export default function MyForm() {
                       type="email"
                       {...field}
                       value={field.value || ""}
-                      className="bg-secondary h-14 md:h-12 rounded-xl"
+                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white/80  focus:dark:dark:bg-black-200/60 backdrop-blur-md h-14 md:h-12 rounded-xl"
                     />
                   </FormControl>
 
@@ -131,7 +126,7 @@ export default function MyForm() {
               <FormControl>
                 <Textarea
                   placeholder="Your message..."
-                  className="resize-none bg-secondary h-48 rounded-xl p-4"
+                  className="resize-none bg-white/40 dark:bg-black-600/40 focus:bg-white/80 focus:dark:dark:bg-black-200/60 backdrop-blur-md min-h-48 rounded-xl p-4"
                   {...field}
                   value={field.value || ""}
                   rows={5}

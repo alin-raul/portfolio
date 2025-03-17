@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <section className="pt-6 pb-3 border-t flex justify-between items-center flex-wrap gap-5 max-w-screen-2xl mx-auto z-30">
+    <section className="pt-6 pb-3 border-t flex justify-between items-center flex-wrap gap-5 mx-auto z-30 px-4">
       <div className="flex gap-2">
-        <p className="">Terms & Conditions</p>
+        <p>Terms & Conditions</p>
         <p>|</p>
         <p>Privacy Policy</p>
       </div>
