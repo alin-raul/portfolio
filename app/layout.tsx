@@ -32,6 +32,7 @@ const david = David_Libre({
 const dotFont = localFont({
   src: "./fonts/dot.otf",
   variable: "--dot-font",
+  preload: false,
 });
 
 export const metadata: Metadata = {

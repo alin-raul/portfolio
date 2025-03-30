@@ -19,7 +19,6 @@ export default {
     "text-yellow-500",
     "font-titlesans",
     "font-inter",
-    // Add all possible dynamic classes here
   ],
   theme: {
     extend: {

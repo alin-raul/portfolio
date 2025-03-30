@@ -45,7 +45,7 @@ const MovingLightShade: React.FC<LightProps> = ({ fill }) => {
               width="300%"
               height="300%"
             >
-              <feGaussianBlur in="SourceGraphic" stdDeviation="140 30" />
+              <feGaussianBlur in="SourceGraphic" stdDeviation="300 40" />
             </filter>
           </defs>
 

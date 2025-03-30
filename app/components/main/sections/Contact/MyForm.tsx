@@ -46,25 +46,20 @@ export default function MyForm() {
           from_name: values.name,
           to_name: "Raul", // Receiver's name
           from_email: values.email,
-          to_email: "alinnsts@gmail.com", // Receiver's email
+          to_email: "workdevraul@gmail.com", // Receiver's email
           message: values.message,
         })
         .then((response) => {
-          console.log("Message sent successfully", response);
+          // console.log("Message sent successfully", response);
           toast.success("Your message was sent successfully!");
+          form.reset();
         })
         .catch((error) => {
-          console.error("Error sending message", error);
+          // console.error("Error sending message", error);
           toast.error("Failed to submit the form. Please try again.");
         });
-
-      toast(
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
-      );
     } catch (error) {
-      console.error("Form submission error", error);
+      // console.error("Form submission error", error);
       toast.error("Failed to submit the form. Please try again.");
     }
   }

@@ -18,6 +18,7 @@ type ProjectCardProps = {
     name: string;
     color: string;
   }[];
+  icon: string;
   image: {
     light: string;
     dark: string;
@@ -30,6 +31,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   name,
   description,
   tags,
+  icon,
   image,
   source_code_link,
 }) => {
@@ -44,20 +46,33 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="card-w-space w-full z-30"
+      className="card-w-space w-full z-30 overflow-hidden " // add group for hovering
       variants={slideInFromLeft(index * 1.2)}
       initial="hidden"
       animate="visible"
     >
-      <div className="relative w-full h-fit ">
-        <Image
-          width={700}
-          height={500}
-          alt="vercel"
-          src={`${currentTheme === "light" ? image.light : image.dark}`}
-          className="w-full sm:h-[20rem] h-[22rem] object-top object-cover rounded-t-[2rem] "
-        />
+      <div className="relative">
+        <div className="relative w-full h-fit dark:brightness-50 brightness-100 group-hover:brightness-100 blur-xl group-hover:blur-none transition-all duration-300">
+          <Image
+            width={700}
+            height={500}
+            alt="vercel"
+            src={`${currentTheme === "light" ? image.light : image.dark}`}
+            className="w-full sm:h-[20rem] h-[22rem] object-top object-cover rounded-t-[2rem] scale-110 group-hover:scale-100 transition-all duration-200"
+          />
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-center z-30 group-hover:opacity-0 group-hover:blur-md transition-all duration-200">
+          <Image
+            width={300}
+            height={200}
+            src={icon}
+            className="w-24 h-24"
+            alt="icon"
+          />
+        </div>
       </div>
+
       <div className="flex flex-col flex-grow gap-2 justify-around p-8">
         <div>
           <h3 className="font-bold text-2xl">{name}</h3>
@@ -77,18 +92,24 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         <div className="flex justify-between mt-2">
           <div className="flex gap-2">
-            <Button className="rounded-xl" variant="secondary">
+            <Button
+              className="rounded-xl font-dot p-3 hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
+              variant="secondary"
+            >
               <ArrowUpRight />
-              Demo
+              DEMO
             </Button>
             <Link
               href={source_code_link}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="rounded-xl" variant="secondary">
+              <Button
+                className="rounded-xl font-dot hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
+                variant="secondary"
+              >
                 <Github />
-                View Code
+                VIEW CODE
               </Button>
             </Link>
           </div>
@@ -98,9 +119,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button className="rounded-xl" variant="ghost">
+            <Button
+              className="rounded-xl font-dot hover:outline outline-1 outline-accent-foreground/30 transition-all duration-200"
+              variant="ghost"
+            >
               <CircleEllipsis />
-              More
+              MORE
             </Button>
           </Link>
         </div>

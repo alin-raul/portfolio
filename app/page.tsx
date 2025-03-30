@@ -17,7 +17,6 @@ export default function Home() {
           <Skills />
           <Portfolio />
           <Contact />
-          {/* <Encryption /> */}
         </Wrapper>
         <Footer />
       </div>

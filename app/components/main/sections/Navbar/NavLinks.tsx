@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { ModeToggle } from "../../../global/ModeToggle";
 import clsx from "clsx";
 import { ArrowUp } from "lucide-react";
@@ -12,39 +15,56 @@ interface NavLinksProps {
 const NavLinksPortfolio: React.FC<NavLinksProps> = ({ className }) => {
   const { isVisible, hideSidebar } = useSidebar();
 
+  useEffect(() => {
+    // Disable scrolling when the sidebar is visible
+    if (isVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isVisible]);
+
   return (
-    <div className={clsx(className)}>
-      <Link href="#hero" className="cursor-pointer  mr-4 ">
-        <button
-          onClick={hideSidebar}
-          className="p-2 opacity-70 hover:opacity-100"
-        >
-          <ArrowUp className="w-5 h-5" />
-        </button>
+    <div className={clsx("flex md:items-center gap-1", className)}>
+      <Link
+        href="#hero"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-60 hover:opacity-100 rounded-3xl md:rounded-2xl py-2.5 px-6 md:py-1.5 md:px-3 hover:bg-accent/20 transition-all duration-500 ease-in-out"
+      >
+        <ArrowUp className="w-8 h-8 md:w-5 md:h-5" />
       </Link>
       <Link
         href="#about"
-        className="cursor-pointer opacity-70 hover:opacity-100"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-80 hover:opacity-100 rounded-3xl md:rounded-2xl py-3 px-6 md:py-1 md:px-3 transition-all duration-500 ease-in-out hover:bg-accent/20 text-3xl md:text-base hover:font-bold text-center"
       >
-        <button onClick={hideSidebar}>ABOUT</button>
+        About
       </Link>
       <Link
         href="#skills"
-        className="cursor-pointer opacity-70 hover:opacity-100"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-80 hover:opacity-100 rounded-3xl md:rounded-2xl py-3 px-6 md:py-1 md:px-3 transition-all duration-500 ease-in-out  hover:bg-accent/20 text-3xl md:text-base hover:font-bold text-center"
       >
-        <button onClick={hideSidebar}>SKILLS</button>
+        Skills
       </Link>
       <Link
         href="#projects"
-        className="cursor-pointer opacity-70 hover:opacity-100"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-80 hover:opacity-100  rounded-3xl md:rounded-2xl py-3 px-6 md:py-1 md:px-3 transition-all duration-500 ease-in-out hover:bg-accent/20 text-3xl md:text-base hover:font-bold text-center"
       >
-        <button onClick={hideSidebar}>PROJECTS</button>
+        Projects
       </Link>
       <Link
         href="#contact"
-        className="cursor-pointer opacity-70 hover:opacity-100"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-80 hover:opacity-100 rounded-3xl md:rounded-2xl py-3 px-6 md:py-1 md:px-3 transition-all duration-500 ease-in-out hover:bg-accent/20 text-3xl md:text-base hover:font-bold text-center"
       >
-        <button onClick={hideSidebar}>CONTACT</button>
+        Contact
       </Link>
       <ModeToggle />
     </div>
@@ -54,28 +74,44 @@ const NavLinksPortfolio: React.FC<NavLinksProps> = ({ className }) => {
 const NavLinksAbout: React.FC<NavLinksProps> = ({ className }) => {
   const { isVisible, hideSidebar } = useSidebar();
 
+  useEffect(() => {
+    // Disable scrolling when the sidebar is visible
+    if (isVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isVisible]);
+
   return (
-    <div className={clsx(className)}>
+    <div className={clsx("flex md:items-center gap-1", className)}>
       <Link
         href="#top"
-        className="cursor-pointer opacity-70 hover:opacity-100 mr-4"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-60 hover:opacity-100 rounded-3xl md:rounded-2xl p-6 md:py-1.5 md:px-3 transition-all duration-500 ease-in-out hover:bg-accent/20 text-3xl md:text-base text-center"
       >
-        <button onClick={hideSidebar} className="p-2">
-          <ArrowUp className="w-5 h-5" />
-        </button>
+        <ArrowUp className="w-8 h-8 md:w-5 md:h-5" />
       </Link>
       <Link
         href="#about-me"
-        className="cursor-pointer opacity-70 hover:opacity-100"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-80 hover:opacity-100 rounded-3xl md:rounded-2xl py-3 px-6 md:py-1 md:px-3 transition-all duration-500 ease-in-out hover:bg-accent/20 text-3xl md:text-base hover:font-bold text-center"
       >
-        <button onClick={hideSidebar}>ABOUT</button>
+        About
       </Link>
       <Link
         href="#experience"
-        className="cursor-pointer opacity-70 hover:opacity-100"
+        onClick={hideSidebar}
+        className="cursor-pointer opacity-80 hover:opacity-100 rounded-3xl md:rounded-2xl py-3 px-6 md:py-1 md:px-3 transition-all duration-500 ease-in-out hover:bg-accent/20 text-3xl md:text-base hover:font-bold text-center"
       >
-        <button onClick={hideSidebar}>EXPERIENCE</button>
+        Experience
       </Link>
+      <ModeToggle />
     </div>
   );
 };

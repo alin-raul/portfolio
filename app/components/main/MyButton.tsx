@@ -18,7 +18,10 @@ const MyButton: React.FC<Props> = ({
   icon,
 }) => {
   return (
-    <button className={`btn ${containerClass}`} onClick={click}>
+    <button
+      className={`flex items-center justify-center gap-2 bg-accent/30 hover:bg-accent/90 backdrop-blur-md p-3 border border-accent-foreground/10 hover:border-accent-foreground/30 rounded-2xl ${containerClass}`}
+      onClick={click}
+    >
       {isBeam && (
         <span className="relative flex h-3 w-3 ">
           <span className="btn-ping" />

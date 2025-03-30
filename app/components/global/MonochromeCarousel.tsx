@@ -27,7 +27,7 @@ const MonochromeCarousel: React.FC<Icons> = ({ icons, reverse }) => {
               return (
                 <div
                   key={index}
-                  className="group carousel-link p-3 rounded-3xl border flex justify-center items-center aspect-square min-h-[60px] min-w-[60px] bg-white/40 dark:bg-black-300/40"
+                  className="group carousel-link p-3 rounded-3xl border flex justify-center items-center aspect-square min-h-[60px] min-w-[60px] bg-accent/30"
                 >
                   <IconComponent className="text-5xl opacity-80" />
                 </div>

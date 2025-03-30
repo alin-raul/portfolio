@@ -64,7 +64,7 @@
       rgba(195, 226, 255, 0.3);
     --bg-dynamic: #ffffff30;
     --bg-dynamic-1: #ffffff80;
-    --bg-dynamic-2: #dddddd80;
+    --bg-dynamic-2: #ffffff;
     --dynamic-border: #00000020;
     --dynamic-border-contrast: #000000;
     --dynamic-shadow: 0 5px 15px -3px rgba(192, 192, 192, 0.288),
@@ -88,6 +88,7 @@
       oklch(83.36% 0.07 249.83) 70%,
       oklch(83.15% 0.12 313.45) 80%
     );
+    --pixel-size: 12;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -210,6 +211,8 @@
   background: var(--bg-dynamic-1);
   backdrop-filter: blur(12px);
   border: 1px solid var(--dynamic-border);
+  border-radius: 1rem;
+  margin-top: 1rem;
 }
 
 .bg-dynamic {
@@ -324,14 +327,10 @@ canvas {
   backdrop-filter: blur(12px);
 }
 
-.grid-card-w-space {
+.grid-card {
   border: 1px solid var(--dynamic-border);
   border-radius: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
   gap: 1.25rem;
-  padding: 3rem;
   background: var(--bg-dynamic-1);
   backdrop-filter: blur(12px);
 }
@@ -420,7 +419,6 @@ canvas {
 
 .carousel {
   margin: 0 auto;
-  padding: 20px 0;
   max-width: 100%;
   overflow: hidden;
   display: flex;
@@ -598,28 +596,7 @@ canvas {
   }
 }
 
-@media (max-width: 768px) {
-  .nav-bg-dynamic {
-    background: none;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
-  }
-}
-
-.nav-bg-dynamic-small {
-  background: var(--bg-dynamic-1);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--dynamic-border);
-}
-
 @media (min-width: 768px) {
-  .nav-bg-dynamic-small {
-    background: none;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
-  }
   .grid-container {
     padding: 1.75rem;
   }
@@ -634,4 +611,35 @@ canvas {
     transform: translate(var(--center-x), var(--center-y)) rotate(360deg)
       translate(calc(var(--center-x) * -1), calc(var(--center-y) * -1));
   }
+}
+
+/* Cat walk */
+
+canvas {
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+@keyframes draw-path {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-draw-path {
+  animation: draw-path 2s ease-out forwards;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s infinite;
 }

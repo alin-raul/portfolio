@@ -45,20 +45,24 @@ const Hero = () => {
               />
 
               {/* <group>
-              <EffectComposer>
-                <Bloom
-                  intensity={0.3}
-                  luminanceThreshold={1.5}
-                  luminanceSmoothing={1.9}
-                  height={900}
+                <EffectComposer>
+                  <Bloom
+                    intensity={0.3}
+                    luminanceThreshold={1.5}
+                    luminanceSmoothing={1.9}
+                    height={900}
+                  />
+                  <ChromaticAberration
+                    offset={[0.002, 0.002]}
+                    radialModulation={true}
+                  />
+                </EffectComposer>
+                <BlackHole
+                  position={[0, 0, -1]}
+                  scale={3}
+                  rotation={[0, 1, 0]}
                 />
-                <ChromaticAberration
-                  offset={[0.002, 0.002]}
-                  radialModulation={true}
-                />
-              </EffectComposer>
-              <BlackHole position={[0, 0, -1]} scale={3} rotation={[0, 1, 0]} />
-            </group> */}
+              </group> */}
             </Suspense>
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
@@ -66,7 +70,7 @@ const Hero = () => {
         </div>
 
         <div className="absolute top-[75rem] right-0 left-0 opacity-30">
-          <MovingLightShade fill="rgb(67, 21, 221)" />
+          {/* <MovingLightShade fill="rgb(67, 21, 221)" /> */}
         </div>
         <HeroContent />
       </section>

@@ -162,6 +162,7 @@ export const projects = [
       { name: "tailwind", color: "text-cyan-500" },
       { name: "shadcn/ui", color: "" },
     ],
+    icon: "/assets/projects/icons/cardinal.svg",
     image: {
       light: "/assets/projects/favCities-light.webp",
       dark: "/assets/projects/favCities-dark.webp",
@@ -178,6 +179,7 @@ export const projects = [
       { name: "mongodb", color: "text-green-700" },
       { name: "tailwind", color: "text-cyan-500" },
     ],
+    icon: "/assets/projects/icons/nextquiz.webp",
     image: {
       light: "/assets/projects/quiz.webp",
       dark: "/assets/projects/quiz.webp",
@@ -194,6 +196,7 @@ export const projects = [
       { name: "firebase", color: "text-yellow-500" },
       { name: "tailwind", color: "text-cyan-500" },
     ],
+    icon: "/assets/projects/icons/journal.svg",
     image: {
       light: "/assets/projects/diary-light.webp",
       dark: "/assets/projects/diary-dark.webp",
@@ -214,4 +217,39 @@ export const Hobbies = [
   "Music",
   "Computers",
   "Reading manga's",
+];
+
+export const socialLinks = [
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/alinraul/",
+    icon: "/assets/linkedin.svg",
+    alt: "LinkedIn",
+    width: 22,
+    height: 22,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/alin.raul/",
+    icon: "/assets/instagram.svg",
+    alt: "Instagram",
+    width: 26,
+    height: 26,
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/alin-raul",
+    icon: "/assets/github-142-svgrepo-com.svg",
+    alt: "GitHub",
+    width: 26,
+    height: 26,
+  },
+  {
+    name: "CV Download",
+    url: "/path/to/your-cv.pdf",
+    icon: "/assets/download.svg",
+    alt: "Download CV",
+    width: 22,
+    height: 22,
+  },
 ];

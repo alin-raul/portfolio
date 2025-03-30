@@ -4,17 +4,20 @@ import Footer from "../components/main/sections/Footer/Footer";
 import Contact from "../components/main/sections/Contact/Contact";
 import HobbiesCarousel from "../components/global/HobbiesCarousel";
 import { Hobbies } from "@/constants";
+import PhotosOfMe from "../components/main/sections/About/PhotosOfMe";
 
 const About = () => {
   return (
     <Wrapper>
       <div className="mt-40 max-w-screen-xl mx-auto" id="top">
         <div>
-          <p className="text-7xl font-bold">
+          <p className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
             Hello, I&apos;m Raul Alin Nastase
             <br />
-            <span>upcoming Full-Stack Dev</span>
+            <span>Full-Stack Web Developer</span>
           </p>
+
+          <PhotosOfMe />
 
           {/* About Section */}
           <section className="lg:flex items-center h-full my-40 ">
@@ -60,18 +63,19 @@ const About = () => {
               <div className="lg:w-1/2">
                 <div className="font-normal text-2xl">
                   <div className="mb-8 pb-4 border-b">
-                    <h2 className="text-4xl font-bold mb-2">
-                      Start of my journey
-                    </h2>
-                    <h4 className="text-2xl font-semibold mb-2">Self-taught</h4>
-                    <p className="text-xl">2023 - Present</p>
-                  </div>
-                  <div className="mb-8 pb-4 border-b">
                     <h2 className="text-4xl font-bold mb-2">Digital Nation</h2>
                     <h4 className="text-2xl font-semibold mb-2">
                       Advanced JavaScript
                     </h4>
                     <p className="text-xl">08/2024 - 12/2024</p>
+                  </div>
+
+                  <div className="mb-8 pb-4 border-b">
+                    <h2 className="text-4xl font-bold mb-2">
+                      Start of my journey
+                    </h2>
+                    <h4 className="text-2xl font-semibold mb-2">Self-taught</h4>
+                    <p className="text-xl">2023</p>
                   </div>
                 </div>
               </div>
@@ -79,6 +83,7 @@ const About = () => {
           </div>
         </div>
       </div>
+
       <Contact />
       <Footer />
     </Wrapper>

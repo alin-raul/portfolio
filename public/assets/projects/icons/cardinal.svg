@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg fill="#000000" width="800px" height="800px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:export>
+      <bx:file format="svg" path="cardinal.icon.svg"/>
+    </bx:export>
+    <linearGradient id="color-0" bx:pinned="true" gradientUnits="userSpaceOnUse">
+      <stop style="stop-color: rgb(195, 195, 251);"/>
+    </linearGradient>
+    <linearGradient id="color-1" bx:pinned="true" gradientUnits="userSpaceOnUse">
+      <stop style="stop-color: rgb(188, 207, 250);"/>
+    </linearGradient>
+    <linearGradient id="color-2" bx:pinned="true" gradientUnits="userSpaceOnUse">
+      <stop style="stop-color: rgb(75, 35, 150);"/>
+    </linearGradient>
+    <linearGradient id="color-3" bx:pinned="true" gradientUnits="userSpaceOnUse">
+      <stop style="stop-color: rgb(82, 29, 124);"/>
+    </linearGradient>
+    <linearGradient id="gradient-0" bx:pinned="true">
+      <stop offset="0" style="stop-color: rgb(91, 42, 178);"/>
+      <stop offset="0.324" style="stop-color: rgb(156, 66, 226);"/>
+      <stop offset="0.673" style="stop-color: rgb(130, 128, 223);"/>
+      <stop offset="1" style="stop-color: rgb(118, 150, 227);"/>
+    </linearGradient>
+    <radialGradient id="gradient-0-0" href="#gradient-0" gradientUnits="userSpaceOnUse" cx="7.064" cy="20.89" r="12" gradientTransform="matrix(0.954368, -1.529026, 2.062956, 1.287628, -41.405008, 5.331688)"/>
+    <radialGradient id="gradient-0-1" href="#gradient-0" gradientUnits="userSpaceOnUse" cx="17.002" cy="20.535" r="12" gradientTransform="matrix(1.508764, 0.58266, -0.876071, 2.26854, -2.668489, -50.236726)"/>
+  </defs>
+  <title>Mapbox icon</title>
+  <path d="M 12 0 L 8.076 8.076 L 0 12 L 8.076 15.924 L 12 24 L 15.924 15.924 L 24 12 L 15.924 8.076 L 12 0 Z" style="stroke: rgb(186, 218, 85); fill: url(&quot;#gradient-0-1&quot;); stroke-opacity: 0;"/>
+  <path d="M 12 0 L 8.076 8.076 L 0 12 L 8.076 15.924 L 12 24 L 15.924 15.924 L 24 12 L 15.924 8.076 L 12 0 Z" style="stroke: rgb(186, 218, 85); stroke-opacity: 0; fill: url(&quot;#gradient-0-0&quot;); fill-opacity: 0.61;"/>
+</svg>

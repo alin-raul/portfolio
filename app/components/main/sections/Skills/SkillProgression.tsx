@@ -17,26 +17,35 @@ const SkillProgression = () => {
         <div className="flex justify-between text-xs mb-1">
           <span className="mx-auto select-none">{level}</span>
         </div>
-        <div className="w-10 h-40 relative mt-4">
-          {/* Name label with disabled selection */}
+        <div className="relative w-10 h-40 mt-4">
+          {/* Absolutely positioned background layer */}
+          <div
+            className="absolute inset-0 rounded-t-3xl rounded-b-3xl
+               dark:bg-[image:repeating-linear-gradient(315deg,_#ffffff_0,_#ffffff_1px,_transparent_0,_transparent_50%)] 
+               bg-[size:10px_10px] bg-[image:repeating-linear-gradient(315deg,_#000000_0,_#000000_1px,_transparent_0,_transparent_50%)]
+               "
+            style={{ opacity: 0.4, zIndex: -1 }}
+          />
+
+          {/* Name label */}
           <span className="absolute inset-0 -bottom-20 flex items-center text-sm z-10 text-nowrap -rotate-90 select-none pointer-events-none text-white dark:text-black">
             {name}
           </span>
 
-          {/* Progress bar */}
+          {/* Progress bar background */}
           <div
-            className="w-full h-full rounded-t-3xl rounded-b-3xl transition-all duration-300 absolute outline-1 outline bottom-0 px-3 py-1 backdrop-blur-md bg-black/20 dark:bg-white/20"
-            style={{
-              // backgroundColor: isHovered ? color : "",
-              opacity: 0.4,
-            }}
+            className="w-full h-full rounded-t-3xl rounded-b-3xl transition-all duration-300 absolute
+               bottom-0 px-3 py-1 backdrop-blur-md bg-black/20 dark:bg-white/20"
+            style={{ opacity: 0.4 }}
           />
+
+          {/* Foreground progress bar */}
           <div
-            className="w-full rounded-t-3xl rounded-b-3xl transition-all duration-300 absolute bottom-0 px-3 py-1 backdrop-blur-md bg-black dark:bg-white"
+            className="w-full rounded-t-3xl rounded-b-3xl transition-all duration-300 absolute bottom-0 px-3 py-1 backdrop-blur-md bg-black dark:bg-white "
             style={{
               height: level,
               backgroundColor: isHovered ? color : "",
-              opacity: 0.8,
+              opacity: 1,
             }}
           />
         </div>

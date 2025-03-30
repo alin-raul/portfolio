@@ -19,12 +19,12 @@ export const Sidebar: React.FC = ({}) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="fixed inset-0 md:hidden bg-black/40 backdrop-blur-md z-50"
+            className="fixed inset-0 md:hidden bg-accent/40 backdrop-blur-md z-50"
           >
             {["/about"].includes(pathname) ? (
-              <NavLinksAbout className="text-3xl font-dot font-bold flex flex-col gap-6 text-right items-end pt-20 pr-7" />
+              <NavLinksAbout className="font-dot font-bold flex flex-col gap-6 text-right items-end pt-20 pr-7" />
             ) : (
-              <NavLinksPortfolio className="text-3xl font-dot font-bold flex flex-col gap-6 text-right items-end pt-20 pr-7" />
+              <NavLinksPortfolio className="font-dot font-bold flex flex-col gap-6 text-right items-end pt-20 pr-7" />
             )}
           </motion.div>
         ) : (
