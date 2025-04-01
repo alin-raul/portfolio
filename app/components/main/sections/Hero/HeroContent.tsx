@@ -60,7 +60,7 @@ function HeroContent() {
               variants={slideInFromLeft(1)}
               className="text-md max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
-              <Link href={"#contact"}>
+              <Link href={"/curriculum"}>
                 <div className="group w-fit px-4 py-2 rounded-full flex gap-2 items-center outline outline-1 outline-accent-foreground/30 hover:outline-accent-foreground/100 transition-all duration-200 backdrop-blur-md bg-accent/10 hover:bg-accent/40">
                   <span className="opacity-70 group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-200">
                     <ArrowUpRight className="opacity-70 group-hover:opacity-100 transition-opacity duration-200" />

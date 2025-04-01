@@ -13,6 +13,8 @@ import {
   Terminal,
   TrendingUp,
   SquareActivity,
+  Code,
+  SquareStack,
 } from "lucide-react";
 import GlobeComponent from "./GlobeComponent";
 import Blob from "@/app/components/effects/Blob";
@@ -34,7 +36,7 @@ import {
   ReferenceLine,
 } from "recharts";
 
-const GridCard = ({
+export const GridCard = ({
   children,
   className = "",
 }: {
@@ -256,22 +258,63 @@ const RetroTech = () => (
 );
 
 const GrowthTimeline = () => {
-  // Mock data representing 2 years of progress
+  // Mock data representing 2 years of personal development
   const growthData = [
-    { month: "Jan 2022", skills: 3, projects: 2, contributions: 15 },
-    { month: "Jun 2022", skills: 7, projects: 5, contributions: 42 },
-    { month: "Jan 2023", skills: 12, projects: 9, contributions: 89 },
-    { month: "Jun 2023", skills: 18, projects: 14, contributions: 127 },
-    { month: "Jan 2024", skills: 24, projects: 19, contributions: 203 },
+    {
+      month: "Jun 2023",
+      skills: 5,
+      projects: 4,
+      skillsList: ["HTML", "CSS", "JavScript", "Package manager", "Terminal"],
+      projectsList: ["To-Do List , Calculator, Tic-Tac-Toe, Digital Clock"],
+    },
+    {
+      month: "Sep 2023",
+      skills: 10,
+      projects: 4,
+      skillsList: ["React", "Redux", "Joi", "Tailwind", "Vite"],
+      projectsList: [
+        "Journal",
+        "E-commerce store",
+        "Weather App",
+        "Expense Calculator",
+      ],
+    },
+    {
+      month: "Aug 2024",
+      skills: 22,
+      projects: 2,
+      skillsList: [
+        "Next.js",
+        "Redux",
+        "TypeScript",
+        "Firebase",
+        "MongoDB",
+        "TypeORM",
+        "SQLite",
+        "API's",
+        "Maps",
+        "Auth",
+        "JWT",
+        "Git",
+      ],
+      projectsList: ["Quiz App", "Favorite Cities"],
+    },
+    {
+      month: "Feb 2025",
+      skills: 25,
+      projects: 1,
+      skillsList: ["Three.js", "Shadcn UI", "React Query"],
+      projectsList: ["Portfolio"],
+    },
   ];
 
   return (
-    <GridCard className="col-span-2 h-full p-6 relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5  to-transparent dark:from-black/10" />
+    <GridCard className="p-6 relative h-full min-h-96">
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent dark:from-black/10" />
 
       <h3 className="text-lg mb-4 flex items-center gap-2">
-        <TrendingUp className="w-5 h-5" />
-        Growth Trajectory
+        <Code className="w-5 h-5" />
+        Skill & Project Growth
       </h3>
 
       <div className="h-48">
@@ -281,12 +324,12 @@ const GrowthTimeline = () => {
               <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
-                  stopColor="hsl(var(--accent))"
+                  stopColor="hsl(var(--muted-foreground))"
                   stopOpacity={0.4}
                 />
                 <stop
                   offset="95%"
-                  stopColor="hsl(var(--accent))"
+                  stopColor="hsl(var(--muted))"
                   stopOpacity={0}
                 />
               </linearGradient>
@@ -309,17 +352,35 @@ const GrowthTimeline = () => {
 
             <Tooltip
               contentStyle={{
-                background: "hsl(var(--accent-foreground))",
+                background: "hsl(var(--accent))",
                 border: "none",
                 borderRadius: "8px",
               }}
-              itemStyle={{ color: "hsl(var(--accent))" }}
+              itemStyle={{ color: "hsl(var(--accent-foreground))" }}
+              content={({ active, payload }) => {
+                if (active && payload && payload.length) {
+                  const data = payload[0].payload;
+                  return (
+                    <div className="p-3 bg-accent text-accent-foreground rounded-lg">
+                      <p className="font-medium">{data.month}</p>
+                      <p className="text-sm">
+                        Skills: {data.skillsList.join(", ")}
+                      </p>
+                      <p className="text-sm mt-2">
+                        Projects: {data.projectsList.join(", ")}
+                      </p>
+                    </div>
+                  );
+                }
+                return null;
+              }}
             />
 
             <Area
               type="monotone"
-              dataKey="contributions"
-              stroke="hsl(var(--accent-foreground))"
+              dataKey="skills"
+              name="Skills Mastered"
+              stroke="hsl(var(--muted-foreground))"
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#growthGradient)"
@@ -327,13 +388,13 @@ const GrowthTimeline = () => {
             />
 
             <ReferenceLine
-              x="Jun 2023"
-              stroke="hsl(var(--accent-foreground))"
+              x="Jan 2023"
+              stroke="hsl(var(--accent))"
               strokeDasharray="3 3"
               label={{
                 position: "insideTopRight",
-                value: "Open Source Contribution",
-                fill: "hsl(var(--accent-foreground))",
+                value: "Full-Stack Transition",
+                fill: "hsl(var(--accent))",
                 fontSize: 12,
               }}
             />
@@ -343,21 +404,19 @@ const GrowthTimeline = () => {
 
       <div className="flex justify-between mt-4 text-sm">
         <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-accent-foreground" />
-          <span className="opacity-75">Code Contributions</span>
+          <div className="w-2 h-2 rounded-full bg-accent" />
+          <span className="opacity-75">Technical Skills</span>
         </div>
         <div className="text-right">
-          <p className="font-medium">
-            +{(((203 - 15) / 15) * 100).toFixed(0)}%
-          </p>
-          <p className="text-xs opacity-75">24mo period</p>
+          <p className="font-medium">+{(((25 - 3) / 3) * 100).toFixed(0)}%</p>
+          <p className="text-xs opacity-75">6 projects completed</p>
         </div>
       </div>
 
       <div className="absolute bottom-4 right-4 flex gap-2">
         <Badge variant="outline" className="text-xs py-1">
-          <SquareActivity className="w-3 h-3 mr-1" />
-          203 Contributions
+          <SquareStack className="w-3 h-3 mr-1" />
+          {growthData[growthData.length - 1].skills} Skills
         </Badge>
       </div>
     </GridCard>
@@ -407,11 +466,11 @@ const About = () => (
           <GrowthCard />
         </div>
 
-        <div className="xl:col-span-3 md:col-span-3 md:h-full z-20">
+        <div className="xl:col-span-3 md:col-span-4 md:h-full z-20">
           <ContactCard />
         </div>
 
-        <div className="xl:col-span-3 md:col-span-3 md:h-full h-fit z-20">
+        <div className="xl:col-span-3 md:col-span-2 md:h-full h-fit z-20">
           <SocialLinks />
         </div>
       </div>
