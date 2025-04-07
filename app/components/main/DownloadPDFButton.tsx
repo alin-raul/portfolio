@@ -1,70 +1,66 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { Button } from "@/components/ui/button";
 import CurriculumPDF from "./CurriculumPDF";
+import { Download, RefreshCcw } from "lucide-react";
 
-import {
-  otherSkills,
-  projects,
-  workExperiences,
-  educationData,
-  TechStack,
-  designTools,
-} from "@/constants"; // Adjust path to your constants
-
-// Import your regular Button component for styling (optional)
-import { Button } from "@/components/ui/button"; // Adjust path
+const LazyCurriculumPDF = lazy(() => import("./CurriculumPDF"));
 
 const DownloadPDFButton = () => {
+  // Trick to only render the PDFDownloadLink on the client after mount
+  // Avoids SSR mismatch errors with @react-pdf/renderer
   const [isClient, setIsClient] = useState(false);
 
-  // Ensure this component only renders the PDFLink on the client
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // Pass the imported data as a prop to CurriculumPDF
-  const pdfData = {
-    otherSkills,
-    projects,
-    workExperiences,
-    educationData,
-    TechStack,
-    designTools,
-  };
+  const LoadingButton = (
+    <Button
+      variant="default"
+      size="lg"
+      disabled
+      className="w-fit mx-auto text-base px-4 rounded-xl bg-blue-500 "
+    >
+      <Download className="mr-2 h-5 w-5" /> Download
+    </Button>
+  );
 
   return (
-    <div>
+    <>
       {isClient ? (
-        <PDFDownloadLink
-          document={<CurriculumPDF data={pdfData} />}
-          fileName={`Nastase_Raul_Alin_CV_${
-            new Date().toISOString().split("T")[0]
-          }.pdf`} // Dynamic filename
-        >
-          {({ blob, url, loading, error }) =>
-            loading ? (
-              <Button variant="outline" disabled>
-                Generating PDF...
+        <Suspense fallback={LoadingButton}>
+          <PDFDownloadLink
+            document={<CurriculumPDF />}
+            fileName="Nastase_Raul_Alin_CV.pdf" // Set the desired file name
+          >
+            {({ blob, url, loading, error }) => (
+              <Button
+                variant="default"
+                size="lg"
+                disabled={loading}
+                className="w-fit mx-auto text-base text-white font-semibold px-5 rounded-xl bg-blue-500 hover:bg-blue-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 "
+              >
+                {loading ? (
+                  <>
+                    <RefreshCcw className="mr-2 h-5 w-5 animate-spin" />
+                    Building pdf
+                  </>
+                ) : (
+                  <>
+                    <Download className="mr-2 h-5 w-5" /> Download
+                  </>
+                )}
               </Button>
-            ) : (
-              // Use your existing Button component for consistent styling
-              <Button className="py-8 px-6 rounded-3xl text-2xl bg-violet-500 font-bold ">
-                Download as PDF
-              </Button>
-            )
-          }
-        </PDFDownloadLink>
+            )}
+          </PDFDownloadLink>
+        </Suspense>
       ) : (
-        // Placeholder button while rendering on server or before hydration
-        <Button variant="outline" disabled>
-          Loading PDF...
-        </Button>
+        LoadingButton
       )}
-      {/* Optional: Display error message */}
-      {/* {error && <p style={{color: 'red', marginTop: '5px'}}>Failed to generate PDF.</p>} */}
-    </div>
+    </>
   );
 };
 

@@ -48,12 +48,13 @@ const ProfileHeader = () => (
 
 const ProfileGrid = () => (
   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-    <GridCard className="overflow-hidden w-full min-h-52">
+    <GridCard className="overflow-hidden w-full h-96 sm:h-full">
       <Image
-        src="/photos/placeholder.JPG"
+        src="/photos/profile_pic.webp"
         alt="Me"
         fill
-        className="object-cover object-center"
+        draggable={false}
+        className="object-cover object-center "
       />
     </GridCard>
 
@@ -76,30 +77,41 @@ const ProjectsSection = () => (
   </GridCard>
 );
 
-const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => (
-  <div className="flex flex-col justify-center">
-    <div className="flex flex-col mx-auto min-w-20 h-20 border rounded-3xl aspect-square p-4 mb-2 bg-[var(--bg-dynamic-2)]">
-      <Image src={project.icon} alt={project.name} width={100} height={100} />
-    </div>
-    <div className="flex flex-col w-full">
-      <h1 className="text-nowrap font-semibold text-center text-muted-foreground text-xs mb-2">
-        {project.name}
-      </h1>
-      <Button
-        variant="outline"
-        className="w-fit mx-auto text-xs px-2.5 rounded-full bg-transparent hover:bg-violet-500 hover:text-primary-foreground border-2 border-violet-500 text-violet-500 font-bold"
-      >
-        <Link
-          href={project.source_code_link}
-          target="_blank"
-          rel="noopener noreferrer"
+const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
+  const { name, icon, source_code_link } = project;
+
+  const imageProps = {
+    src: icon,
+    width: 100,
+    height: 100,
+    draggable: false,
+  };
+
+  return (
+    <div className="flex flex-col justify-center">
+      <div className="flex flex-col mx-auto min-w-20 h-20 rounded-3xl aspect-square p-4 mb-2 bg-[var(--bg-dynamic-2)]">
+        <Image {...imageProps} alt="Project icon" />
+      </div>
+      <div className="flex flex-col w-full">
+        <h1 className="text-nowrap font-semibold text-center text-muted-foreground text-xs mb-2">
+          {name}
+        </h1>
+        <Button
+          variant="outline"
+          className="w-fit mx-auto text-xs px-2.5 rounded-full bg-transparent hover:bg-violet-500 hover:text-primary-foreground border-2 border-violet-500 text-violet-500 font-bold"
         >
-          VIEW
-        </Link>
-      </Button>
+          <Link
+            href={source_code_link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            VIEW
+          </Link>
+        </Button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const InterestsSection = () => (
   <GridCard className="overflow-hidden p-6 h-full lg:col-span-1 sm:col-span-2">
@@ -136,53 +148,68 @@ const ExperienceCard = ({
   experience,
 }: {
   experience: (typeof workExperiences)[0];
-}) => (
-  <GridCard className="p-8 h-full mb-4 lg:mb-0">
-    <div className="flex">
-      <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
-        <Image
-          src={experience.icon}
-          alt="company logo"
-          width={experience.width}
-          height={experience.height}
-        />
-      </div>
-      <div className="flex flex-col justify-center ml-6">
-        <h1
-          className={`${
-            experience.isLong
-              ? "text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl"
-              : "text-3xl"
-          } font-bold text-muted-foreground whitespace-nowrap truncate`}
-        >
-          {experience.name}
-        </h1>
-        <h3 className="text-muted-foreground">{experience.role}</h3>
-      </div>
-      <div className="ml-auto">
-        <div
-          className={`rounded-lg font-bold py-2 px-3 ${
-            experience.workingHere
-              ? "border-2 border-violet-500 text-violet-500"
-              : "bg-primary-foreground"
-          }`}
-        >
-          {experience.duration}
+}) => {
+  const {
+    icon,
+    width,
+    height,
+    isLong,
+    name,
+    role,
+    duration,
+    workingHere,
+    list,
+  } = experience;
+
+  const imageProps = {
+    src: icon,
+    width,
+    height,
+  };
+
+  return (
+    <GridCard className="p-8 h-full mb-4 lg:mb-0">
+      <div className="flex">
+        <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
+          <Image {...imageProps} alt="Company logo" draggable={false} />
+        </div>
+        <div className="flex flex-col justify-center ml-6">
+          <h1
+            className={`${
+              isLong
+                ? "text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl"
+                : "text-3xl"
+            } font-bold text-muted-foreground whitespace-nowrap truncate`}
+          >
+            {name}
+          </h1>
+          <h3 className="text-muted-foreground">{role}</h3>
+        </div>
+        <div className="ml-auto">
+          <div
+            className={`rounded-lg font-bold py-2 px-3 ${
+              workingHere
+                ? "border-2 border-violet-500 text-violet-500"
+                : "bg-primary-foreground"
+            }`}
+          >
+            {duration}
+          </div>
         </div>
       </div>
-    </div>
-    <div className="mt-14">
-      <ul className="flex flex-col gap-2 list-disc pl-4">
-        {experience.list.map((item, index) => (
-          <li key={index}>
-            <span className="font-bold">{item.skill}:</span>
-            <span> {item.description}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </GridCard>
-);
+      <div className="mt-14">
+        <ul className="flex flex-col gap-2 list-disc pl-4">
+          {list.map(({ skill, description }, index) => (
+            <li key={index}>
+              <span className="font-bold">{skill}:</span>
+              <span> {description}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </GridCard>
+  );
+};
 
 const EducationSection = () => (
   <Section title="Education">
@@ -198,51 +225,67 @@ const EducationCard = ({
   education,
 }: {
   education: (typeof educationData)[0];
-}) => (
-  <GridCard className="p-8 h-full mb-4 lg:mb-0">
-    <div className="flex">
-      <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
-        <Image
-          src={education.icon}
-          alt="institution logo"
-          width={education.width}
-          height={education.height}
-          className={education.reverse ? "dark:invert" : ""}
-        />
-      </div>
-      <div className="flex flex-col justify-center ml-6 mr-2">
-        <h1
-          className={`${
-            education.isLong
-              ? "text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl"
-              : "text-3xl"
-          } font-bold text-muted-foreground whitespace-nowrap truncate`}
-        >
-          {education.name}
-        </h1>
-        <h3 className="text-muted-foreground">{education.role}</h3>
-        <h3 className="text-muted-foreground">{education.specialization}</h3>
-      </div>
-      <div className="ml-auto">
-        <div className="rounded-lg font-bold py-2 px-3 bg-primary-foreground whitespace-nowrap">
-          {education.duration}
+}) => {
+  const {
+    icon,
+    width,
+    height,
+    reverse,
+    isLong,
+    name,
+    role,
+    specialization,
+    duration,
+    list,
+  } = education;
+
+  const imageProps = {
+    src: icon,
+    width,
+    height,
+    className: reverse ? "dark:invert" : "",
+  };
+
+  return (
+    <GridCard className="p-8 h-full mb-4 lg:mb-0">
+      <div className="flex">
+        <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
+          <Image {...imageProps} alt="institution logo" draggable={false} />
+        </div>
+        <div className="flex flex-col justify-center ml-6 mr-2">
+          <h1
+            className={`${
+              isLong
+                ? "text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl"
+                : "text-3xl"
+            } font-bold text-muted-foreground whitespace-nowrap truncate`}
+          >
+            {name}
+          </h1>
+          <h3 className="text-muted-foreground">{role}</h3>
+          <h3 className="text-muted-foreground">{specialization}</h3>
+        </div>
+        <div className="ml-auto">
+          <div className="rounded-lg font-bold py-2 px-3 bg-primary-foreground whitespace-nowrap">
+            {duration}
+          </div>
         </div>
       </div>
-    </div>
-    {education.list && (
-      <div className="mt-14">
-        <ul className="flex flex-col gap-2 list-disc pl-4">
-          {education.list.map((item, index) => (
-            <li key={index}>
-              <span className="font-bold">{item.skill}:</span>
-              <span> {item.description}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-  </GridCard>
-);
+      {list && (
+        <div className="mt-14">
+          <ul className="flex flex-col gap-2 list-disc pl-4">
+            {list.map(({ skill, description }, index) => (
+              <li key={index}>
+                <span className="font-bold">{skill}:</span>
+                <span> {description}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </GridCard>
+  );
+};
 
 const SkillsSection = () => (
   <Section title="Skills">
@@ -256,7 +299,7 @@ const SkillsSection = () => (
 );
 
 const CodingSkills = () => (
-  <GridCard className="col-span-5 p-10">
+  <GridCard className="col-span-5 p-10 mb-4 lg:mb-0">
     <h3 className="text-2xl font-bold text-muted-foreground mb-6">Coding</h3>
     <div className="flex flex-wrap justify-between w-full">
       {TechStack.map(({ skill_name, icon, color }) => {
@@ -279,18 +322,19 @@ const CodingSkills = () => (
 );
 
 const DesignSkills = () => (
-  <GridCard className="col-span-3 p-10">
+  <GridCard className="col-span-3 p-10 mb-4 lg:mb-0">
     <h3 className="text-2xl font-bold text-muted-foreground mb-6">
       Design Tools
     </h3>
     <div className="flex justify-between items-center">
-      {designTools.map((tool) => (
+      {designTools.map(({ name, icon, width, height }) => (
         <Image
-          key={tool.name}
-          src={tool.icon}
-          alt={tool.name}
-          width={tool.width}
-          height={tool.height}
+          key={name}
+          src={icon}
+          alt={name}
+          draggable={false}
+          width={width}
+          height={height}
         />
       ))}
     </div>
@@ -298,7 +342,7 @@ const DesignSkills = () => (
 );
 
 const LanguageSkills = () => (
-  <GridCard className="col-span-2 p-10 flex flex-col">
+  <GridCard className="col-span-2 p-10 flex flex-col mb-4 lg:mb-0">
     <h3 className="text-2xl font-bold text-muted-foreground mb-6">Languages</h3>
     <div className="w-full h-full flex items-center justify-center">
       <div className="flex justify-around text-3xl w-full">
@@ -314,14 +358,15 @@ const OtherSkills = () => (
   <GridCard className="col-span-6 p-10">
     <h3 className="text-2xl font-bold text-muted-foreground mb-6">Other</h3>
     <div className="flex justify-between items-center">
-      {otherSkills.map((skill) => (
-        <abbr key={skill.name} title={skill.name}>
+      {otherSkills.map(({ name, icon, width, height, reverse }) => (
+        <abbr key={name} title={name}>
           <Image
-            src={skill.icon}
-            alt={skill.name}
-            width={skill.width}
-            height={skill.height}
-            // className={skill.reverse ? "dark:invert-0 invert" : ""}
+            src={icon}
+            alt={name}
+            draggable={false}
+            width={width}
+            height={height}
+            className={reverse ? "dark:invert invert-0" : ""}
           />
         </abbr>
       ))}
@@ -354,7 +399,7 @@ const Curriculum = () => {
         <EducationSection />
         <SkillsSection />
         <div className="w-full flex justify-center mt-20">
-          {/* <DownloadPDFButton /> */}
+          <DownloadPDFButton />
         </div>
       </section>
     </Wrapper>

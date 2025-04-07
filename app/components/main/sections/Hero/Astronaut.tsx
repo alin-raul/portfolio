@@ -35,7 +35,7 @@ type AstronautMaterials = {
 
 const AstronautModel = ({ url, ...props }: Props & { url: string }) => {
   const group = useRef<THREE.Group>(null);
-  const { nodes, materials, animations } = useGLTF(url) as GLTF & {
+  const { nodes, materials, animations } = useGLTF(url) as unknown as GLTF & {
     nodes: AstronautNodes;
     materials: AstronautMaterials;
   };

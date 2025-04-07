@@ -13,6 +13,7 @@ import { DocumentTextIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Card } from "../About/About";
 
 function HeroContent() {
   return (
@@ -31,12 +32,12 @@ function HeroContent() {
             variants={slideInFromLeft(0.8)}
             className="text-md my-5 max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
           >
-            <div className="w-fit px-6 py-2 rounded-full outline outline-1 outline-accent-foreground/30 backdrop-blur-md bg-accent/10">
+            <Card className="w-fit px-4 py-2">
               <span className="opacity-90">2024-25</span>
-            </div>
+            </Card>
           </motion.div>
 
-          <div className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] 2xl:text-[12rem] font-title text-center">
+          <div className="text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] 2xl:text-[12rem] font-title text-center opacity-0 ">
             <span>Portfolio</span>
           </div>
 
@@ -46,14 +47,14 @@ function HeroContent() {
               className="text-md max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <div className="group w-fit px-4 py-2 rounded-full flex gap-2 items-center outline outline-1 outline-accent-foreground/30 hover:outline-accent-foreground/100 transition-all duration-200 backdrop-blur-md bg-accent/10 hover:bg-accent/40">
+                <Card className="group w-fit px-4 py-2 rounded-full flex gap-2 items-center outline outline-1 outline-accent-foreground/0 hover:outline-accent-foreground/100 transition-all duration-200 backdrop-blur-md bg-accent/10 hover:bg-accent/40">
                   <span className="opacity-70 group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-200 ">
                     <ArrowUpRight className="opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
                     <span className="translate-y-[0.02rem]">
                       Get in Contact
                     </span>
                   </span>
-                </div>
+                </Card>
               </Link>
             </motion.div>
             <motion.div
@@ -61,12 +62,12 @@ function HeroContent() {
               className="text-md max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"/curriculum"}>
-                <div className="group w-fit px-4 py-2 rounded-full flex gap-2 items-center outline outline-1 outline-accent-foreground/30 hover:outline-accent-foreground/100 transition-all duration-200 backdrop-blur-md bg-accent/10 hover:bg-accent/40">
+                <Card className="group w-fit px-4 py-2 rounded-full flex gap-2 items-center outline outline-1 outline-accent-foreground/0 hover:outline-accent-foreground/100 transition-all duration-200 backdrop-blur-md bg-accent/10 hover:bg-accent/40">
                   <span className="opacity-70 group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-200">
                     <ArrowUpRight className="opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
                     <span className="translate-y-[0.02rem]">View CV</span>
                   </span>
-                </div>
+                </Card>
               </Link>
             </motion.div>
             <motion.div
@@ -74,14 +75,14 @@ function HeroContent() {
               className="ml-auto text-md max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]"
             >
               <Link href={"#contact"}>
-                <div className="group w-fit px-4 py-2 rounded-full flex gap-2 items-center outline outline-1 outline-accent-foreground/30 hover:outline-accent-foreground/100  transition-all duration-200 backdrop-blur-md bg-accent/10 hover:bg-accent/40">
+                <Card className="group w-fit px-4 py-2 rounded-full flex gap-2 items-center outline outline-1 outline-accent-foreground/0 hover:outline-accent-foreground/100  transition-all duration-200 backdrop-blur-md bg-accent/10 hover:bg-accent/40">
                   <span className="opacity-70 group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-200">
                     <ArrowUpRight className="opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
                     <span className="translate-y-[0.02rem]">
                       Feeling lucky ?
                     </span>
                   </span>
-                </div>
+                </Card>
               </Link>
             </motion.div>
           </div>

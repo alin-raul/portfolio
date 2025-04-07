@@ -9,12 +9,13 @@ import {
   Bloom,
   ChromaticAberration,
 } from "@react-three/postprocessing";
-import { PerspectiveCamera } from "@react-three/drei";
+import { PerspectiveCamera, Environment } from "@react-three/drei";
 import Astronaut from "./Astronaut";
 import CanvasLoader from "../../../CanvasLoader";
 import BlackHole from "./BlackHole";
 import StarsCanvas from "../../StarBackground";
 import MovingLightShade from "@/app/components/effects/MovingLightShade";
+import { PortfolioModel } from "./PortfolioModel";
 
 const Hero = () => {
   return (
@@ -43,6 +44,7 @@ const Hero = () => {
                 position={[20, -16, 0]}
                 rotation={[0, 0, 0]}
               />
+              <PortfolioModel scale={12} position={[0, 0 - 2, 10]} />
 
               {/* <group>
                 <EffectComposer>
@@ -64,8 +66,8 @@ const Hero = () => {
                 />
               </group> */}
             </Suspense>
-            <ambientLight intensity={1} />
-            <directionalLight position={[10, 10, 10]} intensity={0.5} />
+            <Environment preset="city" />
+            <directionalLight position={[0, 10, 2]} intensity={0.5} />
           </Canvas>
         </div>
 

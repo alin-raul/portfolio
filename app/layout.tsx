@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${zen_dots.variable} ${david.variable} ${dotFont.variable} overflow-y-auto overflow-x-hidden antialiased font-inter`}
+        className={`${inter.variable} ${zen_dots.variable} ${dotFont.variable} overflow-y-auto overflow-x-hidden antialiased font-inter`}
       >
         <ThemeProvider
           attribute="class"

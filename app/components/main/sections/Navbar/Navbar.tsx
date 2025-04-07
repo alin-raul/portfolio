@@ -17,19 +17,38 @@ const Navbar = () => {
       <nav className="w-full h-full mx-auto max-w-screen-2xl px-0 md:px-4">
         <div className="flex items-center justify-between outline outline-accent-foreground/10 outline-1 rounded-none md:rounded-2xl dark:bg-black/60 bg-white/50 backdrop-blur-md md:mt-4 h-full px-6 md:px-0">
           <div className="flex font-semibold items-center justify-between py-2 pl-1 md:px-6 relative rounded-full h-full">
-            <span className="font-black text-nowrap text-xl font-dot ">
-              {["/about"].includes(pathname) ? (
-                <Link href={"/#about"} className="flex items-center gap-6 ">
-                  <div className="rounded-2xl p-2 hover:outline outline-1 outline-accent-foreground/30 opacity-60 hover:opacity-100 transition-all duration-500 ease-in-out">
-                    <ArrowLeft className="w-5 h-5" />
-                  </div>
-                  <span>R A N : // PORTFOLIO</span>
-                </Link>
-              ) : (
-                <span className="hidden lg:block">
-                  R A N : // FULL-STACK WEB DEVELOPER
-                </span>
-              )}
+            <span className="text-nowrap text-xl">
+              {(() => {
+                if (pathname === "/about") {
+                  return (
+                    <Link href={"/#about"} className="flex items-center gap-6 ">
+                      <div className="rounded-2xl p-2 hover:outline outline-1 outline-accent-foreground/30 opacity-60 hover:opacity-100 transition-all duration-500 ease-in-out">
+                        <ArrowLeft className="w-5 h-5" />
+                      </div>
+                      <span>R A N : // PORTFOLIO</span>
+                    </Link>
+                  );
+                }
+
+                if (pathname === "/curriculum") {
+                  return (
+                    <Link href={"/#about"} className="flex items-center gap-6 ">
+                      <div className="rounded-2xl p-2 hover:outline outline-1 outline-accent-foreground/30 opacity-60 hover:opacity-100 transition-all duration-500 ease-in-out">
+                        <ArrowLeft className="w-5 h-5" />
+                      </div>
+                      <span>R A N : // CURRICULUM</span>
+                    </Link>
+                  );
+                }
+
+                // You can add more `if` blocks here for other paths
+
+                return (
+                  <span className="hidden lg:block">
+                    R A N : // FULL-STACK WEB DEVELOPER
+                  </span>
+                );
+              })()}
             </span>
           </div>
 

@@ -36,7 +36,7 @@ import {
   ReferenceLine,
 } from "recharts";
 
-export const GridCard = ({
+export const Card = ({
   children,
   className = "",
 }: {
@@ -50,7 +50,7 @@ export const GridCard = ({
 );
 
 const IntroCard = () => (
-  <GridCard className="p-[3rem] h-full">
+  <Card className="p-[3rem] h-full">
     <p className="font-medium text-2xl">Hi, I&apos;m Raul —</p>
     <p className="grid-subtext">
       I’m a web developer with two years of JavaScript experience, specializing
@@ -61,32 +61,32 @@ const IntroCard = () => (
         <GraduationCap className="w-4 h-4" /> Software Engineer
       </span>
     </div>
-  </GridCard>
+  </Card>
 );
 
 const ProfileImageCard = () => (
-  <GridCard className="p-[3rem] overflow-auto md:min-h-full min-h-[32rem] w-full relative">
+  <Card className="p-[3rem] overflow-auto md:min-h-full min-h-[32rem] w-full relative">
     <Image
-      src={"/assets/me.webp"}
+      src={"/photos/me.webp"}
       alt="me"
       fill
       quality={100}
       className="object-cover"
     />
-  </GridCard>
+  </Card>
 );
 
 const TechStackCard = () => (
-  <GridCard className="p-[3rem] flex flex-col h-full overflow-hidden">
+  <Card className="p-[3rem] flex flex-col h-full overflow-hidden">
     <p className="font-normal text-xl mb-4 md:mb-0">Stack I use</p>
     <div className="my-auto">
       <MonochromeCarousel icons={TechStack} reverse={false} />
     </div>
-  </GridCard>
+  </Card>
 );
 
 const PassionCard = () => (
-  <GridCard className="p-[3rem] flex flex-col h-full">
+  <Card className="p-[3rem] flex flex-col h-full">
     <p className="font-normal text-xl">My Passion</p>
     <div className="my-auto">
       <p className="opacity-60">
@@ -95,11 +95,11 @@ const PassionCard = () => (
         new technologies, and enhancing my skills.
       </p>
     </div>
-  </GridCard>
+  </Card>
 );
 
 const AboutCard = () => (
-  <GridCard className="p-[3rem] h-full overflow-hidden relative flex flex-col">
+  <Card className="p-[3rem] h-full overflow-hidden relative flex flex-col">
     <p className="font-medium text-sm opacity-60">ABOUT</p>
     <div className="h-full flex flex-col">
       <p className="">
@@ -115,11 +115,11 @@ const AboutCard = () => (
         </Link>
       </Button>
     </div>
-  </GridCard>
+  </Card>
 );
 
 const FlexibleCard = () => (
-  <GridCard className="p-[3rem] h-full relative overflow-hidden min-h-80 flex flex-col">
+  <Card className="p-[3rem] h-full relative overflow-hidden min-h-80 flex flex-col">
     <div className="container-wrapper flex-grow h-full flex flex-col">
       <h1 className="font-normal text-xl flex gap-2 items-center">
         <Globe className="w-5 h-5" /> Flexible & Multilingual
@@ -151,11 +151,11 @@ const FlexibleCard = () => (
       </div>
     </div>
     <GlobeComponent />
-  </GridCard>
+  </Card>
 );
 
 const ContactCard = () => (
-  <GridCard className="flex flex-col h-full">
+  <Card className="flex flex-col h-full">
     <div className="pl-[3rem] pr-[3rem] pt-[3rem] pb-[1rem] flex-grow">
       <div className="flex flex-col h-full">
         <h1 className="font-normal text-2xl mb-6">Have a project in mind?</h1>
@@ -186,23 +186,23 @@ const ContactCard = () => (
         </Link>
       </Button>
     </div>
-  </GridCard>
+  </Card>
 );
 
 const ProjectsSection = () => (
   <div className="relative grid grid-cols-2 gap-4 h-full">
     <ProjectsEsterEgg />
     <YearsLearning />
-    <GridCard className="col-span-2 p-[3rem] flex flex-col h-full min-h-60">
+    <Card className="col-span-2 p-[3rem] flex flex-col h-full min-h-60">
       <VirtualPet />
-    </GridCard>
+    </Card>
   </div>
 );
 
 const GrowthCard = () => <GrowthTimeline />;
 
 const RetroTech = () => (
-  <GridCard className="col-span-2 p-4 relative overflow-hidden group h-full">
+  <Card className="col-span-2 p-4 relative overflow-hidden group h-full">
     <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5" />
     <div className="relative z-10 h-full flex flex-col">
       {/* Arch Header */}
@@ -254,7 +254,7 @@ const RetroTech = () => (
     <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-30 transition-opacity">
       <Save className="w-6 h-6 text-arch-silver/50" />
     </div>
-  </GridCard>
+  </Card>
 );
 
 const GrowthTimeline = () => {
@@ -309,7 +309,7 @@ const GrowthTimeline = () => {
   ];
 
   return (
-    <GridCard className="p-6 relative h-full min-h-96">
+    <Card className="p-6 relative h-full min-h-96">
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent dark:from-black/10" />
 
       <h3 className="text-lg mb-4 flex items-center gap-2">
@@ -419,7 +419,7 @@ const GrowthTimeline = () => {
           {growthData[growthData.length - 1].skills} Skills
         </Badge>
       </div>
-    </GridCard>
+    </Card>
   );
 };
 

@@ -16,22 +16,21 @@ import { FaReact, FaCss3Alt, FaHtml5, FaNodeJs } from "react-icons/fa";
 import { RiJavascriptFill, RiNextjsFill, RiFirebaseFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import { TbBrandFramerMotion } from "react-icons/tb";
-import { reverse } from "dns";
 
 export const Socials = [
   {
     name: "Linkedin",
-    src: "/assets/linkedin.svg",
+    src: "/pdf-assets/linkedin.svg",
   },
   {
     name: "Instagram",
-    src: "/assets/instagram.svg",
+    src: "/pdf-assets/instagram.svg",
   },
 ];
 
 export const TechStack = [
   {
-    skill_name: "Html 5",
+    skill_name: "HTML 5",
     icon: FaHtml5,
     color: "text-orange-600",
   },
@@ -52,7 +51,7 @@ export const TechStack = [
   },
 
   {
-    skill_name: "Next js 15",
+    skill_name: "Next.js 15",
     icon: RiNextjsFill,
   },
   {
@@ -66,7 +65,7 @@ export const TechStack = [
     color: "text-pink-500",
   },
   {
-    skill_name: "Three js",
+    skill_name: "Three.js",
     icon: SiThreedotjs,
   },
 ];
@@ -77,19 +76,19 @@ export const Frontend_Skills = [
     icon: FaReact,
   },
   {
-    skill_name: "Html 5",
+    skill_name: "HTML 5",
     icon: FaHtml5,
   },
   {
-    skill_name: "Css",
+    skill_name: "CSS",
     icon: FaCss3Alt,
   },
   {
-    skill_name: "Java Script",
+    skill_name: "JavaScript",
     icon: RiJavascriptFill,
   },
   {
-    skill_name: "Tailwind Css",
+    skill_name: "Tailwind CSS",
     icon: SiTailwindcss,
   },
   {
@@ -105,11 +104,11 @@ export const Frontend_Skills = [
     icon: SiShadcnui,
   },
   {
-    skill_name: "Next js 15",
+    skill_name: "Next.js 15",
     icon: RiNextjsFill,
   },
   {
-    skill_name: "Three js",
+    skill_name: "Three.js",
     icon: SiThreedotjs,
   },
   {
@@ -247,7 +246,7 @@ export const socialLinks = [
   {
     name: "GitHub",
     url: "https://github.com/alin-raul",
-    icon: "/assets/github-142-svgrepo-com.svg",
+    icon: "/assets/github.svg",
     alt: "GitHub",
     width: 26,
     height: 26,
@@ -265,7 +264,7 @@ export const socialLinks = [
 export const workExperiences = [
   {
     name: "Teleperformance",
-    icon: "/assets/copanies/teleperformance.webp",
+    icon: "/assets/companies/teleperformance.webp",
     alt: "Teleperformance",
     width: 50,
     height: 50,
@@ -294,7 +293,7 @@ export const workExperiences = [
   },
   {
     name: "DCI",
-    icon: "/assets/copanies/dci.webp",
+    icon: "/assets/companies/dci.webp",
     alt: "DCI",
     width: 55,
     height: 55,
@@ -322,7 +321,7 @@ export const workExperiences = [
   },
   {
     name: "MAPA",
-    icon: "/assets/copanies/mapa.webp",
+    icon: "/assets/companies/mapa.webp",
     alt: "MAPA",
     width: 70,
     height: 70,
@@ -347,10 +346,10 @@ export const workExperiences = [
   },
   {
     name: "Ostedruck",
-    icon: "/assets/copanies/ostedruck.webp",
+    icon: "/assets/companies/ostedruck.webp",
     alt: "Ostedruck",
-    width: 35,
-    height: 35,
+    width: 40,
+    height: 40,
     role: "Apprenticeship",
     duration: "2014 - 2015",
     workingHere: false,
@@ -369,7 +368,7 @@ export const workExperiences = [
 export const educationData = [
   {
     name: "Digital Nation",
-    icon: "/assets/copanies/digital_nation.webp",
+    icon: "/assets/companies/digital_nation.webp",
     alt: "Digital Nation",
     width: 70,
     height: 70,
@@ -394,10 +393,10 @@ export const educationData = [
   },
   {
     name: "Transilvania University",
-    icon: "/assets/copanies/unitbv.webp",
+    icon: "/assets/companies/unitbv.webp",
     alt: "Transilvania University",
-    width: 40,
-    height: 40,
+    width: 45,
+    height: 45,
     role: "Applied Modern Languages",
     specialization: "(German-English)",
     duration: "2018 - 2021",
@@ -430,20 +429,20 @@ export const designTools = [
   {
     name: "Photoshop",
     icon: "/assets/photoshop.webp",
-    width: 70,
-    height: 70,
+    width: 55,
+    height: 55,
   },
   {
     name: "Gimp",
     icon: "/assets/gimp.webp",
-    width: 80,
-    height: 80,
+    width: 65,
+    height: 65,
   },
   {
     name: "Figma",
     icon: "/assets/figma.webp",
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
   },
 ];
 
@@ -451,37 +450,359 @@ export const otherSkills = [
   {
     name: "Terminal",
     icon: "/assets/terminal.webp",
-    width: 70,
-    height: 70,
+    width: 50,
+    height: 50,
+    reverse: true,
   },
   {
     name: "Linux (Arch)",
     icon: "/assets/arch.webp",
-    width: 65,
-    height: 65,
+    width: 50,
+    height: 50,
   },
   {
     name: "Git",
     icon: "/assets/git.webp",
-    width: 65,
-    height: 65,
+    width: 50,
+    height: 50,
   },
   {
     name: "REST APIs",
     icon: "/assets/api.webp",
-    width: 70,
-    height: 70,
+    width: 55,
+    height: 55,
   },
   {
     name: "NPM/Yarn",
     icon: "/assets/npm.webp",
-    width: 80,
-    height: 80,
+    width: 50,
+    height: 50,
   },
   {
     name: "Postman",
     icon: "/assets/postman.webp",
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
+  },
+];
+
+export const projectsPDF = [
+  {
+    name: "Favorite Cities",
+    icon: "/pdf-assets/projects-icons/cardinal.png",
+    source_code_link: "https://github.com/ssupream/favoriteCities",
+  },
+  {
+    name: "Next Quiz",
+    icon: "/pdf-assets/projects-icons/nextquiz.png",
+    source_code_link: "https://github.com/ssupream/InteractiveQuizApp",
+  },
+  {
+    name: "Journal",
+    icon: "/pdf-assets/projects-icons/journal.png",
+    source_code_link: "https://github.com/ssupream/apple-like-diary",
+  },
+];
+
+export const TechStackPDF = [
+  {
+    skill_name: "HTML 5",
+    icon: "/pdf-assets/html.png",
+    width: 15,
+    height: 15,
+  },
+  {
+    skill_name: "CSS",
+    icon: "/pdf-assets/css.png",
+    width: 15,
+    height: 15,
+  },
+  {
+    skill_name: "JavaScript",
+    icon: "/pdf-assets/js.png",
+    width: 20,
+    height: 20,
+  },
+  {
+    skill_name: "React",
+    icon: "/pdf-assets/react.png",
+    width: 15,
+    height: 15,
+  },
+
+  {
+    skill_name: "Next.js 15",
+    icon: "/pdf-assets/next.png",
+    width: 15,
+    height: 15,
+  },
+  {
+    skill_name: "Tailwind CSS",
+    icon: "/pdf-assets/tailwind.png",
+    width: 20,
+    height: 20,
+  },
+  {
+    skill_name: "Framer Motion",
+    icon: "/pdf-assets/framer.png",
+    width: 15,
+    height: 15,
+  },
+  {
+    skill_name: "Three.js",
+    icon: "/pdf-assets/three.png",
+    width: 20,
+    height: 20,
+  },
+];
+
+export const workExperiencesPDF = [
+  {
+    name: "Teleperformance",
+    icon: "/pdf-assets/teleperformance.png",
+    alt: "Teleperformance",
+    width: 50,
+    height: 50,
+    role: "Content moderator",
+    duration: "2024 - now",
+    workingHere: true,
+    isLong: true,
+    list: [
+      {
+        skill: "Moderation",
+        description: "Reviewed user content for policy compliance",
+      },
+      {
+        skill: "Collaboration",
+        description: "Worked with teams to optimize workflows",
+      },
+      {
+        skill: "Mentoring",
+        description: "Shared best practices to maintain quality",
+      },
+      {
+        skill: "Feedback",
+        description: "Provided constructive peer evaluations",
+      },
+    ],
+  },
+  {
+    name: "DCI",
+    icon: "/pdf-assets/dci.png",
+    alt: "DCI",
+    width: 55,
+    height: 55,
+    role: "Data operator",
+    duration: "2021 - 2024",
+    workingHere: false,
+    list: [
+      {
+        skill: "Data entry",
+        description: "Managed high-volume information precisely",
+      },
+      {
+        skill: "Quality control",
+        description: "Conducted integrity checks on data",
+      },
+      {
+        skill: "Teamwork",
+        description: "Collaborated to streamline workflows",
+      },
+      {
+        skill: "Efficiency",
+        description: "Maintained accurate records under deadlines",
+      },
+    ],
+  },
+  {
+    name: "MAPA",
+    icon: "/pdf-assets/mapa.png",
+    alt: "MAPA",
+    width: 70,
+    height: 70,
+    role: "Product line operator",
+    duration: "2016 - 2017",
+    workingHere: false,
+    list: [
+      { skill: "Machinery", description: "Operated plastic molding equipment" },
+      {
+        skill: "Materials",
+        description: "Understood plastic properties and uses",
+      },
+      {
+        skill: "Quality",
+        description: "Monitored production standards closely",
+      },
+      {
+        skill: "Coordination",
+        description: "Worked cross-departmentally for goals",
+      },
+    ],
+  },
+  {
+    name: "Ostedruck",
+    icon: "/pdf-assets/ostedruck.png",
+    alt: "Ostedruck",
+    width: 35,
+    height: 35,
+    role: "Apprenticeship",
+    duration: "2014 - 2015",
+    workingHere: false,
+    list: [
+      {
+        skill: "Software",
+        description: "Used Adobe Suite for design projects",
+      },
+      { skill: "Design", description: "Created print/digital media visuals" },
+      { skill: "Prepress", description: "Prepared files for production" },
+      { skill: "Printing", description: "Understood techniques and materials" },
+    ],
+  },
+];
+
+export const educationDataPDF = [
+  {
+    name: "Digital Nation",
+    icon: "/pdf-assets/digital_nation.png",
+    alt: "Digital Nation",
+    width: 70,
+    height: 70,
+    role: "Javascript Explorer",
+    duration: "2024 - 2025",
+    isSchool: false,
+    list: [
+      {
+        skill: "Frontend",
+        description: "Built web pages with HTML, CSS and React",
+      },
+      { skill: "Backend", description: "Used Next.js, Express and TypeORM" },
+      {
+        skill: "Database",
+        description: "Worked with SQLite and MongoDB systems",
+      },
+      {
+        skill: "Security",
+        description: "Implemented authentication solutions",
+      },
+    ],
+  },
+  {
+    name: "Transilvania University",
+    icon: "/pdf-assets/unitbv.png",
+    alt: "Transilvania University",
+    width: 40,
+    height: 40,
+    role: "Applied Modern Languages",
+    specialization: "(German-English)",
+    duration: "2018 - 2021",
+    isSchool: true,
+    reverse: true,
+    isLong: true,
+    list: [
+      {
+        skill: "Linguistics",
+        description: "Mastered phonetics, syntax and morphology (B2/C1)",
+      },
+      {
+        skill: "Translation",
+        description:
+          "Specialized in technical and literary translation techniques",
+      },
+      {
+        skill: "Terminology",
+        description: "Developed specialized vocabularies in fields",
+      },
+      {
+        skill: "Documentation",
+        description: "Learned information classification",
+      },
+    ],
+  },
+];
+
+export const designToolsPDF = [
+  {
+    name: "Photoshop",
+    icon: "/pdf-assets/ps.png",
+    width: 25,
+    height: 25,
+  },
+  {
+    name: "Gimp",
+    icon: "/pdf-assets/gimp.png",
+    width: 30,
+    height: 30,
+  },
+  {
+    name: "Figma",
+    icon: "/pdf-assets/figma.png",
+    width: 25,
+    height: 25,
+  },
+];
+
+export const Flags = [
+  {
+    name: "Romanian",
+    icon: "/pdf-assets/flags/ro.png",
+    width: 20,
+    height: 20,
+  },
+  {
+    name: "Italian",
+    icon: "/pdf-assets/flags/it.png",
+    width: 20,
+    height: 20,
+  },
+  {
+    name: "English",
+    icon: "/pdf-assets/flags/uk.png",
+    width: 20,
+    height: 20,
+  },
+  {
+    name: "German",
+    icon: "/pdf-assets/flags/de.png",
+    width: 20,
+    height: 20,
+  },
+];
+
+export const otherSkillsPDF = [
+  {
+    name: "Terminal",
+    icon: "/pdf-assets/terminal.png",
+    width: 28,
+    height: 28,
+  },
+  {
+    name: "Linux (Arch)",
+    icon: "/pdf-assets/arch.png",
+    width: 30,
+    height: 30,
+  },
+  {
+    name: "Git",
+    icon: "/pdf-assets/git.png",
+    width: 28,
+    height: 29,
+  },
+  {
+    name: "REST APIs",
+    icon: "/pdf-assets/api.png",
+    width: 30,
+    height: 30,
+  },
+  {
+    name: "NPM/Yarn",
+    icon: "/pdf-assets/npm.png",
+    width: 30,
+    height: 30,
+  },
+  {
+    name: "Postman",
+    icon: "/pdf-assets/postman.png",
+    width: 28,
+    height: 28,
   },
 ];
