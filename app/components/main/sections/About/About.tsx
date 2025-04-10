@@ -106,14 +106,12 @@ const AboutCard = () => (
         I’m an aspiring web developer with two years of JavaScript experience,
         passionate about building dynamic, responsive websites.
       </p>
-      <Button className="w-12 h-12 rounded-[1.3rem] border border-accent-foreground/20 ml-auto md:mt-auto mt-8 bg-[var(--bg-dynamic-2)] hover:bg-accent/40">
-        <Link
-          href="/about"
-          className="flex justify-center items-center text-accent-foreground"
-        >
-          <ArrowUpRight />
-        </Link>
-      </Button>
+      <Link href="/about" className="ml-auto md:mt-auto mt-8">
+        <Button className="group w-14 h-14 rounded-[1.6rem] border border-accent-foreground/20 flex justify-center px-5 hover:px-6 py-3 gap-3 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 text-primary dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-2xl text-lg">
+          {/* Added explicit size and important modifier */}
+          <ArrowUpRight className="!w-5 !h-5 md:!w-5 md:!h-5 group-hover:!w-6 group-hover:!h-6 transition-all duration-200" />
+        </Button>
+      </Link>
     </div>
   </Card>
 );
@@ -154,40 +152,59 @@ const FlexibleCard = () => (
   </Card>
 );
 
-const ContactCard = () => (
-  <Card className="flex flex-col h-full">
-    <div className="pl-[3rem] pr-[3rem] pt-[3rem] pb-[1rem] flex-grow">
-      <div className="flex flex-col h-full">
-        <h1 className="font-normal text-2xl mb-6">Have a project in mind?</h1>
-        <p className="opacity-60 ">
-          Let’s connect—reach out via email or schedule a call to get started!
-        </p>
+const ContactCard = () => {
+  const contactAboutLinks = [
+    {
+      href: "mailto:workdevraul@gmail.com",
+      icon: AtSign,
+      label: "Email me",
+      className:
+        "md:text-xl font-light group-hover:font-bold transition-all duration-400",
+    },
+    {
+      href: "https://calendly.com/workdevraul",
+      icon: CalendarPlus,
+      label: "Schedule a call",
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className:
+        "md:text-xl font-light group-hover:font-bold transition-all duration-400",
+    },
+  ];
+
+  return (
+    <Card className="flex flex-col h-full">
+      <div className="pl-[3rem] pr-[3rem] pt-[3rem] pb-[1rem] flex-grow">
+        <div className="flex flex-col h-full">
+          <h1 className="font-normal text-2xl mb-6">Have a project in mind?</h1>
+          <p className="opacity-60">
+            Let’s connect—reach out via email or schedule a call to get started!
+          </p>
+        </div>
       </div>
-    </div>
-    <div className="flex xl:flex-col md:flex-row gap-2 w-full p-4 mt-auto">
-      <Button className="rounded-3xl min-h-16 md:flex-1 w-full bg-[var(--bg-dynamic-2)] hover:bg-accent/40 text-accent-foreground">
-        <Link
-          href={"mailto:workdevraul@gmail.com"}
-          className="flex items-center gap-2 md:text-xl"
-        >
-          <AtSign className="!w-4 !h-4 md:!w-5 md:!h-5" />
-          Email me
-        </Link>
-      </Button>
-      <Button className="rounded-3xl min-h-16 md:flex-1 w-full bg-[var(--bg-dynamic-2)] hover:bg-accent/40 text-accent-foreground">
-        <Link
-          href={"https://calendly.com/workdevraul"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 xl:text:md md:text-xl"
-        >
-          <CalendarPlus className="!w-4 !h-4 md:!w-5 md:!h-5" />
-          Schedule a call
-        </Link>
-      </Button>
-    </div>
-  </Card>
-);
+      <div className="flex xl:flex-col md:flex-row gap-2 w-full p-4 mt-auto">
+        {contactAboutLinks.map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            target={link.target}
+            rel={link.rel}
+            className="group flex w-full "
+          >
+            <button
+              className={`group w-full flex justify-center hover:px-6 py-4 rounded-3xl gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl ${
+                link.className || ""
+              }`}
+            >
+              <link.icon className="!w-3 !h-3 md:!w-4 md:!h-4" />
+              {link.label}
+            </button>
+          </Link>
+        ))}
+      </div>
+    </Card>
+  );
+};
 
 const ProjectsSection = () => (
   <div className="relative grid grid-cols-2 gap-4 h-full">

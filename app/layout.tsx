@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Inter, Zen_Dots, David_Libre } from "next/font/google";
+import { Inter, Zen_Dots, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/global/ThemeProvider";
 import { SidebarProvider } from "@/context/SidebarContext";
 import { Sidebar } from "./components/main/sections/Navbar/Sidebar";
-import StarsCanvas from "./components/main/StarBackground";
 import Navbar from "./components/main/sections/Navbar/Navbar";
 import { Toaster } from "sonner";
 
@@ -22,9 +21,8 @@ const zen_dots = Zen_Dots({
   preload: false,
 });
 
-const david = David_Libre({
-  variable: "--david-libre",
-  weight: ["700"],
+const orbitron = Orbitron({
+  variable: "--orbitron",
   subsets: ["latin"],
   preload: false,
 });
@@ -32,6 +30,12 @@ const david = David_Libre({
 const dotFont = localFont({
   src: "./fonts/dot.otf",
   variable: "--dot-font",
+  preload: false,
+});
+
+const yapari = localFont({
+  src: "./fonts/Yapari.ttf",
+  variable: "--Yapari",
   preload: false,
 });
 
@@ -48,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${zen_dots.variable} ${dotFont.variable} overflow-y-auto overflow-x-hidden antialiased font-inter`}
+        className={`${inter.variable} ${orbitron.variable} ${dotFont.variable} ${yapari.variable} overflow-y-auto overflow-x-hidden antialiased font-inter`}
       >
         <ThemeProvider
           attribute="class"

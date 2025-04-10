@@ -1,21 +1,8 @@
-"use client";
-
-import React, { Suspense } from "react";
-import HeroContent from "./HeroContent";
+import React from "react";
+import HeroTextSection from "./HeroTextSection";
 import Blob from "@/app/components/effects/Blob";
-import { Canvas } from "@react-three/fiber";
-import {
-  EffectComposer,
-  Bloom,
-  ChromaticAberration,
-} from "@react-three/postprocessing";
-import { PerspectiveCamera, Environment } from "@react-three/drei";
-import Astronaut from "./Astronaut";
-import CanvasLoader from "../../../CanvasLoader";
-import BlackHole from "./BlackHole";
-import StarsCanvas from "../../StarBackground";
-import MovingLightShade from "@/app/components/effects/MovingLightShade";
-import { PortfolioModel } from "./PortfolioModel";
+
+import Hero3dModels from "./Hero3dModels";
 
 const Hero = () => {
   return (
@@ -33,48 +20,12 @@ const Hero = () => {
         className="flex flex-col h-screen w-full max-w-screen-2xl mx-auto"
         id="hero"
       >
-        <div className="w-full h-screen absolute inset-0">
-          <StarsCanvas />
-
-          <Canvas className="w-full h-full z-[1]">
-            <Suspense fallback={<CanvasLoader />}>
-              <PerspectiveCamera makeDefault position={[0, 0, 80]} />
-              <Astronaut
-                scale={6}
-                position={[20, -16, 0]}
-                rotation={[0, 0, 0]}
-              />
-              <PortfolioModel scale={12} position={[0, 0 - 2, 10]} />
-
-              {/* <group>
-                <EffectComposer>
-                  <Bloom
-                    intensity={0.3}
-                    luminanceThreshold={1.5}
-                    luminanceSmoothing={1.9}
-                    height={900}
-                  />
-                  <ChromaticAberration
-                    offset={[0.002, 0.002]}
-                    radialModulation={true}
-                  />
-                </EffectComposer>
-                <BlackHole
-                  position={[0, 0, -1]}
-                  scale={3}
-                  rotation={[0, 1, 0]}
-                />
-              </group> */}
-            </Suspense>
-            <Environment preset="city" />
-            <directionalLight position={[0, 10, 2]} intensity={0.5} />
-          </Canvas>
-        </div>
+        <Hero3dModels />
 
         <div className="absolute top-[75rem] right-0 left-0 opacity-30">
           {/* <MovingLightShade fill="rgb(67, 21, 221)" /> */}
         </div>
-        <HeroContent />
+        <HeroTextSection />
       </section>
     </div>
   );

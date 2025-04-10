@@ -28,9 +28,9 @@ export default {
     extend: {
       fontFamily: {
         inter: ["var(--inter-sans)", "sans-serif"],
-        title: ["var(--zen-dots)", "sans-serif"],
+        title: ["var(--orbitron)", "sans-serif"],
         dot: ["var(--dot-font)", "sans-serif"],
-        david: ["var(--david-libre)", "sans-serif"],
+        yapari: ["var(--Yapari)", "sans-serif"],
       },
       keyframes: {
         "counter-spin": {

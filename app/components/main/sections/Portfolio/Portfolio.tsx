@@ -93,7 +93,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="flex justify-between mt-2">
           <div className="flex gap-2">
             <Button
-              className="rounded-xl font-dot p-3 hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
+              className="rounded-xl p-3 hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
               variant="secondary"
             >
               <ArrowUpRight />
@@ -105,7 +105,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               rel="noopener noreferrer"
             >
               <Button
-                className="rounded-xl font-dot hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
+                className="rounded-xl hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
                 variant="secondary"
               >
                 <Github />
@@ -120,7 +120,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             rel="noopener noreferrer"
           >
             <Button
-              className="rounded-xl font-dot hover:outline outline-1 outline-accent-foreground/30 transition-all duration-200"
+              className="rounded-xl hover:outline outline-1 outline-accent-foreground/30 transition-all duration-200"
               variant="ghost"
             >
               <CircleEllipsis />

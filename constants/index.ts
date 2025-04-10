@@ -16,6 +16,21 @@ import { FaReact, FaCss3Alt, FaHtml5, FaNodeJs } from "react-icons/fa";
 import { RiJavascriptFill, RiNextjsFill, RiFirebaseFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import { TbBrandFramerMotion } from "react-icons/tb";
+import type { LinkDefinition } from "@/app/components/main/sections/Navbar/NavLinks";
+
+export const portfolioLinks: LinkDefinition[] = [
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+  { href: "#hero", isIcon: true, ariaLabel: "Scroll to top" },
+];
+
+export const aboutLinks: LinkDefinition[] = [
+  { href: "#about-me", label: "About" }, // Note: href changed to match original NavLinksAbout
+  { href: "#experience", label: "Experience" },
+  { href: "#top", isIcon: true, ariaLabel: "Scroll to top" },
+];
 
 export const Socials = [
   {

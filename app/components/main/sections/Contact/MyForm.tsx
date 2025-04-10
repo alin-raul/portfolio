@@ -132,12 +132,13 @@ export default function MyForm() {
             </FormItem>
           )}
         />
-        <Button
+        <button
           type="submit"
-          className="w-full md:w-fit h-12 rounded-2xl font-dot flex items-center gap-1 text-lg"
+          className="group w-fit px-5 hover:px-6 py-4 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 backdrop-blur-md bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl"
         >
-          SEND MESSAGE <ArrowUpRight className="!w-6 !h-6" />
-        </Button>
+          SEND MESSAGE{" "}
+          <ArrowUpRight className="!w-6 !h-6 opacity-70 hidden hover:flex group-hover:flex transition-opacity duration-400" />
+        </button>
       </form>
     </Form>
   );
