@@ -1,5 +1,5 @@
 import React from "react";
-import Wrapper from "../components/main/Wrapper";
+import Wrapper from "../../Wrapper";
 import Link from "next/link";
 import Image from "next/image";
 import { otherSkills, projects } from "@/constants";
