@@ -9,6 +9,8 @@ import { useSidebar } from "@/context/SidebarContext";
 import NavLinks from "./NavLinks";
 import { portfolioLinks, aboutLinks, curriculumLinks } from "@/constants";
 import DownloadPDFButton from "../../DownloadPDFButton";
+import { motion } from "framer-motion";
+import { containerAnimationVariants, slideInFromTop } from "@/utils/motion";
 
 type Pathname = { pathname: string };
 
@@ -69,8 +71,17 @@ const Navbar = () => {
       : portfolioLinks;
 
   return (
-    <div className="w-full h-14 fixed top-0 left-0 z-50">
-      <nav className="w-full h-full mx-auto max-w-screen-2xl px-0 md:px-4">
+    <motion.div
+      className="w-full h-14 fixed top-0 left-0 z-50"
+      variants={containerAnimationVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <motion.nav
+        className="w-full h-full mx-auto max-w-[1800px] px-0 md:px-4"
+        variants={slideInFromTop}
+      >
         <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl dark:bg-black/60 bg-white/50 backdrop-blur-md md:mt-4 h-full px-6 md:px-0">
           <div className="flex font-semibold items-center py-2 pl-1 md:px-6 h-full">
             <span className="text-nowrap">
@@ -103,8 +114,8 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </nav>
-    </div>
+      </motion.nav>
+    </motion.div>
   );
 };
 

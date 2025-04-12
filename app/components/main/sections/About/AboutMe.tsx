@@ -10,6 +10,7 @@ import {
   containerAnimationVariants,
   itemAnimationVariants,
 } from "@/utils/motion";
+import Link from "next/link";
 
 const AboutMe = () => {
   return (
@@ -45,16 +46,24 @@ const AboutMe = () => {
                 <p className="mb-8">
                   I have always been fascinated by how technology can connect
                   people and solve real-world problems. My journey into web
-                  development began 1.5 years ago, and since then, I have been
+                  development began 2 years ago, and since then, I have been
                   learning the foundations of full-stack development through
                   self-study and structured courses.
                 </p>
                 <p className="mb-8">
-                  Recently, I completed the Digital Nations Advance JavaScript
-                  course and earned a certificate, which has strengthened my
-                  understanding of core programming concepts and best practices.
-                  I am passionate about creating functional, intuitive, and
-                  accessible web applications that provide value to users.
+                  Recently, I completed the{" "}
+                  <Link
+                    href={"https://digitalnation.ro/"}
+                    target="_blank"
+                    className="text-cyan-500 hover:underline visited:text-cyan-700/60"
+                  >
+                    Digital Nations
+                  </Link>{" "}
+                  Advance JavaScript course and earned a certificate, which has
+                  strengthened my understanding of core programming concepts and
+                  best practices. I am passionate about creating functional,
+                  intuitive, and accessible web applications that provide value
+                  to users.
                 </p>
                 <p>
                   While I am just starting my professional journey, I have

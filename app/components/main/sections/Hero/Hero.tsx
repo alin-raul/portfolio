@@ -11,9 +11,9 @@ const Hero = () => {
         blobClass="blob-1"
         position={{
           right: "-1rem",
-          top: "20rem",
+          top: "40%",
         }}
-        width="500px"
+        width="600px"
         height="500px"
       />
       <section

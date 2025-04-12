@@ -66,7 +66,8 @@ export const RadialSkill: React.FC<
             fill="transparent"
             strokeLinecap="round"
             style={{
-              opacity: 0.3,
+              color: "grey",
+              opacity: 0.2,
               transitionProperty: "stroke-width, r",
             }}
           />
@@ -82,6 +83,7 @@ export const RadialSkill: React.FC<
             strokeDasharray={`${validCircumference} ${validCircumference}`}
             strokeDashoffset={offset}
             style={{
+              color: "white",
               transitionProperty:
                 "stroke-dashoffset, stroke-dasharray, stroke-width, r",
             }}

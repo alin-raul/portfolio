@@ -1,5 +1,4 @@
 import React from "react";
-
 import TextWeightGradient from "./TextWeightGradient";
 
 function HeroTextSection() {

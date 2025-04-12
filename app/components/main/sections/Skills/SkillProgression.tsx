@@ -37,20 +37,16 @@ const radialItemVariants = {
 
 const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
   return (
-    // This motion.div detects hover for the child bar
     <motion.div className="relative">
       <div className="flex justify-between text-xs mb-1">
         <span className="mx-auto select-none">{level}</span>
       </div>
       <div className="relative w-10 h-40 mt-4">
         <div
-          className="absolute inset-0 rounded-t-3xl rounded-b-3xl
-             dark:bg-[image:repeating-linear-gradient(315deg,_#ffffff_0,_#ffffff_1px,_transparent_0,_transparent_50%)]
-             bg-[size:10px_10px] bg-[image:repeating-linear-gradient(315deg,_#000000_0,_#000000_1px,_transparent_0,_transparent_50%)]
-             "
+          className="absolute inset-0 rounded-t-3xl rounded-b-3xl overflow-hidden"
           style={{ opacity: 0.4, zIndex: -1 }}
         />
-        <span className="absolute inset-0 -bottom-20 flex items-center text-sm z-10 text-nowrap -rotate-90 select-none pointer-events-none text-white dark:text-black">
+        <span className="absolute inset-0 -bottom-20 flex items-center text-sm z-10 text-nowrap -rotate-90 select-none pointer-events-none text-black">
           {name}
         </span>
         <div
@@ -59,7 +55,7 @@ const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
           style={{ opacity: 0.4 }}
         />
         <motion.div
-          className="w-full rounded-t-3xl rounded-b-3xl absolute bottom-0 px-3 py-1 backdrop-blur-md origin-bottom bg-primary"
+          className="w-full rounded-t-3xl rounded-b-3xl absolute bottom-0 px-3 py-1 backdrop-blur-md origin-bottom bg-white"
           style={{
             height: level,
             opacity: 1,
