@@ -2,13 +2,21 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { slideInFromLeft, slideInFromTop } from "@/utils/motion";
-import { Button } from "@/components/ui/button";
+import {
+  containerAnimationVariants,
+  itemAnimationVariants,
+} from "@/utils/motion";
 import { projects } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { ArrowUpRight, Github, CircleEllipsis } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
+
+type ButtonInfo = {
+  label: string;
+  live_demo?: string;
+  source_code_link?: string;
+};
 
 type ProjectCardProps = {
   index: number;
@@ -23,17 +31,16 @@ type ProjectCardProps = {
     light: string;
     dark: string;
   };
-  source_code_link: string;
+  buttons: ButtonInfo[];
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-  index,
   name,
   description,
   tags,
   icon,
   image,
-  source_code_link,
+  buttons,
 }) => {
   const { resolvedTheme = "light" } = useTheme();
   const [currentTheme, setCurrentTheme] = useState("dark");
@@ -46,23 +53,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <motion.div
-      className="card-w-space w-full z-30 overflow-hidden " // add group for hovering
-      variants={slideInFromLeft(index * 1.2)}
-      initial="hidden"
-      animate="visible"
+      className="card-w-space w-full z-30 overflow-hidden"
+      variants={itemAnimationVariants}
     >
       <div className="relative">
-        <div className="relative w-full h-fit dark:brightness-50 brightness-100 group-hover:brightness-100 blur-xl group-hover:blur-none transition-all duration-300">
+        <div className="relative w-full h-fit dark:brightness-50 brightness-100 blur-xl transition-all duration-300">
           <Image
             width={700}
             height={500}
             alt="vercel"
             src={`${currentTheme === "light" ? image.light : image.dark}`}
-            className="w-full sm:h-[20rem] h-[22rem] object-top object-cover rounded-t-[2rem] scale-110 group-hover:scale-100 transition-all duration-200"
+            className="w-full sm:h-[20rem] h-[22rem] object-top object-cover rounded-t-[2rem] scale-110 transition-all duration-200"
           />
         </div>
 
-        <div className="absolute inset-0 flex items-center justify-center z-30 group-hover:opacity-0 group-hover:blur-md transition-all duration-200">
+        <div className="absolute inset-0 flex items-center justify-center z-30 transition-all duration-200">
           <Image
             width={300}
             height={200}
@@ -90,43 +95,58 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           ))}
         </div>
 
-        <div className="flex justify-between mt-2">
-          <div className="flex gap-2">
-            <Button
-              className="rounded-xl p-3 hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
-              variant="secondary"
-            >
-              <ArrowUpRight />
-              DEMO
-            </Button>
-            <Link
-              href={source_code_link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                className="rounded-xl hover:outline outline-1 outline-accent-foreground/30 bg-accent/30 backdrop-blur-md transition-all duration-200"
-                variant="secondary"
-              >
-                <Github />
-                VIEW CODE
-              </Button>
-            </Link>
-          </div>
+        <div className="flex mt-2">
+          <div className="flex w-full gap-2">
+            {buttons.map((buttonInfo, index) => {
+              const isDemo = buttonInfo.label === "DEMO";
+              const IconComponent = isDemo ? ArrowUpRight : Github;
+              const linkHref = isDemo
+                ? buttonInfo.live_demo || "#"
+                : buttonInfo.source_code_link || "#";
+              const isDisabled = !linkHref || linkHref === "#";
 
-          <Link
-            href={source_code_link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button
-              className="rounded-xl hover:outline outline-1 outline-accent-foreground/30 transition-all duration-200"
-              variant="ghost"
-            >
-              <CircleEllipsis />
-              MORE
-            </Button>
-          </Link>
+              const iconBaseClass = "h-4 w-4";
+
+              const iconHoverClass = isDemo
+                ? "group-hover:scale-125"
+                : "group-hover:scale-95";
+
+              const textSpanBaseClass =
+                "transition-all duration-300 ease-in-out";
+              const textSpanConditionalClass = isDemo
+                ? "ml-1"
+                : "max-w-0 opacity-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs group-hover:opacity-100 group-hover:ml-1";
+
+              return (
+                <Link
+                  key={`${buttonInfo.label}-${index}`}
+                  href={linkHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => isDisabled && e.preventDefault()}
+                  aria-disabled={isDisabled}
+                  className={isDisabled ? "pointer-events-none" : ""}
+                >
+                  <button
+                    className={`group rounded-xl border-accent-foreground/20 flex text-sm h-full justify-center px-3 py-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-300 bg-[var(--bg-dynamic-1)] hover:bg-white/100 text-primary dark:hover:text-primary-foreground font-light hover:font-semibold hover:rounded-lg ${
+                      isDisabled ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    disabled={isDisabled}
+                  >
+                    <IconComponent
+                      className={`${iconBaseClass} ${iconHoverClass} transition-all duration-200 shrink-0`}
+                    />
+
+                    <span
+                      className={`${textSpanBaseClass} ${textSpanConditionalClass}`}
+                    >
+                      {buttonInfo.label}
+                    </span>
+                  </button>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </motion.div>
@@ -134,23 +154,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 };
 
 const Portfolio = () => {
+  const viewportConfig = { once: true, amount: 0.6 };
+
   return (
     <section className="mt-40" id="projects">
-      <div className="max-w-screen-2xl m-auto z-50">
-        <motion.div
-          variants={slideInFromLeft(1)}
-          initial="hidden"
-          animate="visible"
-        >
+      <motion.div
+        className="max-w-screen-2xl m-auto z-50"
+        variants={containerAnimationVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+      >
+        <div>
           <p className="opacity-80 mb-6">PORTFOLIO</p>
           <p className="font-bold text-5xl mb-4">Projects I built </p>
-        </motion.div>
-        <motion.div
-          variants={slideInFromLeft(1.2)}
-          initial="hidden"
-          animate="visible"
-          className="mt-3 text-[17px] leading-[30px] z-[30]"
-        >
+        </div>
+        <div className="mt-3 text-[17px] leading-[30px] z-[30]">
           <p className="opacity-60">
             Following projects showcases my skills and experience through
             real-world examples of my work. Each project is briefly described
@@ -158,7 +177,7 @@ const Portfolio = () => {
             ability to solve complex problems, work with different technologies,
             and manage projects effectively.
           </p>
-        </motion.div>
+        </div>
 
         <div
           className="mt-20 grid gap-6"
@@ -170,7 +189,7 @@ const Portfolio = () => {
             <ProjectCard key={`project-${index}`} index={index} {...project} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

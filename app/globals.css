@@ -229,14 +229,6 @@
   color: var(--dynamic-link);
 }
 
-.dynamic-icon {
-  filter: invert();
-}
-
-.dark .dynamic-icon {
-  filter: none;
-}
-
 body::-webkit-scrollbar {
   display: none;
 }
@@ -397,13 +389,11 @@ canvas {
   filter: none;
 }
 
-.text-shine {
-  background: var(--slider-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 500% auto;
-  animation: textShine 20s ease-in-out infinite alternate;
+.animate-gradient {
+  background-size: 300%;
+  -webkit-animation: animatedgradient 6s ease infinite alternate;
+  -moz-animation: animatedgradient 6s ease infinite alternate;
+  animation: animatedgradient 6s ease infinite alternate;
 }
 
 .text-shine:nth-child(1) {
@@ -642,4 +632,16 @@ canvas {
 
 .animate-twinkle {
   animation: twinkle 3s infinite;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

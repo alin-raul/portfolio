@@ -16,7 +16,9 @@ import { FaReact, FaCss3Alt, FaHtml5, FaNodeJs } from "react-icons/fa";
 import { RiJavascriptFill, RiNextjsFill, RiFirebaseFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import { TbBrandFramerMotion } from "react-icons/tb";
+import { Linkedin, Instagram, Github, Download } from "lucide-react";
 import type { LinkDefinition } from "@/app/components/main/sections/Navbar/NavLinks";
+import DownloadPDFButton from "@/app/components/main/DownloadPDFButton";
 
 export const portfolioLinks: LinkDefinition[] = [
   { href: "#about", label: "About" },
@@ -27,10 +29,12 @@ export const portfolioLinks: LinkDefinition[] = [
 ];
 
 export const aboutLinks: LinkDefinition[] = [
-  { href: "#about-me", label: "About" }, // Note: href changed to match original NavLinksAbout
+  { href: "#about-me", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#top", isIcon: true, ariaLabel: "Scroll to top" },
 ];
+
+export const curriculumLinks: LinkDefinition[] = [];
 
 export const Socials = [
   {
@@ -189,7 +193,13 @@ export const projects = [
       light: "/assets/projects/favCities-light.webp",
       dark: "/assets/projects/favCities-dark.webp",
     },
-    source_code_link: "https://github.com/ssupream/favoriteCities",
+    buttons: [
+      { label: "DEMO", live_demo: "http://localhost:3000" },
+      {
+        label: "VIEW CODE",
+        source_code_link: "https://github.com/ssupream/favoriteCities",
+      },
+    ],
   },
   {
     name: "Next Quiz",
@@ -206,7 +216,14 @@ export const projects = [
       light: "/assets/projects/quiz.webp",
       dark: "/assets/projects/quiz.webp",
     },
-    source_code_link: "https://github.com/ssupream/InteractiveQuizApp",
+    buttons: [
+      { label: "DEMO", live_demo: "#" },
+      {
+        label: "VIEW CODE",
+        source_code_link: "https://github.com/ssupream/InteractiveQuizApp",
+      },
+    ],
+    live_demo: "#",
   },
   {
     name: "Journal",
@@ -223,7 +240,13 @@ export const projects = [
       light: "/assets/projects/diary-light.webp",
       dark: "/assets/projects/diary-dark.webp",
     },
-    source_code_link: "https://github.com/ssupream/apple-like-diary",
+    buttons: [
+      { label: "DEMO", live_demo: "#" },
+      {
+        label: "VIEW CODE",
+        source_code_link: "https://github.com/ssupream/apple-like-diary",
+      },
+    ],
   },
 ];
 
@@ -245,34 +268,22 @@ export const socialLinks = [
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/alinraul/",
-    icon: "/assets/linkedin.svg",
-    alt: "LinkedIn",
-    width: 22,
-    height: 22,
+    icon: Linkedin,
   },
   {
     name: "Instagram",
     url: "https://www.instagram.com/alin.raul/",
-    icon: "/assets/instagram.svg",
-    alt: "Instagram",
-    width: 26,
-    height: 26,
+    icon: Instagram,
   },
   {
     name: "GitHub",
     url: "https://github.com/alin-raul",
-    icon: "/assets/github.svg",
-    alt: "GitHub",
-    width: 26,
-    height: 26,
+    icon: Github,
   },
   {
     name: "CV Download",
     url: "/path/to/your-cv.pdf",
-    icon: "/assets/download.svg",
-    alt: "Download CV",
-    width: 22,
-    height: 22,
+    icon: Download,
   },
 ];
 

@@ -1,26 +1,41 @@
-import React from "react";
-import Wrapper from "../components/main/Wrapper";
-import Footer from "../components/main/sections/Footer/Footer";
-import Contact from "../components/main/sections/Contact/Contact";
-import HobbiesCarousel from "../components/global/HobbiesCarousel";
-import { Hobbies } from "@/constants";
-import PhotosOfMe from "../components/main/sections/About/PhotosOfMe";
+"use client";
 
-const About = () => {
+import React from "react";
+import PhotosOfMe from "./PhotosOfMe";
+import Contact from "../Contact/Contact";
+import Footer from "../Footer/Footer";
+import HobbiesCarousel from "@/app/components/global/HobbiesCarousel";
+import { motion } from "framer-motion";
+import {
+  containerAnimationVariants,
+  itemAnimationVariants,
+} from "@/utils/motion";
+
+const AboutMe = () => {
   return (
-    <Wrapper>
+    <motion.div
+      variants={containerAnimationVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <div className="mt-40 max-w-screen-xl mx-auto" id="top">
         <div>
-          <p className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold">
+          <motion.p
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold"
+            variants={itemAnimationVariants}
+          >
             Hello, I&apos;m Raul Alin Nastase
             <br />
             <span>Full-Stack Web Developer</span>
-          </p>
+          </motion.p>
 
           <PhotosOfMe />
 
-          {/* About Section */}
-          <section className="lg:flex items-center h-full my-40 ">
+          <motion.section
+            className="lg:flex items-center h-full my-40"
+            variants={itemAnimationVariants}
+          >
             <div className="lg:flex w-full" id="about-me">
               <div className="lg:w-1/2">
                 <p className="text-5xl font-bold mb-8">About</p>
@@ -50,12 +65,14 @@ const About = () => {
                 </p>
               </div>
             </div>
-          </section>
+          </motion.section>
 
-          <HobbiesCarousel hobbies={Hobbies} reverse={false} />
+          <HobbiesCarousel reverse={false} />
 
-          {/* Experience Section */}
-          <div className="flex items-center h-[36rem] my-20">
+          <motion.div
+            className="flex items-center h-[36rem] my-20"
+            variants={itemAnimationVariants}
+          >
             <section className="md:flex w-full" id="experience">
               <div className="w-1/2">
                 <p className="text-5xl font-bold mb-16">Experience</p>
@@ -80,14 +97,14 @@ const About = () => {
                 </div>
               </div>
             </section>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       <Contact />
       <Footer />
-    </Wrapper>
+    </motion.div>
   );
 };
 
-export default About;
+export default AboutMe;

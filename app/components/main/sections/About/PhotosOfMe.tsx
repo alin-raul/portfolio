@@ -1,5 +1,6 @@
 "use client";
 
+import { itemAnimationVariants } from "@/utils/motion";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
@@ -23,7 +24,8 @@ const PhotosOfMe = () => {
         style={{ y: y1 }}
         className="flex justify-center items-center absolute md:top-[10%] md:left-3 left-[10%]
      mx-auto mt-8 md:mt-0 md:w-auto h-[20rem] w-[25rem] xl:h-[32rem] md:h-[38rem] z-10 
-        overflow-hidden "
+        overflow-hidden"
+        variants={itemAnimationVariants}
       >
         <Image
           src="/photos/photo-2.webp"
@@ -38,6 +40,7 @@ const PhotosOfMe = () => {
       <motion.div
         style={{ y: y2 }}
         className="flex justify-center items-center absolute xl:top-[26%] xl:right-[36%] md:top-0 bottom-0 right-0 md:right-[10%] mx-auto my-8 md:my-0 w-[16rem] md:w-auto h-[20rem] md:h-[30rem] z-20  overflow-hidden"
+        variants={itemAnimationVariants}
       >
         <Image
           src="/photos/photo-1.webp"
@@ -54,6 +57,7 @@ const PhotosOfMe = () => {
         className="absolute md:bottom-0 bottom-0 md:right-0 mx-auto mb-8 md:mb-0 
         w-[20rem] h-[16rem] md:w-[28rem] md:h-[20rem] z-30 
         overflow-hidden"
+        variants={itemAnimationVariants}
       >
         <Image
           src="/photos/photo-3.webp"

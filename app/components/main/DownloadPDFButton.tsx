@@ -8,9 +8,7 @@ import { Download, RefreshCcw } from "lucide-react";
 
 const LazyCurriculumPDF = lazy(() => import("./CurriculumPDF"));
 
-const DownloadPDFButton = () => {
-  // Trick to only render the PDFDownloadLink on the client after mount
-  // Avoids SSR mismatch errors with @react-pdf/renderer
+const DownloadPDFButton = ({ className = "" }: { className?: string }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -18,14 +16,12 @@ const DownloadPDFButton = () => {
   }, []);
 
   const LoadingButton = (
-    <Button
-      variant="default"
-      size="lg"
+    <button
       disabled
-      className="w-fit mx-auto text-base px-4 rounded-xl bg-blue-500 "
+      className="mr-4 md:rounded-2xl h-10 bg-[var(--bg-dynamic-1)] text-center w-fit px-3 py-2 rounded-3xl flex gap-1 items-center outline outline-1 outline-accent-foreground/10 text-primary/60 transition-all duration-400 font-normal"
     >
-      <Download className="mr-2 h-5 w-5" /> Download
-    </Button>
+      <Download className="h-4 w-4" /> Download
+    </button>
   );
 
   return (
@@ -34,26 +30,26 @@ const DownloadPDFButton = () => {
         <Suspense fallback={LoadingButton}>
           <PDFDownloadLink
             document={<CurriculumPDF />}
-            fileName="Nastase_Raul_Alin_CV.pdf" // Set the desired file name
+            fileName="Nastase_Raul_Alin_CV.pdf"
           >
             {({ blob, url, loading, error }) => (
-              <Button
-                variant="default"
-                size="lg"
+              <button
                 disabled={loading}
-                className="w-fit mx-auto text-base text-white font-semibold px-5 rounded-xl bg-blue-500 hover:bg-blue-600 dark:bg-indigo-600 dark:hover:bg-indigo-800 "
+                className="cursor-pointer mr-4 md:rounded-2xl h-10 bg-[var(--bg-dynamic-1)] hover:bg-white text-center group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-1 items-center outline outline-1 outline-accent-foreground/10 text-primary/60 hover:text-primary dark:hover:text-primary-foreground hover:outline-accent-foreground/20 transition-all duration-400 font-normal hover:font-semibold hover:rounded-xl"
               >
                 {loading ? (
                   <>
-                    <RefreshCcw className="mr-2 h-5 w-5 animate-spin" />
+                    {/* Adjusted icon size */}
+                    <RefreshCcw className="h-3.5 w-3.5 group-hover:!h-6 group-hover:!w-6 transition-all duration-200 animate-spin" />
                     Building pdf
                   </>
                 ) : (
                   <>
-                    <Download className="mr-2 h-5 w-5" /> Download
+                    {/* Adjusted icon size */}
+                    <Download className="h-4 w-4" /> Download
                   </>
                 )}
-              </Button>
+              </button>
             )}
           </PDFDownloadLink>
         </Suspense>

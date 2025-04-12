@@ -1,5 +1,7 @@
 import React from "react";
 import { Hobbies } from "@/constants";
+import { motion } from "framer-motion";
+import { itemAnimationVariants } from "@/utils/motion";
 
 type HobbiesCarouselProps = {
   reverse: boolean;
@@ -7,7 +9,10 @@ type HobbiesCarouselProps = {
 
 const HobbiesCarousel: React.FC<HobbiesCarouselProps> = ({ reverse }) => {
   return (
-    <div className="max-w-screen-2xl w-full">
+    <motion.div
+      className="max-w-screen-2xl w-full"
+      variants={itemAnimationVariants}
+    >
       <div className="carousel overflow-hidden relative bg-white/40 dark:bg-black-600/40 backdrop-blur-md">
         {[...Array(2)].map((_, groupIndex) => (
           <div
@@ -25,7 +30,7 @@ const HobbiesCarousel: React.FC<HobbiesCarouselProps> = ({ reverse }) => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,14 +2,12 @@ import React from "react";
 import Wrapper from "../components/main/Wrapper";
 import Link from "next/link";
 import Image from "next/image";
-import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 import { otherSkills, projects } from "@/constants";
 import { Button } from "@/components/ui/button";
 import { workExperiences } from "@/constants";
 import { educationData } from "@/constants";
 import { TechStack } from "@/constants";
 import { designTools } from "@/constants";
-import DownloadPDFButton from "../components/main/DownloadPDFButton";
 
 export const GridCard = ({
   children,
@@ -78,7 +76,7 @@ const ProjectsSection = () => (
 );
 
 const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
-  const { name, icon, source_code_link } = project;
+  const { name, icon, live_demo } = project;
 
   const imageProps = {
     src: icon,
@@ -100,11 +98,7 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
           variant="outline"
           className="w-fit mx-auto text-xs px-2.5 rounded-full bg-transparent hover:bg-violet-500 hover:text-primary-foreground border-2 border-violet-500 text-violet-500 font-bold"
         >
-          <Link
-            href={source_code_link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href={`${live_demo}`} target="_blank" rel="noopener noreferrer">
             VIEW
           </Link>
         </Button>
@@ -382,7 +376,7 @@ const Section = ({
   children: React.ReactNode;
 }) => (
   <div className="mt-20">
-    <h1 className="text-4xl font-semibold whitespace-nowrap lg:mb-0 mb-8 text-muted-foreground">
+    <h1 className="text-4xl font-semibold whitespace-nowrap lg:mb-0 mb-8 text-primary">
       {title}
     </h1>
     {children}
@@ -398,9 +392,6 @@ const Curriculum = () => {
         <ExperienceSection />
         <EducationSection />
         <SkillsSection />
-        <div className="w-full flex justify-center mt-20">
-          <DownloadPDFButton />
-        </div>
       </section>
     </Wrapper>
   );

@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,10 +12,6 @@ import {
   Languages,
   Save,
   Terminal,
-  TrendingUp,
-  SquareActivity,
-  Code,
-  SquareStack,
 } from "lucide-react";
 import GlobeComponent from "./GlobeComponent";
 import Blob from "@/app/components/effects/Blob";
@@ -25,16 +22,12 @@ import SocialLinks from "./SocialLinks";
 import YearsLearning from "./YearsLearning";
 import VirtualPet from "./VirtualPet";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import GrowthTimeline from "./GrowthTimeline";
+import { motion } from "framer-motion";
 import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-  ReferenceLine,
-} from "recharts";
+  containerAnimationVariants,
+  itemAnimationVariants,
+} from "@/utils/motion";
 
 export const Card = ({
   children,
@@ -108,8 +101,7 @@ const AboutCard = () => (
       </p>
       <Link href="/about" className="ml-auto md:mt-auto mt-8">
         <Button className="group w-14 h-14 rounded-[1.6rem] border border-accent-foreground/20 flex justify-center px-5 hover:px-6 py-3 gap-3 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 text-primary dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-2xl text-lg">
-          {/* Added explicit size and important modifier */}
-          <ArrowUpRight className="!w-5 !h-5 md:!w-5 md:!h-5 group-hover:!w-6 group-hover:!h-6 transition-all duration-200" />
+          <ArrowUpRight className="!w-4 !h-4 group-hover:!w-6 group-hover:!h-6 transition-all duration-200" />
         </Button>
       </Link>
     </div>
@@ -196,7 +188,7 @@ const ContactCard = () => {
                 link.className || ""
               }`}
             >
-              <link.icon className="!w-3 !h-3 md:!w-4 md:!h-4" />
+              <link.icon className="w-4 h-4 group-hover:w-5 group-hover:h-5 transition-all duration-200" />
               {link.label}
             </button>
           </Link>
@@ -274,171 +266,7 @@ const RetroTech = () => (
   </Card>
 );
 
-const GrowthTimeline = () => {
-  // Mock data representing 2 years of personal development
-  const growthData = [
-    {
-      month: "Jun 2023",
-      skills: 5,
-      projects: 4,
-      skillsList: ["HTML", "CSS", "JavScript", "Package manager", "Terminal"],
-      projectsList: ["To-Do List , Calculator, Tic-Tac-Toe, Digital Clock"],
-    },
-    {
-      month: "Sep 2023",
-      skills: 10,
-      projects: 4,
-      skillsList: ["React", "Redux", "Joi", "Tailwind", "Vite"],
-      projectsList: [
-        "Journal",
-        "E-commerce store",
-        "Weather App",
-        "Expense Calculator",
-      ],
-    },
-    {
-      month: "Aug 2024",
-      skills: 22,
-      projects: 2,
-      skillsList: [
-        "Next.js",
-        "Redux",
-        "TypeScript",
-        "Firebase",
-        "MongoDB",
-        "TypeORM",
-        "SQLite",
-        "API's",
-        "Maps",
-        "Auth",
-        "JWT",
-        "Git",
-      ],
-      projectsList: ["Quiz App", "Favorite Cities"],
-    },
-    {
-      month: "Feb 2025",
-      skills: 25,
-      projects: 1,
-      skillsList: ["Three.js", "Shadcn UI", "React Query"],
-      projectsList: ["Portfolio"],
-    },
-  ];
-
-  return (
-    <Card className="p-6 relative h-full min-h-96">
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent dark:from-black/10" />
-
-      <h3 className="text-lg mb-4 flex items-center gap-2">
-        <Code className="w-5 h-5" />
-        Skill & Project Growth
-      </h3>
-
-      <div className="h-48">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={growthData}>
-            <defs>
-              <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="hsl(var(--muted-foreground))"
-                  stopOpacity={0.4}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="hsl(var(--muted))"
-                  stopOpacity={0}
-                />
-              </linearGradient>
-            </defs>
-
-            <XAxis
-              dataKey="month"
-              axisLine={false}
-              tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
-              tickLine={false}
-              interval={1}
-            />
-
-            <YAxis
-              axisLine={false}
-              tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
-              tickLine={false}
-              width={30}
-            />
-
-            <Tooltip
-              contentStyle={{
-                background: "hsl(var(--accent))",
-                border: "none",
-                borderRadius: "8px",
-              }}
-              itemStyle={{ color: "hsl(var(--accent-foreground))" }}
-              content={({ active, payload }) => {
-                if (active && payload && payload.length) {
-                  const data = payload[0].payload;
-                  return (
-                    <div className="p-3 bg-accent text-accent-foreground rounded-lg">
-                      <p className="font-medium">{data.month}</p>
-                      <p className="text-sm">
-                        Skills: {data.skillsList.join(", ")}
-                      </p>
-                      <p className="text-sm mt-2">
-                        Projects: {data.projectsList.join(", ")}
-                      </p>
-                    </div>
-                  );
-                }
-                return null;
-              }}
-            />
-
-            <Area
-              type="monotone"
-              dataKey="skills"
-              name="Skills Mastered"
-              stroke="hsl(var(--muted-foreground))"
-              strokeWidth={2}
-              fillOpacity={1}
-              fill="url(#growthGradient)"
-              animationDuration={2000}
-            />
-
-            <ReferenceLine
-              x="Jan 2023"
-              stroke="hsl(var(--accent))"
-              strokeDasharray="3 3"
-              label={{
-                position: "insideTopRight",
-                value: "Full-Stack Transition",
-                fill: "hsl(var(--accent))",
-                fontSize: 12,
-              }}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div className="flex justify-between mt-4 text-sm">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-accent" />
-          <span className="opacity-75">Technical Skills</span>
-        </div>
-        <div className="text-right">
-          <p className="font-medium">+{(((25 - 3) / 3) * 100).toFixed(0)}%</p>
-          <p className="text-xs opacity-75">6 projects completed</p>
-        </div>
-      </div>
-
-      <div className="absolute bottom-4 right-4 flex gap-2">
-        <Badge variant="outline" className="text-xs py-1">
-          <SquareStack className="w-3 h-3 mr-1" />
-          {growthData[growthData.length - 1].skills} Skills
-        </Badge>
-      </div>
-    </Card>
-  );
-};
+<GrowthTimeline />;
 
 const About = () => (
   <div className="relative max-w-[160rem] mt-40 mx-auto " id="about">
@@ -450,47 +278,83 @@ const About = () => (
     />
 
     <section className="max-w-screen-2xl mx-auto">
-      <div className="flex flex-col md:grid xl:grid-cols-12 md:grid-rows-[minmax(auto, max-content)] grid-rows-[minmax(auto, max-content)] md:grid-cols-6 grid-cols-1 gap-5 min-h-fit items-stretch">
-        <div className="xl:col-span-5 lg:col-span-4 md:col-span-4 md:h-full h-fit z-20">
+      <motion.div
+        className="flex flex-col md:grid xl:grid-cols-12 md:grid-rows-[minmax(auto, max-content)] grid-rows-[minmax(auto, max-content)] md:grid-cols-6 grid-cols-1 gap-5 min-h-fit items-stretch"
+        variants={containerAnimationVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+      >
+        <motion.div
+          className="xl:col-span-5 lg:col-span-4 md:col-span-4 md:h-full h-fit z-20"
+          variants={itemAnimationVariants}
+        >
           <IntroCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-3 lg:col-span-2 md:col-span-2 z-20">
+        <motion.div
+          className="xl:col-span-3 lg:col-span-2 md:col-span-2 z-20"
+          variants={itemAnimationVariants}
+        >
           <ProfileImageCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-4 md:col-span-2 md:row-span-1 md:h-full h-full z-20">
+        <motion.div
+          className="xl:col-span-4 md:col-span-2 md:row-span-1 md:h-full h-full z-20"
+          variants={itemAnimationVariants}
+        >
           <TechStackCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-4 md:col-span-4 md:h-full h-fit z-20">
+        <motion.div
+          className="xl:col-span-4 md:col-span-4 md:h-full h-fit z-20"
+          variants={itemAnimationVariants}
+        >
           <PassionCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-3 md:col-span-3 md:h-full h-fit z-20">
+        <motion.div
+          className="xl:col-span-3 md:col-span-3 md:h-full h-fit z-20"
+          variants={itemAnimationVariants}
+        >
           <AboutCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-5 md:col-span-3 row-span-1 md:h-full z-20">
+        <motion.div
+          className="xl:col-span-5 md:col-span-3 row-span-1 md:h-full z-20"
+          variants={itemAnimationVariants}
+        >
           <FlexibleCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-3 xl:row-span-1 md:col-span-2 md:h-full h-fit z-20 relative">
+        <motion.div
+          className="xl:col-span-3 xl:row-span-1 md:col-span-2 md:h-full h-fit z-20 relative"
+          variants={itemAnimationVariants}
+        >
           <ProjectsSection />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-3 md:col-span-4 md:h-full h-fit z-20">
+        <motion.div
+          className="xl:col-span-3 md:col-span-4 md:h-full h-fit z-20"
+          variants={itemAnimationVariants}
+        >
           <GrowthCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-3 md:col-span-4 md:h-full z-20">
+        <motion.div
+          className="xl:col-span-3 md:col-span-4 md:h-full z-20"
+          variants={itemAnimationVariants}
+        >
           <ContactCard />
-        </div>
+        </motion.div>
 
-        <div className="xl:col-span-3 md:col-span-2 md:h-full h-fit z-20">
+        <motion.div
+          className="xl:col-span-3 md:col-span-2 md:h-full h-fit z-20"
+          variants={itemAnimationVariants}
+        >
           <SocialLinks />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   </div>
 );

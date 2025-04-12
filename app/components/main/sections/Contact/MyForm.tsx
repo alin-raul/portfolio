@@ -5,7 +5,6 @@ import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -50,16 +49,13 @@ export default function MyForm() {
           message: values.message,
         })
         .then((response) => {
-          // console.log("Message sent successfully", response);
           toast.success("Your message was sent successfully!");
           form.reset();
         })
         .catch((error) => {
-          // console.error("Error sending message", error);
           toast.error("Failed to submit the form. Please try again.");
         });
     } catch (error) {
-      // console.error("Form submission error", error);
       toast.error("Failed to submit the form. Please try again.");
     }
   }
@@ -80,7 +76,7 @@ export default function MyForm() {
                       type="text"
                       {...field}
                       value={field.value || ""}
-                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white/80  focus:dark:dark:bg-black-200/60 backdrop-blur-md h-14 md:h-12 rounded-xl"
+                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white  focus:dark:dark:bg-black/60 backdrop-blur-md h-14 md:h-12 rounded-2xl focus:rounded-xl transition-all duration-200"
                     />
                   </FormControl>
 
@@ -102,7 +98,7 @@ export default function MyForm() {
                       type="email"
                       {...field}
                       value={field.value || ""}
-                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white/80  focus:dark:dark:bg-black-200/60 backdrop-blur-md h-14 md:h-12 rounded-xl"
+                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white/90  focus:dark:dark:bg-black/60 backdrop-blur-md h-14 md:h-12 rounded-2xl focus:rounded-xl transition-all duration-200"
                     />
                   </FormControl>
 
@@ -121,7 +117,7 @@ export default function MyForm() {
               <FormControl>
                 <Textarea
                   placeholder="Your message..."
-                  className="resize-none bg-white/40 dark:bg-black-600/40 focus:bg-white/80 focus:dark:dark:bg-black-200/60 backdrop-blur-md min-h-48 rounded-xl p-4"
+                  className="resize-none bg-white/40 dark:bg-black-600/40 focus:bg-white focus:dark:dark:bg-black/60 backdrop-blur-md min-h-48 focus:rounded-xl rounded-3xl p-4 transition-all duration-200"
                   {...field}
                   value={field.value || ""}
                   rows={5}
