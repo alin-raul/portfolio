@@ -1,138 +1,138 @@
-import * as THREE from "three";
-import React, { useRef, useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
-import { GLTF } from "three-stdlib";
-import { useFrame } from "@react-three/fiber";
+// import * as THREE from "three";
+// import React, { useRef, useEffect } from "react";
+// import { useGLTF } from "@react-three/drei";
+// import { GLTF } from "three-stdlib";
+// import { useFrame } from "@react-three/fiber";
 
-type GLTFResult = GLTF & {
-  nodes: {
-    Object_4: THREE.Mesh;
-    Object_6: THREE.Mesh;
-    Object_8: THREE.Mesh;
-    Object_10: THREE.Mesh;
-    Object_12: THREE.Mesh;
-  };
-  materials: {
-    black: THREE.MeshStandardMaterial;
-    accretion_disk: THREE.MeshStandardMaterial;
-    Einstein_ring: THREE.MeshStandardMaterial;
-    glowing: THREE.MeshStandardMaterial;
-  };
-};
+// type GLTFResult = GLTF & {
+//   nodes: {
+//     Object_4: THREE.Mesh;
+//     Object_6: THREE.Mesh;
+//     Object_8: THREE.Mesh;
+//     Object_10: THREE.Mesh;
+//     Object_12: THREE.Mesh;
+//   };
+//   materials: {
+//     black: THREE.MeshStandardMaterial;
+//     accretion_disk: THREE.MeshStandardMaterial;
+//     Einstein_ring: THREE.MeshStandardMaterial;
+//     glowing: THREE.MeshStandardMaterial;
+//   };
+// };
 
-const BlackHole = (props: React.ComponentPropsWithoutRef<"group">) => {
-  const { nodes, materials } = useGLTF(
-    "/models/Black_hole_backup/scene.gltf"
-  ) as GLTFResult;
-  const groupRef = useRef<THREE.Group>(null);
-  const diskRef = useRef<THREE.Mesh>(null);
-  const rotationSpeed = -0.1;
-  const textureLoader = new THREE.TextureLoader();
+// const BlackHole = (props: React.ComponentPropsWithoutRef<"group">) => {
+//   const { nodes, materials } = useGLTF(
+//     "/models/Black_hole_backup/scene.gltf"
+//   ) as GLTFResult;
+//   const groupRef = useRef<THREE.Group>(null);
+//   const diskRef = useRef<THREE.Mesh>(null);
+//   const rotationSpeed = -0.1;
+//   const textureLoader = new THREE.TextureLoader();
 
-  // Load and apply texture
-  useEffect(() => {
-    // Load accretion disk texture
-    const diskTexture = textureLoader.load(
-      "/models/Black_hole_backup/textures/accretion_disk.webp"
-    );
+//   // Load and apply texture
+//   useEffect(() => {
+//     // Load accretion disk texture
+//     const diskTexture = textureLoader.load(
+//       "/models/Black_hole_backup/textures/accretion_disk.webp"
+//     );
 
-    // Configure texture properties
-    diskTexture.wrapS = THREE.RepeatWrapping;
-    diskTexture.wrapT = THREE.RepeatWrapping;
-    diskTexture.repeat.set(2, 4);
+//     // Configure texture properties
+//     diskTexture.wrapS = THREE.RepeatWrapping;
+//     diskTexture.wrapT = THREE.RepeatWrapping;
+//     diskTexture.repeat.set(2, 4);
 
-    // Apply texture to material
-    materials.accretion_disk.map = diskTexture;
-    materials.accretion_disk.emissiveMap = diskTexture;
-    materials.accretion_disk.emissive = new THREE.Color(0x8a2be2);
-    materials.accretion_disk.emissiveIntensity = 6;
-    materials.accretion_disk.toneMapped = false;
-    materials.accretion_disk.needsUpdate = true;
+//     // Apply texture to material
+//     materials.accretion_disk.map = diskTexture;
+//     materials.accretion_disk.emissiveMap = diskTexture;
+//     materials.accretion_disk.emissive = new THREE.Color(0x8a2be2);
+//     materials.accretion_disk.emissiveIntensity = 6;
+//     materials.accretion_disk.toneMapped = false;
+//     materials.accretion_disk.needsUpdate = true;
 
-    // Einstein ring settings
-    materials.Einstein_ring.transparent = true;
-    materials.Einstein_ring.opacity = 0.7;
-    materials.Einstein_ring.color.set(0x9370db);
+//     // Einstein ring settings
+//     materials.Einstein_ring.transparent = true;
+//     materials.Einstein_ring.opacity = 0.7;
+//     materials.Einstein_ring.color.set(0x9370db);
 
-    // Core glow settings
-    materials.glowing.emissive.set(0x8a2be2);
-    materials.glowing.emissiveIntensity = 60;
-    materials.glowing.toneMapped = true;
+//     // Core glow settings
+//     materials.glowing.emissive.set(0x8a2be2);
+//     materials.glowing.emissiveIntensity = 60;
+//     materials.glowing.toneMapped = true;
 
-    // Central black hole material
-    materials.black.color.set(0x000000);
-    materials.black.roughness = 1;
-  }, [materials]);
+//     // Central black hole material
+//     materials.black.color.set(0x000000);
+//     materials.black.roughness = 1;
+//   }, [materials]);
 
-  // Animation loop
-  useFrame((state, delta) => {
-    // Rotate entire black hole
-    if (groupRef.current) {
-      groupRef.current.rotation.y += delta * rotationSpeed;
-    }
+//   // Animation loop
+//   useFrame((state, delta) => {
+//     // Rotate entire black hole
+//     if (groupRef.current) {
+//       groupRef.current.rotation.y += delta * rotationSpeed;
+//     }
 
-    // Rotate accretion disk
-    // if (diskRef.current) {
-    //   diskRef.current.rotation.y += delta * rotationSpeed * 2;
-    // }
+//     // Rotate accretion disk
+//     // if (diskRef.current) {
+//     //   diskRef.current.rotation.y += delta * rotationSpeed * 2;
+//     // }
 
-    // Animate texture
-    if (materials.accretion_disk.map) {
-      materials.accretion_disk.map.offset.x += delta * 0.025;
-    }
-  });
+//     // Animate texture
+//     if (materials.accretion_disk.map) {
+//       materials.accretion_disk.map.offset.x += delta * 0.025;
+//     }
+//   });
 
-  return (
-    <group {...props} dispose={null}>
-      <group ref={groupRef} rotation={[-1.493, -0.212, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          {/* Central black core */}
-          <mesh
-            geometry={nodes.Object_4.geometry}
-            material={materials.black}
-            scale={0.748}
-          />
-          <mesh
-            geometry={nodes.Object_10.geometry}
-            material={materials.black}
-            scale={1.048}
-          />
+//   return (
+//     <group {...props} dispose={null}>
+//       <group ref={groupRef} rotation={[-1.493, -0.212, 0]}>
+//         <group rotation={[Math.PI / 2, 0, 0]}>
+//           {/* Central black core */}
+//           <mesh
+//             geometry={nodes.Object_4.geometry}
+//             material={materials.black}
+//             scale={0.748}
+//           />
+//           <mesh
+//             geometry={nodes.Object_10.geometry}
+//             material={materials.black}
+//             scale={1.048}
+//           />
 
-          {/* Rotating accretion disk */}
-          <mesh
-            ref={diskRef}
-            geometry={nodes.Object_6.geometry}
-            material={materials.accretion_disk}
-            scale={0.91}
-          />
+//           {/* Rotating accretion disk */}
+//           <mesh
+//             ref={diskRef}
+//             geometry={nodes.Object_6.geometry}
+//             material={materials.accretion_disk}
+//             scale={0.91}
+//           />
 
-          {/* Einstein ring distortion */}
-          <mesh
-            geometry={nodes.Object_8.geometry}
-            material={materials.Einstein_ring}
-          />
+//           {/* Einstein ring distortion */}
+//           <mesh
+//             geometry={nodes.Object_8.geometry}
+//             material={materials.Einstein_ring}
+//           />
 
-          {/* Central glow */}
-          <mesh
-            geometry={nodes.Object_12.geometry}
-            material={materials.glowing}
-            scale={1.065}
-          />
+//           {/* Central glow */}
+//           <mesh
+//             geometry={nodes.Object_12.geometry}
+//             material={materials.glowing}
+//             scale={1.065}
+//           />
 
-          {/* Purple light source */}
-          <pointLight
-            position={[0, 0, 0]}
-            color={0x8a2be2}
-            intensity={150}
-            distance={1000}
-            decay={2}
-          />
-        </group>
-      </group>
-    </group>
-  );
-};
+//           {/* Purple light source */}
+//           <pointLight
+//             position={[0, 0, 0]}
+//             color={0x8a2be2}
+//             intensity={150}
+//             distance={1000}
+//             decay={2}
+//           />
+//         </group>
+//       </group>
+//     </group>
+//   );
+// };
 
-useGLTF.preload("/models/Black_hole_backup/scene.gltf");
+// useGLTF.preload("/models/Black_hole_backup/scene.gltf");
 
-export default BlackHole;
+// export default BlackHole;
