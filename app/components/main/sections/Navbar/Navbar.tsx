@@ -4,13 +4,14 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 import { useSidebar } from "@/context/SidebarContext";
 import NavLinks from "./NavLinks";
 import { portfolioLinks, aboutLinks, curriculumLinks } from "@/constants";
-import DownloadPDFButton from "../../DownloadPDFButton";
 import { motion } from "framer-motion";
 import { containerAnimationVariants, slideInFromTop } from "@/utils/motion";
+import dynamic from "next/dynamic";
+import { ModeToggle } from "@/app/components/global/ModeToggle";
 
 type Pathname = { pathname: string };
 
@@ -29,9 +30,10 @@ const baseLinkClasses = "flex items-center gap-6";
 const arrowWrapperClasses =
   "group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 backdrop-blur-md bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl";
 const logoTextClasses = "flex font-yapari text-xl";
-const mobileIconClasses = "md:hidden w-6 h-6";
+const mobileIconClasses = "md:hidden w-8 h-8";
 
 const LogoContent = ({ pathname }: Pathname) => {
+  // ... (LogoContent implementation remains the same)
   if (pathname === PATHS.ABOUT) {
     return (
       <Link href={TARGETS.ABOUT} className={baseLinkClasses}>
@@ -56,6 +58,31 @@ const LogoContent = ({ pathname }: Pathname) => {
 
   return <span className={logoTextClasses}>ran</span>;
 };
+
+// --- Placeholder for DownloadPDFButton while it loads ---
+export const DownloadButtonLoadingFallback = ({
+  className = "",
+}: {
+  className?: string;
+}) => (
+  <button
+    disabled
+    className={`mr-4 md:rounded-2xl h-10 bg-[var(--bg-dynamic-1)] text-center w-fit px-3 py-2 rounded-3xl flex gap-1 items-center outline outline-1 outline-accent-foreground/10 text-primary/60 transition-all duration-400 font-normal ${className}`}
+  >
+    <Download className="h-4 w-4" /> Download
+  </button>
+);
+
+// --- Dynamically import DownloadPDFButton ---
+export const DynamicDownloadPDFButton = dynamic(
+  () => import("../../DownloadPDFButton"),
+  {
+    // Important: Ensure it only renders on the client
+    ssr: false,
+    // Provide the loading fallback component
+    loading: () => <DownloadButtonLoadingFallback className="ml-auto" />,
+  }
+);
 
 // --- Main Component ---
 
@@ -91,7 +118,8 @@ const Navbar = () => {
 
           <div className="font-semibold py-2 px-4 ml-auto md:px-10 h-auto hidden md:flex">
             {pathname === PATHS.CURRICULUM ? (
-              <DownloadPDFButton className="ml-auto" />
+              // Use the dynamically loaded component here
+              <DynamicDownloadPDFButton className="ml-auto" />
             ) : (
               ""
             )}
@@ -99,19 +127,24 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center md:hidden">
-            {" "}
-            <button
-              onClick={toggleSidebar}
-              className="z-50 relative p-2 mr-2"
-              aria-label={isVisible ? "Close menu" : "Open menu"}
-              aria-expanded={isVisible}
-            >
-              {isVisible ? (
-                <XMarkIcon className={mobileIconClasses} />
-              ) : (
-                <Bars2Icon className={mobileIconClasses} />
-              )}
-            </button>
+            {pathname === PATHS.CURRICULUM ? (
+              <DynamicDownloadPDFButton className="ml-auto" />
+            ) : (
+              <div className="flex">
+                <button
+                  onClick={toggleSidebar}
+                  className="z-50 relative p-2 mr-2"
+                  aria-label={isVisible ? "Close menu" : "Open menu"}
+                  aria-expanded={isVisible}
+                >
+                  {isVisible ? (
+                    <XMarkIcon className={mobileIconClasses} />
+                  ) : (
+                    <Bars2Icon className={mobileIconClasses} />
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </motion.nav>

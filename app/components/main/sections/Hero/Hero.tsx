@@ -17,7 +17,7 @@ const Hero = () => {
         height="500px"
       />
       <section
-        className="flex flex-col h-screen w-full max-w-screen-2xl mx-auto"
+        className="flex flex-col h-[50rem] md:h-screen w-full max-w-screen-2xl mx-auto "
         id="hero"
       >
         {/* <Hero3dModels /> */}

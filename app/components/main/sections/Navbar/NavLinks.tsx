@@ -8,7 +8,7 @@ import { ArrowUp } from "lucide-react";
 import { useSidebar } from "@/context/SidebarContext"; // Adjust path if needed
 
 // Define the structure for each link
-export type LinkDefinition = {
+export type NavLink = {
   href: string;
   label?: string;
   isIcon?: boolean;
@@ -17,7 +17,7 @@ export type LinkDefinition = {
 
 // Props for the reusable component
 interface NavLinksProps {
-  links: LinkDefinition[];
+  links: NavLink[];
   className?: string;
 }
 
@@ -34,14 +34,13 @@ const iconSizeClasses =
 const NavLinks: React.FC<NavLinksProps> = ({ links, className }) => {
   const { isVisible, hideSidebar } = useSidebar();
 
-  // Effect to handle body scroll based on sidebar visibility
   useEffect(() => {
     if (isVisible) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-    // Cleanup function to reset overflow when component unmounts or isVisible changes
+
     return () => {
       document.body.style.overflow = "";
     };

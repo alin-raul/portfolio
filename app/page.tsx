@@ -1,7 +1,6 @@
 import Hero from "./components/main/sections/Hero/Hero";
 import About from "./components/main/sections/About/About";
 import Skills from "./components/main/sections/Skills/Skills";
-import Encryption from "./components/main/Encryption";
 import Portfolio from "./components/main/sections/Portfolio/Portfolio";
 import Wrapper from "./components/main/Wrapper";
 import Contact from "./components/main/sections/Contact/Contact";

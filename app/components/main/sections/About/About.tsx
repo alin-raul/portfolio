@@ -284,7 +284,7 @@ const About = () => (
         initial="hidden"
         whileInView="visible"
         onViewportEnter={() => console.log("CONTAINER ENTERED VIEWPORT")}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
       >
         <motion.div
           className="xl:col-span-5 lg:col-span-4 md:col-span-4 md:h-full h-fit z-20"

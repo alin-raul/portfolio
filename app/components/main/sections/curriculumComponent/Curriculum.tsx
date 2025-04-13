@@ -111,7 +111,7 @@ const InterestsSection = () => (
   <GridCard className="overflow-hidden p-6 h-full lg:col-span-1 sm:col-span-2">
     <h3 className="text-2xl font-bold text-muted-foreground mb-3">Interests</h3>
     <div className="flex flex-col h-[calc(100%-3rem)]">
-      <div className="flex flex-wrap gap-2 my-auto overflow-auto p-1">
+      <div className="flex flex-wrap gap-2 my-auto p-1">
         {[
           "👨‍💻 Coding",
           "🏋️ Gym",

@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, useEffect, Suspense, memo } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import { Button } from "@/components/ui/button";
 import CurriculumPDF from "./CurriculumPDF";
 import { Download, RefreshCcw } from "lucide-react";
 
-const LazyCurriculumPDF = lazy(() => import("./CurriculumPDF"));
-
-const DownloadPDFButton = ({ className = "" }: { className?: string }) => {
+const DownloadPDFButtonComponent = ({
+  className = "",
+}: {
+  className?: string;
+}) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -32,25 +33,27 @@ const DownloadPDFButton = ({ className = "" }: { className?: string }) => {
             document={<CurriculumPDF />}
             fileName="Nastase_Raul_Alin_CV.pdf"
           >
-            {({ blob, url, loading, error }) => (
-              <button
-                disabled={loading}
-                className="cursor-pointer mr-4 md:rounded-2xl h-10 bg-[var(--bg-dynamic-1)] hover:bg-white text-center group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-1 items-center outline outline-1 outline-accent-foreground/10 text-primary/60 hover:text-primary dark:hover:text-primary-foreground hover:outline-accent-foreground/20 transition-all duration-400 font-normal hover:font-semibold hover:rounded-xl"
-              >
-                {loading ? (
-                  <>
-                    {/* Adjusted icon size */}
-                    <RefreshCcw className="h-3.5 w-3.5 group-hover:!h-6 group-hover:!w-6 transition-all duration-200 animate-spin" />
-                    Building pdf
-                  </>
-                ) : (
-                  <>
-                    {/* Adjusted icon size */}
-                    <Download className="h-4 w-4" /> Download
-                  </>
-                )}
-              </button>
-            )}
+            {({ loading, error }) =>
+              error ? (
+                <p>Error generating PDF</p>
+              ) : (
+                <button
+                  disabled={loading}
+                  className="cursor-pointer mr-4 md:rounded-2xl h-10 bg-[var(--bg-dynamic-1)] hover:bg-white text-center group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-1 items-center outline outline-1 outline-accent-foreground/10 text-primary/60 hover:text-primary dark:hover:text-primary-foreground hover:outline-accent-foreground/20 transition-all duration-400 font-normal hover:font-semibold hover:rounded-xl"
+                >
+                  {loading ? (
+                    <>
+                      <RefreshCcw className="h-3.5 w-3.5 group-hover:!h-6 group-hover:!w-6 transition-all duration-200 animate-spin" />
+                      Building pdf
+                    </>
+                  ) : (
+                    <>
+                      <Download className="h-4 w-4" /> Download
+                    </>
+                  )}
+                </button>
+              )
+            }
           </PDFDownloadLink>
         </Suspense>
       ) : (
@@ -59,5 +62,7 @@ const DownloadPDFButton = ({ className = "" }: { className?: string }) => {
     </>
   );
 };
+
+const DownloadPDFButton = memo(DownloadPDFButtonComponent);
 
 export default DownloadPDFButton;

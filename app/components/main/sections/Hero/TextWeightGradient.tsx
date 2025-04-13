@@ -233,7 +233,7 @@ export default function TextWeightGradient() {
   return (
     <motion.div
       ref={mainContainerRef}
-      className="flex justify-center items-center min-h-screen w-full"
+      className="flex justify-center items-center w-full"
       variants={containerAnimationVariants}
       initial="hidden"
       animate={mainControls}
