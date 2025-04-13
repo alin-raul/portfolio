@@ -17,10 +17,9 @@ import { RiJavascriptFill, RiNextjsFill, RiFirebaseFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import { Linkedin, Instagram, Github, Download } from "lucide-react";
-import type { LinkDefinition } from "@/app/components/main/sections/Navbar/NavLinks";
-import DownloadPDFButton from "@/app/components/main/DownloadPDFButton";
+import type { NavLink } from "@/app/components/main/sections/Navbar/NavLinks";
 
-export const portfolioLinks: LinkDefinition[] = [
+export const portfolioLinks: NavLink[] = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
@@ -28,13 +27,13 @@ export const portfolioLinks: LinkDefinition[] = [
   { href: "#hero", isIcon: true, ariaLabel: "Scroll to top" },
 ];
 
-export const aboutLinks: LinkDefinition[] = [
+export const aboutLinks: NavLink[] = [
   { href: "#about-me", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#top", isIcon: true, ariaLabel: "Scroll to top" },
 ];
 
-export const curriculumLinks: LinkDefinition[] = [];
+export const curriculumLinks: NavLink[] = [];
 
 export const Socials = [
   {
