@@ -470,6 +470,12 @@ export const designTools = [
     width: 30,
     height: 30,
   },
+  {
+    name: "Illustrator",
+    icon: "/assets/illustrator.webp",
+    width: 55,
+    height: 55,
+  },
 ];
 
 export const otherSkills = [
@@ -762,6 +768,12 @@ export const designToolsPDF = [
   {
     name: "Figma",
     icon: "/pdf-assets/figma.png",
+    width: 25,
+    height: 25,
+  },
+  {
+    name: "Illustrator",
+    icon: "/pdf-assets/illustrator.png",
     width: 25,
     height: 25,
   },

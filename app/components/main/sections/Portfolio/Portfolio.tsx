@@ -154,7 +154,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 };
 
 const Portfolio = () => {
-  const viewportConfig = { once: true, amount: 0.6 };
+  const viewportConfig = { once: true, amount: 0.2 };
 
   return (
     <section className="mt-40" id="projects">

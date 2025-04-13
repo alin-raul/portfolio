@@ -283,7 +283,8 @@ const About = () => (
         variants={containerAnimationVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
+        onViewportEnter={() => console.log("CONTAINER ENTERED VIEWPORT")}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <motion.div
           className="xl:col-span-5 lg:col-span-4 md:col-span-4 md:h-full h-fit z-20"

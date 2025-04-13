@@ -20,7 +20,7 @@ const Hero = () => {
         className="flex flex-col h-screen w-full max-w-screen-2xl mx-auto"
         id="hero"
       >
-        <Hero3dModels />
+        {/* <Hero3dModels /> */}
 
         <div className="absolute top-[75rem] right-0 left-0 opacity-30">
           {/* <MovingLightShade fill="rgb(67, 21, 221)" /> */}

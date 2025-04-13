@@ -237,6 +237,7 @@ export default function TextWeightGradient() {
       variants={containerAnimationVariants}
       initial="hidden"
       animate={mainControls}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="w-fit h-fit p-2 relative">
         <div className="text-md my-5 max-w-[22rem] md:max-w-[30rem] lg:max-w-[32rem]">

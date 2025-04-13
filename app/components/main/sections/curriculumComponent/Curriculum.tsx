@@ -163,25 +163,27 @@ const ExperienceCard = ({
 
   return (
     <GridCard className="p-8 h-full mb-4 lg:mb-0">
-      <div className="flex">
-        <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
-          <Image {...imageProps} alt="Company logo" draggable={false} />
+      <div className="flex-col sm:flex-row flex">
+        <div className="flex order-2 sm:order-1">
+          <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
+            <Image {...imageProps} alt="Company logo" draggable={false} />
+          </div>
+          <div className="flex flex-col justify-center ml-6">
+            <h1
+              className={`${
+                isLong
+                  ? "text-xl lg:text-xl xl:text-2xl 2xl:text-3xl"
+                  : "text-2xl"
+              } font-bold text-muted-foreground whitespace-nowrap truncate`}
+            >
+              {name}
+            </h1>
+            <h3 className="text-muted-foreground">{role}</h3>
+          </div>
         </div>
-        <div className="flex flex-col justify-center ml-6">
-          <h1
-            className={`${
-              isLong
-                ? "text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl"
-                : "text-3xl"
-            } font-bold text-muted-foreground whitespace-nowrap truncate`}
-          >
-            {name}
-          </h1>
-          <h3 className="text-muted-foreground">{role}</h3>
-        </div>
-        <div className="ml-auto">
+        <div className="ml-auto order-1 sm:order-2">
           <div
-            className={`rounded-lg font-bold py-2 px-3 ${
+            className={`rounded-lg font-bold py-2 px-3 text-nowrap ${
               workingHere
                 ? "border-2 border-violet-500 text-violet-500"
                 : "bg-primary-foreground"
@@ -192,7 +194,7 @@ const ExperienceCard = ({
         </div>
       </div>
       <div className="mt-14">
-        <ul className="flex flex-col gap-2 list-disc pl-4">
+        <ul className="flex flex-col gap-2 list-disc pl-4 text-sm md:text-base">
           {list.map(({ skill, description }, index) => (
             <li key={index}>
               <span className="font-bold">{skill}:</span>
@@ -242,24 +244,26 @@ const EducationCard = ({
 
   return (
     <GridCard className="p-8 h-full mb-4 lg:mb-0">
-      <div className="flex">
-        <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
-          <Image {...imageProps} alt="institution logo" draggable={false} />
+      <div className="flex-col sm:flex-row flex">
+        <div className="flex order-2 sm:order-1">
+          <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
+            <Image {...imageProps} alt="institution logo" draggable={false} />
+          </div>
+          <div className="flex flex-col justify-center ml-6 mr-2">
+            <h1
+              className={`${
+                isLong
+                  ? "text-xl lg:text-xl xl:text-2xl 2xl:text-3xl"
+                  : "text-2xl"
+              } font-bold text-muted-foreground whitespace-nowrap truncate`}
+            >
+              {name}
+            </h1>
+            <h3 className="text-muted-foreground">{role}</h3>
+            <h3 className="text-muted-foreground">{specialization}</h3>
+          </div>
         </div>
-        <div className="flex flex-col justify-center ml-6 mr-2">
-          <h1
-            className={`${
-              isLong
-                ? "text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl"
-                : "text-3xl"
-            } font-bold text-muted-foreground whitespace-nowrap truncate`}
-          >
-            {name}
-          </h1>
-          <h3 className="text-muted-foreground">{role}</h3>
-          <h3 className="text-muted-foreground">{specialization}</h3>
-        </div>
-        <div className="ml-auto">
+        <div className="ml-auto order-1 sm:order-2">
           <div className="rounded-lg font-bold py-2 px-3 bg-primary-foreground whitespace-nowrap">
             {duration}
           </div>
@@ -267,7 +271,7 @@ const EducationCard = ({
       </div>
       {list && (
         <div className="mt-14">
-          <ul className="flex flex-col gap-2 list-disc pl-4">
+          <ul className="flex flex-col gap-2 list-disc pl-4 text-sm md:text-base">
             {list.map(({ skill, description }, index) => (
               <li key={index}>
                 <span className="font-bold">{skill}:</span>
@@ -295,7 +299,7 @@ const SkillsSection = () => (
 const CodingSkills = () => (
   <GridCard className="col-span-5 p-10 mb-4 lg:mb-0">
     <h3 className="text-2xl font-bold text-muted-foreground mb-6">Coding</h3>
-    <div className="flex flex-wrap justify-between w-full">
+    <div className="grid grid-cols-4 sm:grid-cols-8 gap-6 justify-items-center items-center w-full">
       {TechStack.map(({ skill_name, icon, color }) => {
         const IconComponent = icon;
         return (

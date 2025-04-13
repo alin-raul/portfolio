@@ -18,7 +18,7 @@ const AboutMe = () => {
       variants={containerAnimationVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="mt-40 max-w-screen-xl mx-auto" id="top">
         <div>

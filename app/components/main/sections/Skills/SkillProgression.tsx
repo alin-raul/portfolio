@@ -72,7 +72,7 @@ const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
 };
 
 const SkillProgression = () => {
-  const viewportConfig = { once: true, amount: 0.6 };
+  const viewportConfig = { once: true, amount: 0.2 };
 
   return (
     <motion.section
