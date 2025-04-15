@@ -20,7 +20,7 @@ const Blob: React.FC<BlobProps> = ({ position, width, height, blobClass }) => {
         position: "absolute",
         top: 0,
         left: 0,
-        filter: "blur(8rem)",
+        // filter: "blur(8rem)",
         height: "100%",
         width: "100%",
         overflow: "hidden",
