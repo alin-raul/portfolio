@@ -481,15 +481,15 @@ export const otherSkills = [
   {
     name: "Terminal",
     icon: "/assets/terminal.webp",
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
     reverse: true,
   },
   {
     name: "Linux (Arch)",
     icon: "/assets/arch.webp",
-    width: 50,
-    height: 50,
+    width: 45,
+    height: 45,
   },
   {
     name: "Git",

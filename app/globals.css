@@ -280,7 +280,7 @@ body::-webkit-scrollbar {
 
 html {
   scroll-padding-top: 6rem;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 ::selection {
@@ -483,8 +483,8 @@ canvas {
   position: absolute;
   opacity: 0.3;
   aspect-ratio: 1/1;
-  animation: animate-blob 60s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
-    alternate forwards;
+  /* animation: animate-blob 60s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite
+    alternate forwards; */
   z-index: -1;
   background: var(--blob-gradient);
 
@@ -513,8 +513,8 @@ canvas {
 
 .blob-1 {
   aspect-ratio: 1/1;
-  animation: animate-blob-1 80s cubic-bezier(0.88, 0.85, 0.97, 0.75) infinite
-    alternate forwards;
+  /* animation: animate-blob-1 80s cubic-bezier(0.88, 0.85, 0.97, 0.75) infinite
+    alternate forwards; */
   z-index: -1;
   background: var(--blob-gradient-1);
   transform: translateZ(0);
@@ -545,8 +545,8 @@ canvas {
   position: absolute;
   opacity: 0.4;
   aspect-ratio: 1/1;
-  animation: animate-blob-2 50s cubic-bezier(0.88, 0.85, 0.97, 0.75) infinite
-    alternate forwards;
+  /* animation: animate-blob-2 50s cubic-bezier(0.88, 0.85, 0.97, 0.75) infinite
+    alternate forwards; */
   z-index: -1;
   background: var(--blob-gradient-2);
   transform: translateZ(0);
