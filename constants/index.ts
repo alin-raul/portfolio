@@ -193,7 +193,7 @@ export const projects = [
       dark: "/assets/projects/favCities-dark.webp",
     },
     buttons: [
-      { label: "DEMO", live_demo: "http://localhost:3000" },
+      { label: "DEMO", live_demo: "https://favorite-cities.vercel.app" },
       {
         label: "VIEW CODE",
         source_code_link: "https://github.com/ssupream/favoriteCities",
@@ -520,17 +520,17 @@ export const otherSkills = [
 export const projectsPDF = [
   {
     name: "Favorite Cities",
-    icon: "/pdf-assets/projects-icons/cardinal.png",
+    icon: "/pdf-assets-jpg/projects-icons/cardinal.jpg",
     source_code_link: "https://github.com/ssupream/favoriteCities",
   },
   {
     name: "Next Quiz",
-    icon: "/pdf-assets/projects-icons/nextquiz.png",
+    icon: "/pdf-assets-jpg/projects-icons/nextquiz.jpg",
     source_code_link: "https://github.com/ssupream/InteractiveQuizApp",
   },
   {
     name: "Journal",
-    icon: "/pdf-assets/projects-icons/journal.png",
+    icon: "/pdf-assets-jpg/projects-icons/journal.jpg",
     source_code_link: "https://github.com/ssupream/apple-like-diary",
   },
 ];
@@ -538,50 +538,50 @@ export const projectsPDF = [
 export const TechStackPDF = [
   {
     skill_name: "HTML 5",
-    icon: "/pdf-assets/html.png",
+    icon: "/pdf-assets-jpg/html.jpg",
     width: 15,
     height: 15,
   },
   {
     skill_name: "CSS",
-    icon: "/pdf-assets/css.png",
+    icon: "/pdf-assets-jpg/css.jpg",
     width: 15,
     height: 15,
   },
   {
     skill_name: "JavaScript",
-    icon: "/pdf-assets/js.png",
-    width: 20,
-    height: 20,
+    icon: "/pdf-assets-jpg/js.jpg",
+    width: 15,
+    height: 15,
   },
   {
     skill_name: "React",
-    icon: "/pdf-assets/react.png",
+    icon: "/pdf-assets-jpg/react.jpg",
     width: 15,
     height: 15,
   },
 
   {
     skill_name: "Next.js 15",
-    icon: "/pdf-assets/next.png",
+    icon: "/pdf-assets-jpg/next.jpg",
     width: 15,
     height: 15,
   },
   {
     skill_name: "Tailwind CSS",
-    icon: "/pdf-assets/tailwind.png",
+    icon: "/pdf-assets-jpg/tailwind.jpg",
     width: 20,
     height: 20,
   },
   {
     skill_name: "Framer Motion",
-    icon: "/pdf-assets/framer.png",
+    icon: "/pdf-assets-jpg/framer.jpg",
     width: 15,
     height: 15,
   },
   {
     skill_name: "Three.js",
-    icon: "/pdf-assets/three.png",
+    icon: "/pdf-assets-jpg/three.jpg",
     width: 20,
     height: 20,
   },
@@ -590,7 +590,7 @@ export const TechStackPDF = [
 export const workExperiencesPDF = [
   {
     name: "Teleperformance",
-    icon: "/pdf-assets/teleperformance.png",
+    icon: "/pdf-assets-jpg/teleperformance.jpg",
     alt: "Teleperformance",
     width: 50,
     height: 50,
@@ -619,7 +619,7 @@ export const workExperiencesPDF = [
   },
   {
     name: "DCI",
-    icon: "/pdf-assets/dci.png",
+    icon: "/pdf-assets-jpg/dci.jpg",
     alt: "DCI",
     width: 55,
     height: 55,
@@ -647,7 +647,7 @@ export const workExperiencesPDF = [
   },
   {
     name: "MAPA",
-    icon: "/pdf-assets/mapa.png",
+    icon: "/pdf-assets-jpg/mapa.jpg",
     alt: "MAPA",
     width: 70,
     height: 70,
@@ -672,7 +672,7 @@ export const workExperiencesPDF = [
   },
   {
     name: "Ostedruck",
-    icon: "/pdf-assets/ostedruck.png",
+    icon: "/pdf-assets-jpg/ostedruck.jpg",
     alt: "Ostedruck",
     width: 35,
     height: 35,
@@ -694,7 +694,7 @@ export const workExperiencesPDF = [
 export const educationDataPDF = [
   {
     name: "Digital Nation",
-    icon: "/pdf-assets/digital_nation.png",
+    icon: "/pdf-assets-jpg/digital_nation.jpg",
     alt: "Digital Nation",
     width: 70,
     height: 70,
@@ -719,7 +719,7 @@ export const educationDataPDF = [
   },
   {
     name: "Transilvania University",
-    icon: "/pdf-assets/unitbv.png",
+    icon: "/pdf-assets-jpg/unitbv.jpg",
     alt: "Transilvania University",
     width: 40,
     height: 40,
@@ -754,25 +754,25 @@ export const educationDataPDF = [
 export const designToolsPDF = [
   {
     name: "Photoshop",
-    icon: "/pdf-assets/ps.png",
+    icon: "/pdf-assets-jpg/ps.jpg",
     width: 25,
     height: 25,
   },
   {
     name: "Gimp",
-    icon: "/pdf-assets/gimp.png",
+    icon: "/pdf-assets-jpg/gimp.jpg",
     width: 30,
     height: 30,
   },
   {
     name: "Figma",
-    icon: "/pdf-assets/figma.png",
+    icon: "/pdf-assets-jpg/figma.jpg",
     width: 25,
     height: 25,
   },
   {
     name: "Illustrator",
-    icon: "/pdf-assets/illustrator.png",
+    icon: "/pdf-assets-jpg/illustrator.jpg",
     width: 25,
     height: 25,
   },
@@ -781,25 +781,25 @@ export const designToolsPDF = [
 export const Flags = [
   {
     name: "Romanian",
-    icon: "/pdf-assets/flags/ro.png",
+    icon: "/pdf-assets-jpg/flags/ro.jpg",
     width: 20,
     height: 20,
   },
   {
     name: "Italian",
-    icon: "/pdf-assets/flags/it.png",
+    icon: "/pdf-assets-jpg/flags/it.jpg",
     width: 20,
     height: 20,
   },
   {
     name: "English",
-    icon: "/pdf-assets/flags/uk.png",
+    icon: "/pdf-assets-jpg/flags/uk.jpg",
     width: 20,
     height: 20,
   },
   {
     name: "German",
-    icon: "/pdf-assets/flags/de.png",
+    icon: "/pdf-assets-jpg/flags/de.jpg",
     width: 20,
     height: 20,
   },
@@ -808,37 +808,37 @@ export const Flags = [
 export const otherSkillsPDF = [
   {
     name: "Terminal",
-    icon: "/pdf-assets/terminal.png",
+    icon: "/pdf-assets-jpg/terminal.jpg",
     width: 28,
     height: 28,
   },
   {
     name: "Linux (Arch)",
-    icon: "/pdf-assets/arch.png",
+    icon: "/pdf-assets-jpg/arch.jpg",
     width: 30,
     height: 30,
   },
   {
     name: "Git",
-    icon: "/pdf-assets/git.png",
+    icon: "/pdf-assets-jpg/git.jpg",
     width: 28,
     height: 29,
   },
   {
     name: "REST APIs",
-    icon: "/pdf-assets/api.png",
+    icon: "/pdf-assets-jpg/api.jpg",
     width: 30,
     height: 30,
   },
   {
     name: "NPM/Yarn",
-    icon: "/pdf-assets/npm.png",
+    icon: "/pdf-assets-jpg/npm.jpg",
     width: 30,
     height: 30,
   },
   {
     name: "Postman",
-    icon: "/pdf-assets/postman.png",
+    icon: "/pdf-assets-jpg/postman.jpg",
     width: 28,
     height: 28,
   },

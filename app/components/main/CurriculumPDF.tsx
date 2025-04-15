@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Page,
   Text,
@@ -27,7 +27,6 @@ Font.registerEmojiSource({
   url: "https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/",
 });
 
-// --- Styles ---
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
@@ -388,7 +387,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// --- PDF Document Component ---
 const CurriculumPDF = () => (
   <Document title="Năstase Raul-Alin - Curriculum Vitae">
     {/* Ensure Page size is A4 */}
@@ -400,7 +398,10 @@ const CurriculumPDF = () => (
         <View style={styles.profileHeaderText}>
           <Text>29 years old, Romania</Text>
           <Text>workdevraul@gmail.com</Text>
-          <PdfLink src="https://website.com" style={styles.link}>
+          <PdfLink
+            src="https://portfolio-lemon-rho-10.vercel.app"
+            style={styles.link}
+          >
             website.com {/* Replace */}
           </PdfLink>
         </View>

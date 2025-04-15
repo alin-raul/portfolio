@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -11,7 +11,6 @@ import { portfolioLinks, aboutLinks, curriculumLinks } from "@/constants";
 import { motion } from "framer-motion";
 import { containerAnimationVariants, slideInFromTop } from "@/utils/motion";
 import dynamic from "next/dynamic";
-import { ModeToggle } from "@/app/components/global/ModeToggle";
 
 type Pathname = { pathname: string };
 
@@ -25,7 +24,6 @@ const TARGETS = {
   HERO: "/#hero",
 };
 
-// Reusable class strings for consistency
 const baseLinkClasses = "flex items-center gap-6";
 const arrowWrapperClasses =
   "group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 backdrop-blur-md bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl";
@@ -59,34 +57,17 @@ const LogoContent = ({ pathname }: Pathname) => {
   return <span className={logoTextClasses}>ran</span>;
 };
 
-// --- Placeholder for DownloadPDFButton while it loads ---
-export const DownloadButtonLoadingFallback = ({
-  className = "",
-}: {
-  className?: string;
-}) => (
-  <button
-    disabled
-    className={`mr-4 md:rounded-2xl h-10 bg-[var(--bg-dynamic-1)] text-center w-fit px-3 py-2 rounded-3xl flex gap-1 items-center outline outline-1 outline-accent-foreground/10 text-primary/60 transition-all duration-400 font-normal ${className}`}
-  >
-    <Download className="h-4 w-4" /> Download
-  </button>
-);
-
 // --- Dynamically import DownloadPDFButton ---
 export const DynamicDownloadPDFButton = dynamic(
   () => import("../../DownloadPDFButton"),
   {
-    // Important: Ensure it only renders on the client
     ssr: false,
-    // Provide the loading fallback component
-    loading: () => <DownloadButtonLoadingFallback className="ml-auto" />,
   }
 );
 
 // --- Main Component ---
 
-const Navbar = () => {
+const NavbarComponent = () => {
   const { isVisible, toggleSidebar } = useSidebar();
   const pathname = usePathname();
 
@@ -98,16 +79,16 @@ const Navbar = () => {
       : portfolioLinks;
 
   return (
-    <motion.div
+    <div
       className="w-full h-14 fixed top-0 left-0 z-50"
-      variants={containerAnimationVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      // variants={containerAnimationVariants}
+      // initial="hidden"
+      // whileInView="visible"
+      // viewport={{ once: true, amount: 0.3 }}
     >
-      <motion.nav
+      <nav
         className="w-full h-full mx-auto max-w-[1800px] px-0 md:px-4"
-        variants={slideInFromTop}
+        // variants={slideInFromTop}
       >
         <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl dark:bg-black/60 bg-white/50 backdrop-blur-md md:mt-4 h-full px-6 md:px-0">
           <div className="flex font-semibold items-center py-2 pl-1 md:px-6 h-full">
@@ -147,9 +128,11 @@ const Navbar = () => {
             )}
           </div>
         </div>
-      </motion.nav>
-    </motion.div>
+      </nav>
+    </div>
   );
 };
+
+const Navbar = React.memo(NavbarComponent);
 
 export default Navbar;
