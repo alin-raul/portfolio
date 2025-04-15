@@ -187,7 +187,7 @@ export const projects = [
       { name: "tailwind", color: "text-cyan-500" },
       { name: "shadcn/ui", color: "" },
     ],
-    icon: "/assets/projects/icons/cardinal.svg",
+    icon: "/assets/projects/icons/cardinal.webp",
     image: {
       light: "/assets/projects/favCities-light.webp",
       dark: "/assets/projects/favCities-dark.webp",
@@ -234,7 +234,7 @@ export const projects = [
       { name: "firebase", color: "text-yellow-500" },
       { name: "tailwind", color: "text-cyan-500" },
     ],
-    icon: "/assets/projects/icons/journal.svg",
+    icon: "/assets/projects/icons/journal.webp",
     image: {
       light: "/assets/projects/diary-light.webp",
       dark: "/assets/projects/diary-dark.webp",

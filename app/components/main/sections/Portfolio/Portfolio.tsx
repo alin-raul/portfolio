@@ -57,7 +57,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       variants={itemAnimationVariants}
     >
       <div className="relative">
-        <div className="relative w-full h-fit dark:brightness-50 brightness-100 blur-xl transition-all duration-300">
+        <div className="relative w-full h-fit dark:brightness-50 brightness-100 blur-md md:blur-xl transition-all duration-300">
           <Image
             width={700}
             height={500}
