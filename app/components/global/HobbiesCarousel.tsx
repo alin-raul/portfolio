@@ -13,7 +13,7 @@ const HobbiesCarousel: React.FC<HobbiesCarouselProps> = ({ reverse }) => {
       className="max-w-screen-2xl w-full"
       variants={itemAnimationVariants}
     >
-      <div className="carousel overflow-hidden relative bg-white/40 dark:bg-black-600/40 backdrop-blur-md">
+      <div className="carousel overflow-hidden relative bg-white/40 dark:bg-black-600/40">
         {[...Array(2)].map((_, groupIndex) => (
           <div
             key={groupIndex}

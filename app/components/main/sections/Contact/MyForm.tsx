@@ -76,7 +76,7 @@ export default function MyForm() {
                       type="text"
                       {...field}
                       value={field.value || ""}
-                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white  focus:dark:dark:bg-black/60 backdrop-blur-md h-14 md:h-12 rounded-2xl focus:rounded-xl transition-all duration-200"
+                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white  focus:dark:dark:bg-black/60 h-14 md:h-12 rounded-2xl focus:rounded-xl transition-all duration-200"
                     />
                   </FormControl>
 
@@ -98,7 +98,7 @@ export default function MyForm() {
                       type="email"
                       {...field}
                       value={field.value || ""}
-                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white/90  focus:dark:dark:bg-black/60 backdrop-blur-md h-14 md:h-12 rounded-2xl focus:rounded-xl transition-all duration-200"
+                      className="bg-white/40 dark:bg-black-600/40 focus:bg-white/90  focus:dark:dark:bg-black/60  h-14 md:h-12 rounded-2xl focus:rounded-xl transition-all duration-200"
                     />
                   </FormControl>
 
@@ -117,7 +117,7 @@ export default function MyForm() {
               <FormControl>
                 <Textarea
                   placeholder="Your message..."
-                  className="resize-none bg-white/40 dark:bg-black-600/40 focus:bg-white focus:dark:dark:bg-black/60 backdrop-blur-md min-h-48 focus:rounded-xl rounded-3xl p-4 transition-all duration-200"
+                  className="resize-none bg-white/40 dark:bg-black-600/40 focus:bg-white focus:dark:dark:bg-black/60 min-h-48 focus:rounded-xl rounded-3xl p-4 transition-all duration-200"
                   {...field}
                   value={field.value || ""}
                   rows={5}
@@ -130,7 +130,7 @@ export default function MyForm() {
         />
         <button
           type="submit"
-          className="group w-fit px-5 hover:px-6 py-4 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 backdrop-blur-md bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl"
+          className="group w-fit px-5 hover:px-6 py-4 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl"
         >
           SEND MESSAGE{" "}
           <ArrowUpRight className="!w-6 !h-6 opacity-70 hidden hover:flex group-hover:flex transition-opacity duration-400" />

@@ -215,11 +215,11 @@
   margin-top: 1rem;
 }
 
-.bg-dynamic {
+/* .bg-dynamic {
   backdrop-filter: blur(12px);
   background: var(--bg-dynamic-1);
   border: 1px solid var(--dynamic-border);
-}
+} */
 
 .dynamic-shadow {
   box-shadow: var(--dynamic-shadow);
@@ -245,7 +245,7 @@ body::-webkit-scrollbar {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.Welcome-box {
+/* .Welcome-box {
   isolation: isolate;
   overflow: hidden;
   align-items: center;
@@ -259,7 +259,7 @@ body::-webkit-scrollbar {
   width: -moz-max-content;
   width: max-content;
   transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow;
-}
+} */
 
 .button-primary {
   background: var(--primary-button);
@@ -316,7 +316,7 @@ canvas {
   border: 1px solid var(--dynamic-border);
   border-radius: 2rem;
   background: var(--bg-dynamic-1);
-  backdrop-filter: blur(12px);
+  /* backdrop-filter: blur(12px); */
 }
 
 .grid-card {
@@ -324,7 +324,7 @@ canvas {
   border-radius: 2rem;
   gap: 1.25rem;
   background: var(--bg-dynamic-1);
-  backdrop-filter: blur(12px);
+  /* backdrop-filter: blur(12px); */
 }
 
 .card-w-space {
@@ -333,7 +333,7 @@ canvas {
   display: flex;
   flex-direction: column;
   background: var(--bg-dynamic-1);
-  backdrop-filter: blur(12px);
+  /* backdrop-filter: blur(12px); */
 }
 
 .grid-subtext {
@@ -375,7 +375,7 @@ canvas {
   border-radius: 100%;
   border: 1px solid var(--dynamic-border);
   background: var(--bg-dynamic-2);
-  backdrop-filter: blur(12px);
+  /* backdrop-filter: blur(12px); */
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;

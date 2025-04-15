@@ -19,7 +19,7 @@ const MyButton: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={`flex items-center justify-center gap-2 bg-accent/30 hover:bg-accent/90 backdrop-blur-md p-3 border border-accent-foreground/10 hover:border-accent-foreground/30 rounded-2xl ${containerClass}`}
+      className={`flex items-center justify-center gap-2 bg-accent/30 hover:bg-accent/90 p-3 border border-accent-foreground/10 hover:border-accent-foreground/30 rounded-2xl ${containerClass}`}
       onClick={click}
     >
       {isBeam && (

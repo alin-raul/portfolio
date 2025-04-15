@@ -38,7 +38,7 @@ export const Card = ({
 }) => (
   <div className={`grid-card relative ${className}`}>
     {children}
-    <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-white/60 dark:before:from-black/40 dark:before:to-black/20 before:rounded-[2rem] z-[-1]" />
+    {/* <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-white/60 dark:before:from-black/40 dark:before:to-black/20 before:rounded-[2rem] z-[-1]" /> */}
   </div>
 );
 
@@ -50,7 +50,7 @@ const IntroCard = () => (
       in dynamic, responsive websites.
     </p>
     <div className="flex gap-2 w-full">
-      <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40 backdrop-blur-md mt-8">
+      <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40 mt-8">
         <GraduationCap className="w-4 h-4" /> Software Engineer
       </span>
     </div>
@@ -130,11 +130,11 @@ const FlexibleCard = () => (
           </p>
         </div>
         <div className="flex flex-wrap gap-1 mt-auto z-[30]">
-          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40 backdrop-blur-md">
+          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40">
             <MapPin className="w-4 h-4" />
             Brașov, RO
           </span>
-          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40 backdrop-blur-md">
+          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40">
             <Languages className="w-4 h-4" /> ENG, RO, IT, DE
           </span>
         </div>
