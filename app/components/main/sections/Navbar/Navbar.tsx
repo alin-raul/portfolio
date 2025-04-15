@@ -90,7 +90,7 @@ const NavbarComponent = () => {
         className="w-full h-full mx-auto max-w-[1800px] px-0 md:px-4"
         // variants={slideInFromTop}
       >
-        <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl dark:bg-black/60 bg-white/50 md:mt-4 h-full px-6 md:px-0">
+        <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl backdrop-blur-md dark:bg-black/60 bg-white/50 md:mt-4 h-full px-6 md:px-0">
           <div className="flex font-semibold items-center py-2 pl-1 md:px-6 h-full">
             <span className="text-nowrap">
               <LogoContent pathname={pathname} />
