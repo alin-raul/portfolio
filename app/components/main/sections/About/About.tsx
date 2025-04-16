@@ -140,7 +140,7 @@ const FlexibleCard = () => (
         </div>
       </div>
     </div>
-    {/* <GlobeComponent /> */}
+    <GlobeComponent />
   </Card>
 );
 
