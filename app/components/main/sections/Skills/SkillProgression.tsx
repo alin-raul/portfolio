@@ -75,12 +75,12 @@ const SkillProgression = () => {
   const viewportConfig = { once: true, amount: 0.2 };
 
   return (
-    <section
+    <motion.section
       className="h-fit z-20 w-full"
-      // variants={containerAnimationVariants}
-      // initial="hidden"
-      // whileInView="visible"
-      // viewport={viewportConfig}
+      variants={containerAnimationVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportConfig}
     >
       <div className="flex flex-col gap-4 h-full w-full">
         <div className="flex flex-col gap-4 p-6 lg:p-8 lg:w-full">
@@ -98,9 +98,9 @@ const SkillProgression = () => {
         </div>
 
         <div className="xl:flex gap-5">
-          <div
+          <motion.div
             className="card-w-space p-6 w-full mb-4 xl:mb-0"
-            // variants={itemAnimationVariants}
+            variants={itemAnimationVariants}
           >
             <div className="flex justify-between items-center mb-6">
               <p className="text-sm font-semibold">Core Proficiencies</p>
@@ -135,24 +135,15 @@ const SkillProgression = () => {
                 color="rgba(224, 72, 234)"
               />
             </div>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
             className="card-w-space p-6 w-full flex flex-col"
-            // variants={containerAnimationVariants}
-            // initial="hidden"
-            // whileInView="visible"
-            // viewport={viewportConfig}
+            variants={itemAnimationVariants}
           >
             <p className="text-sm font-semibold mb-8">Advanced Experience</p>
 
-            <div
-              className="w-full flex-1 min-h-0"
-              // variants={containerAnimationVariants}
-              // initial="hidden"
-              // whileInView="visible"
-              // viewport={viewportConfig}
-            >
+            <div className="w-full flex-1 min-h-0">
               <div className="grid gap-6 sm:gap-8 place-items-center grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] md:grid-cols-4 h-full">
                 <motion.div variants={radialItemVariants}>
                   <RadialSkill
@@ -200,20 +191,14 @@ const SkillProgression = () => {
                 </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div
+        <motion.div
           className="md:flex flex-grow gap-4 w-full"
-          // variants={containerAnimationVariants}
-          // initial="hidden"
-          // whileInView="visible"
-          // viewport={viewportConfig}
+          variants={itemAnimationVariants}
         >
-          <div
-            className="card-w-space w-full p-6 mb-5 md:mb-0"
-            // variants={itemAnimationVariants}
-          >
+          <div className="card-w-space w-full p-6 mb-5 md:mb-0">
             <p className="text-sm font-semibold mb-4 opacity-80">
               Actively Growing
             </p>
@@ -263,9 +248,9 @@ const SkillProgression = () => {
               A diverse set of tools...
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -52,9 +52,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, [resolvedTheme]);
 
   return (
-    <div
+    <motion.div
       className="card-w-space w-full z-30 overflow-hidden"
-      // variants={itemAnimationVariants}
+      variants={itemAnimationVariants}
     >
       <div className="relative">
         <div className="relative w-full h-fit dark:brightness-50 brightness-100 blur-md md:blur-xl transition-all duration-300">
@@ -149,7 +149,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -157,14 +157,15 @@ const Portfolio = () => {
   const viewportConfig = { once: true, amount: 0.2 };
 
   return (
-    <section className="mt-40" id="projects">
-      <div
-        className="max-w-screen-2xl m-auto z-50"
-        // variants={containerAnimationVariants}
-        // initial="hidden"
-        // whileInView="visible"
-        // viewport={viewportConfig}
-      >
+    <motion.section
+      className="mt-40"
+      id="projects"
+      variants={containerAnimationVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportConfig}
+    >
+      <div className="max-w-screen-2xl m-auto z-50">
         <div>
           <p className="opacity-80 mb-6">PORTFOLIO</p>
           <p className="font-bold text-5xl mb-4">Projects I built </p>
@@ -190,7 +191,7 @@ const Portfolio = () => {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -193,7 +193,7 @@ export const projects = [
       dark: "/assets/projects/favCities-dark.webp",
     },
     buttons: [
-      { label: "DEMO", live_demo: "https://favorite-cities.vercel.app" },
+      { label: "DEMO", live_demo: "https://cardinal-ran.vercel.app" },
       {
         label: "VIEW CODE",
         source_code_link: "https://github.com/ssupream/favoriteCities",
@@ -216,7 +216,7 @@ export const projects = [
       dark: "/assets/projects/quiz.webp",
     },
     buttons: [
-      { label: "DEMO", live_demo: "#" },
+      { label: "DEMO", live_demo: "https://next-quiz-ran.vercel.app/" },
       {
         label: "VIEW CODE",
         source_code_link: "https://github.com/ssupream/InteractiveQuizApp",
@@ -240,7 +240,7 @@ export const projects = [
       dark: "/assets/projects/diary-dark.webp",
     },
     buttons: [
-      { label: "DEMO", live_demo: "#" },
+      { label: "DEMO", live_demo: "https://diary-ran.vercel.app/" },
       {
         label: "VIEW CODE",
         source_code_link: "https://github.com/ssupream/apple-like-diary",
