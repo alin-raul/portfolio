@@ -130,17 +130,17 @@ const FlexibleCard = () => (
           </p>
         </div>
         <div className="flex flex-wrap gap-1 mt-auto z-[30]">
-          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40">
+          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40 backdrop-blur-md">
             <MapPin className="w-4 h-4" />
             Brașov, RO
           </span>
-          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40">
+          <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40 backdrop-blur-md">
             <Languages className="w-4 h-4" /> ENG, RO, IT, DE
           </span>
         </div>
       </div>
     </div>
-    <GlobeComponent />
+    {/* <GlobeComponent /> */}
   </Card>
 );
 

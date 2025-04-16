@@ -31,6 +31,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/curriculum/page.js"
-  ],
+, "app/components/main/sections/curriculumComponent/EducationSection.tsxx", "app/components/main/sections/curriculumComponent/ExperienceSection.tsxx", "app/about/page.js"  ],
   "exclude": ["node_modules"]
 }

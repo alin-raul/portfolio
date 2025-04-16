@@ -37,7 +37,7 @@ const radialItemVariants = {
 
 const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
   return (
-    <motion.div className="relative">
+    <div className="relative">
       <div className="flex justify-between text-xs mb-1">
         <span className="mx-auto select-none">{level}</span>
       </div>
@@ -51,11 +51,11 @@ const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
         </span>
         <div
           className="w-full h-full rounded-t-3xl rounded-b-3xl transition-all duration-300 absolute
-             bottom-0 px-3 py-1 backdrop-blur-md bg-black/20 dark:bg-white/20"
+             bottom-0 px-3 py-1  bg-black/20 dark:bg-white/20"
           style={{ opacity: 0.4 }}
         />
         <motion.div
-          className="w-full rounded-t-3xl rounded-b-3xl absolute bottom-0 px-3 py-1 backdrop-blur-md origin-bottom bg-white"
+          className="w-full rounded-t-3xl rounded-b-3xl absolute bottom-0 px-3 py-1 origin-bottom bg-white"
           style={{
             height: level,
             opacity: 1,
@@ -67,7 +67,7 @@ const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
           }}
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -75,12 +75,12 @@ const SkillProgression = () => {
   const viewportConfig = { once: true, amount: 0.2 };
 
   return (
-    <motion.section
+    <section
       className="h-fit z-20 w-full"
-      variants={containerAnimationVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewportConfig}
+      // variants={containerAnimationVariants}
+      // initial="hidden"
+      // whileInView="visible"
+      // viewport={viewportConfig}
     >
       <div className="flex flex-col gap-4 h-full w-full">
         <div className="flex flex-col gap-4 p-6 lg:p-8 lg:w-full">
@@ -98,21 +98,21 @@ const SkillProgression = () => {
         </div>
 
         <div className="xl:flex gap-5">
-          <motion.div
+          <div
             className="card-w-space p-6 w-full mb-4 xl:mb-0"
-            variants={itemAnimationVariants}
+            // variants={itemAnimationVariants}
           >
             <div className="flex justify-between items-center mb-6">
               <p className="text-sm font-semibold">Core Proficiencies</p>
               <span className="text-xs opacity-50">2+ years growth</span>
             </div>
 
-            <motion.div
+            <div
               className="grid grid-cols-[repeat(auto-fit,minmax(1.6rem,1fr))] md:flex flex-wrap gap-4 justify-evenly"
-              variants={containerAnimationVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportConfig}
+              // variants={containerAnimationVariants}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={viewportConfig}
             >
               <SkillBar
                 name="JavaScript"
@@ -134,24 +134,24 @@ const SkillProgression = () => {
                 level="80%"
                 color="rgba(224, 72, 234)"
               />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div
+          <div
             className="card-w-space p-6 w-full flex flex-col"
-            variants={containerAnimationVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
+            // variants={containerAnimationVariants}
+            // initial="hidden"
+            // whileInView="visible"
+            // viewport={viewportConfig}
           >
             <p className="text-sm font-semibold mb-8">Advanced Experience</p>
 
-            <motion.div
+            <div
               className="w-full flex-1 min-h-0"
-              variants={containerAnimationVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportConfig}
+              // variants={containerAnimationVariants}
+              // initial="hidden"
+              // whileInView="visible"
+              // viewport={viewportConfig}
             >
               <div className="grid gap-6 sm:gap-8 place-items-center grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] md:grid-cols-4 h-full">
                 <motion.div variants={radialItemVariants}>
@@ -199,22 +199,20 @@ const SkillProgression = () => {
                   />
                 </motion.div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Row Container - Triggers stagger for the 3 cards below */}
-        <motion.div
+        <div
           className="md:flex flex-grow gap-4 w-full"
-          variants={containerAnimationVariants} // Use container variants for staggering
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig} // Trigger when this row is in view
+          // variants={containerAnimationVariants}
+          // initial="hidden"
+          // whileInView="visible"
+          // viewport={viewportConfig}
         >
-          {/* Each card in this row uses itemAnimationVariants */}
-          <motion.div
+          <div
             className="card-w-space w-full p-6 mb-5 md:mb-0"
-            variants={itemAnimationVariants} // Use standard item variants
+            // variants={itemAnimationVariants}
           >
             <p className="text-sm font-semibold mb-4 opacity-80">
               Actively Growing
@@ -228,11 +226,11 @@ const SkillProgression = () => {
             <p className="text-xs mt-auto opacity-80">
               Continuously expanding my skill set...
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="card-w-space w-full p-6 mb-5 md:mb-0"
-            variants={itemAnimationVariants} // Use standard item variants
+            // variants={itemAnimationVariants}
           >
             <p className="text-sm font-semibold mb-4 opacity-80">
               Planning to Grow
@@ -247,11 +245,11 @@ const SkillProgression = () => {
             <p className="text-xs mt-auto opacity-80">
               Focusing on enhancing my expertise...
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
+          <div
             className="card-w-space w-full p-6 mb-5 md:mb-0"
-            variants={itemAnimationVariants} // Use standard item variants
+            // variants={itemAnimationVariants}
           >
             <p className="text-sm font-semibold opacity-60 mb-4">
               Other Skills & Tools
@@ -264,10 +262,10 @@ const SkillProgression = () => {
             <p className="text-xs mt-auto opacity-80">
               A diverse set of tools...
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
