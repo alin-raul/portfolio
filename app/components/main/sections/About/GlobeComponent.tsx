@@ -1,171 +1,218 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import Globe, { GlobeMethods } from "react-globe.gl";
 import * as THREE from "three";
-import { useEffect, useRef, useState } from "react";
-import { mergeBufferGeometries, RenderPass, ShaderPass } from "three-stdlib";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { Feature } from "geojson";
 
-interface GlobeProps {
-  maskImage: string;
-  position?: [number, number, number];
-  scale?: [number, number, number];
-  rotation?: THREE.Euler | [number, number, number, THREE.EulerOrder?];
+// --- Constants ---
+const ROTATION_SPEED = 0.15;
+const AXIAL_TILT_DEGREES = 23.5;
+
+// --- Component Props Interface ---
+interface DotGlobeComponentProps {
+  geojsonPath?: string;
+  dotResolution?: number;
+  dotMargin?: number;
+  backgroundColor?: string;
+  atmosphereColor?: string;
+  /** Canvas width (pixels) */
+  width?: number; // Changed to number | undefined
+  /** Canvas height (pixels) */
+  height?: number; // Changed to number | undefined
+  /** X offset within canvas (pixels from center) */
+  globeOffsetX?: number;
+  /** Y offset within canvas (pixels from center, positive likely DOWN) */
+  globeOffsetY?: number;
+  /** Uniform scale factor for the 3D globe object */
+  globeScaleFactor?: number;
 }
 
-const SPHERE_RADIUS = 15;
-const LATITUDE_COUNT = 120; // Increased for better distribution
-const DOT_DENSITY = 3; // Increased density
-const DOT_SIZE = 0.12;
-const BLACK_THRESHOLD = 50; // RGB value threshold for black detection
+// --- The Globe Component ---
+export default function GlobeComponent({
+  geojsonPath = "/data/countries.geojson",
+  dotResolution = 3,
+  dotMargin = 0.2,
+  backgroundColor = "rgba(0,0,0,0)",
+  atmosphereColor = "#bcbcbc",
+  // Remove string defaults - parent must provide numbers or undefined
+  width,
+  height,
+  globeOffsetX = 0,
+  globeOffsetY = 0,
+  globeScaleFactor = 1,
+}: DotGlobeComponentProps) {
+  const [landPolygons, setLandPolygons] = useState<Feature[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  // FIX 1: Initialize useRef with null
+  const globeEl = useRef<GlobeMethods | undefined>(undefined);
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const globeObjectRef = useRef<THREE.Object3D | null>(null);
 
-const spherePointToUV = (
-  dotCenter: THREE.Vector3,
-  sphereCenter: THREE.Vector3
-) => {
-  const newVector = new THREE.Vector3();
-  newVector.subVectors(dotCenter, sphereCenter).normalize();
-  const uvX = 0.5 + Math.atan2(newVector.z, newVector.x) / (2 * Math.PI);
-  const uvY = 0.5 - Math.asin(newVector.y) / Math.PI;
-  return new THREE.Vector2(uvX, uvY);
-};
+  const [initialCoords] = useState({ lat: 45.6579, lng: 25.6012 });
+  const [baseInitialAltitude] = useState(2.0);
 
-const sampleImage = (imageData: ImageData, uv: THREE.Vector2) => {
-  const x = Math.floor(uv.x * imageData.width);
-  const y = Math.floor((1 - uv.y) * imageData.height);
-  const point = (y * imageData.width + x) * 4;
-  return imageData.data.slice(point, point + 4);
-};
-
-const Dots = ({
-  maskImage,
-  dotColor,
-}: {
-  maskImage: string;
-  dotColor: string;
-}) => {
-  const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
-
+  // --- Data Loading Effect (No changes) ---
   useEffect(() => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = maskImage;
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+    setIsLoading(true);
+    sceneRef.current = null;
+    globeObjectRef.current = null;
+    fetch(geojsonPath)
+      .then((res) => {
+        if (!res.ok)
+          throw new Error(
+            `HTTP error! status: ${res.status} for ${geojsonPath}`
+          );
+        return res.json();
+      })
+      .then((data) => {
+        const features =
+          data.features ||
+          (data.type === "FeatureCollection" ? data.features : []);
+        if (!Array.isArray(features))
+          throw new Error(
+            `GeoJSON file "${geojsonPath}" does not contain a valid FeatureCollection.`
+          );
+        setLandPolygons(features as Feature[]);
+      })
+      .catch((error) => {
+        console.error("Error loading GeoJSON data:", error);
+        setLandPolygons([]);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [geojsonPath]);
 
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-      const imageData = ctx.getImageData(0, 0, img.width, img.height);
-
-      const dotGeometries: THREE.BufferGeometry[] = [];
-      const vector = new THREE.Vector3();
-
-      for (let lat = 0; lat < LATITUDE_COUNT; lat++) {
-        const angle = (-90 + (180 / LATITUDE_COUNT) * lat) * (Math.PI / 180);
-        const radius = Math.cos(angle) * SPHERE_RADIUS;
-        const latitudeCircumference = radius * Math.PI * 2;
-        const latitudeDotCount = Math.ceil(latitudeCircumference * DOT_DENSITY);
-
-        for (let dot = 0; dot < latitudeDotCount; dot++) {
-          const phi = (Math.PI / LATITUDE_COUNT) * lat;
-          const theta = ((2 * Math.PI) / latitudeDotCount) * dot;
-          vector.setFromSphericalCoords(SPHERE_RADIUS, phi, theta);
-
-          const uv = spherePointToUV(vector, new THREE.Vector3());
-          const pixel = sampleImage(imageData, uv);
-
-          // Check for black pixels (land)
-          if (
-            pixel[0] < BLACK_THRESHOLD &&
-            pixel[1] < BLACK_THRESHOLD &&
-            pixel[2] < BLACK_THRESHOLD
-          ) {
-            const dotGeometry = new THREE.CircleGeometry(DOT_SIZE, 5);
-            dotGeometry.lookAt(vector);
-            dotGeometry.translate(vector.x, vector.y, vector.z);
-            dotGeometries.push(dotGeometry);
-          }
-        }
-      }
-
-      if (dotGeometries.length > 0) {
-        const merged = mergeBufferGeometries(dotGeometries);
-        if (merged) {
-          merged.computeBoundingSphere();
-          merged.computeVertexNormals();
-          setGeometry(merged);
-        }
-      }
-    };
-  }, [maskImage]);
-
-  return geometry ? (
-    <mesh geometry={geometry} layers={0}>
-      <meshBasicMaterial
-        color={dotColor}
-        side={THREE.DoubleSide}
-        depthWrite={false}
-      />
-    </mesh>
-  ) : null;
-};
-
-const Globe = ({
-  maskImage,
-  position = [40, -20, 0],
-  scale = [2, 2, 2],
-}: GlobeProps) => {
-  const groupRef = useRef<THREE.Group>(null);
-  const { resolvedTheme } = useTheme();
-
-  useFrame((_, delta) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.1;
-    }
-  });
-
-  return (
-    <group position={position} scale={scale} rotation={[0.3, 1.1, 0]}>
-      {/* Axial tilt group */}
-      <group rotation={[(-23.5 * Math.PI) / 180, 0, 0]}>
-        {/* Rotation group */}
-        <group ref={groupRef}>
-          {/* Y-axis inversion group */}
-          <group scale={[1, -1, -1]}>
-            <mesh receiveShadow={false} castShadow={false}>
-              <sphereGeometry args={[SPHERE_RADIUS, 64, 64]} />
-              <meshBasicMaterial color="#fafafa" transparent={false} />
-            </mesh>
-            <Dots maskImage={maskImage} dotColor="#ababab" />
-          </group>
-        </group>
-      </group>
-    </group>
+  // --- Globe Material (No changes) ---
+  const globeMaterial = useMemo(
+    () => new THREE.MeshBasicMaterial({ color: "#dbdbdb" }),
+    []
   );
-};
 
-export default function GlobeComponent() {
-  const { resolvedTheme } = useTheme();
+  // --- Find Globe Object & Apply ONLY Scale/Tilt (No changes) ---
+  useEffect(() => {
+    if (isLoading || !globeEl.current || !globeScaleFactor) return;
+    if (!sceneRef.current) sceneRef.current = globeEl.current.scene();
+    const scene = sceneRef.current;
+    if (!scene) return;
+    if (!globeObjectRef.current) {
+      const potentialGlobe = scene.children.find(
+        (child) => child instanceof THREE.Group || child instanceof THREE.Mesh
+      );
+      if (potentialGlobe) {
+        globeObjectRef.current = potentialGlobe;
+        console.log("Found Globe Object:", globeObjectRef.current);
+      } else {
+        console.warn("Could not find Globe Object.");
+        return;
+      }
+    }
+    const globeObject = globeObjectRef.current;
+    if (!globeObject) return;
+    const targetRotationX = (AXIAL_TILT_DEGREES * Math.PI) / 180;
+    if (globeObject.rotation.x !== targetRotationX)
+      globeObject.rotation.x = targetRotationX;
+    if (
+      globeObject.scale.x !== globeScaleFactor ||
+      globeObject.scale.y !== globeScaleFactor ||
+      globeObject.scale.z !== globeScaleFactor
+    ) {
+      globeObject.scale.set(
+        globeScaleFactor,
+        globeScaleFactor,
+        globeScaleFactor
+      );
+      console.log(`Applied globe scale factor: ${globeScaleFactor}`);
+    }
+  }, [isLoading, globeScaleFactor]);
 
+  // --- Auto-Rotation & Camera Positioning Effect (No changes) ---
+  useEffect(() => {
+    if (isLoading || !globeEl.current || !globeScaleFactor) return;
+    let frameId: number | null = null;
+    const safeScaleFactor = Math.max(0.1, globeScaleFactor);
+    const adjustedInitialAltitude = baseInitialAltitude / safeScaleFactor;
+    // console.log(`Base Alt: ${baseInitialAltitude}, Scale: ${globeScaleFactor}, Adjusted Alt: ${adjustedInitialAltitude}`);
+    globeEl.current.pointOfView(
+      {
+        lat: initialCoords.lat,
+        lng: initialCoords.lng,
+        altitude: adjustedInitialAltitude,
+      },
+      0
+    );
+    const rotationTimeout = setTimeout(() => {
+      if (!globeEl.current) return;
+      let lastPov = globeEl.current.pointOfView();
+      const rotateGlobe = () => {
+        if (globeEl.current && lastPov) {
+          const currentLng = lastPov.lng || 0;
+          const nextLng = currentLng + ROTATION_SPEED;
+          lastPov = { ...lastPov, lng: nextLng };
+          globeEl.current.pointOfView(
+            { lat: lastPov.lat, lng: nextLng, altitude: lastPov.altitude },
+            0
+          );
+        } else if (globeEl.current) {
+          lastPov = globeEl.current.pointOfView();
+        }
+        if (frameId !== null) frameId = requestAnimationFrame(rotateGlobe);
+      };
+      frameId = requestAnimationFrame(rotateGlobe);
+    }, 50);
+    return () => {
+      clearTimeout(rotationTimeout);
+      if (frameId !== null) cancelAnimationFrame(frameId);
+      frameId = null;
+    };
+  }, [isLoading, initialCoords, baseInitialAltitude, globeScaleFactor]);
+
+  // --- Render the Globe ---
+  if (isLoading) {
+    // Render a placeholder div with the intended size during loading
+    return (
+      <div
+        style={{
+          width: width ? `${width}px` : "100%", // Use pixels if number provided, else fallback
+          height: height ? `${height}px` : "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "grey",
+        }}
+      >
+        Loading...
+      </div>
+    );
+  }
+
+  // Pass props directly to the Globe component
+  // width/height are now number | undefined, matching the expected type
   return (
-    <div className="w-full h-full absolute inset-0 z-[-1]">
-      <Canvas camera={{ position: [0, 0, 220], fov: 20 }}>
-        <Globe maskImage="/assets/earth.webp" scale={[3, 3, 3]} />
-
-        <EffectComposer>
-          <Bloom
-            intensity={resolvedTheme === "dark" ? 8 : 2}
-            kernelSize={resolvedTheme === "dark" ? 5 : 4}
-            luminanceThreshold={0.9}
-            luminanceSmoothing={0.9}
-          />
-        </EffectComposer>
-      </Canvas>
-    </div>
+    <Globe
+      ref={globeEl}
+      // --- Direct Canvas Control ---
+      width={width} // Pass number or undefined
+      height={height} // Pass number or undefined
+      globeOffset={[globeOffsetX, globeOffsetY]}
+      backgroundColor={backgroundColor}
+      // Appearance
+      globeMaterial={globeMaterial}
+      globeImageUrl={null}
+      // Atmosphere
+      showAtmosphere={true}
+      atmosphereColor={atmosphereColor}
+      atmosphereAltitude={0.25}
+      // Dots
+      hexPolygonsData={landPolygons}
+      hexPolygonUseDots={true}
+      hexPolygonColor={() => "#7f7c7c"} // Example color
+      hexPolygonResolution={dotResolution}
+      hexPolygonMargin={dotMargin}
+      hexPolygonLabel={undefined}
+      // Interaction
+      enablePointerInteraction={false}
+    />
   );
 }

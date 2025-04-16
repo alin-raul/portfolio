@@ -13,7 +13,6 @@ import {
   Save,
   Terminal,
 } from "lucide-react";
-import GlobeComponent from "./GlobeComponent";
 import Blob from "@/app/components/effects/Blob";
 import MonochromeCarousel from "@/app/components/global/MonochromeCarousel";
 import { TechStack } from "@/constants";
@@ -28,6 +27,27 @@ import {
   containerAnimationVariants,
   itemAnimationVariants,
 } from "@/utils/motion";
+import dynamic from "next/dynamic";
+
+const DynamicGlobe = dynamic(
+  () => import("./GlobeComponent"), // Adjust the path as needed
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        style={{
+          height: "400px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "grey",
+        }}
+      >
+        <p>Loading Globe...</p>
+      </div>
+    ),
+  }
+);
 
 export const Card = ({
   children,
@@ -140,7 +160,19 @@ const FlexibleCard = () => (
         </div>
       </div>
     </div>
-    <GlobeComponent />
+
+    <div className="absolute bottom-[0rem] right-[0rem] z-0">
+      <DynamicGlobe
+        geojsonPath="/assets/geojson/custom.geo.json"
+        backgroundColor="rgba(0,0,0,0)"
+        atmosphereColor="white"
+        width={500}
+        height={500}
+        globeOffsetX={200}
+        globeOffsetY={200}
+        globeScaleFactor={1.5}
+      />
+    </div>
   </Card>
 );
 
