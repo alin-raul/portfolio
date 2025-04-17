@@ -38,7 +38,7 @@ const radialItemVariants = {
 const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
   return (
     <div className="relative w-fit">
-      <div className="md:flex justify-evenly text-xs mb-1 hidden border">
+      <div className="md:flex justify-evenly text-xs mb-1 hidden">
         <span className="mx-auto select-none ">{level}</span>
       </div>
       <div className="relative w-6 md:w-10 h-40 mt-4">
