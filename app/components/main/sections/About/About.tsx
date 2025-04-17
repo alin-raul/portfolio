@@ -161,7 +161,7 @@ const FlexibleCard = () => (
       </div>
     </div>
 
-    <div className="absolute bottom-[0rem] right-[0rem] z-0">
+    <div className="absolute bottom-[0rem] right-[0rem] z-0 pointer-events-none ">
       <DynamicGlobe
         geojsonPath="/assets/geojson/custom.geo.json"
         backgroundColor="rgba(0,0,0,0)"
@@ -206,14 +206,14 @@ const ContactCard = () => {
           </p>
         </div>
       </div>
-      <div className="flex xl:flex-col md:flex-row gap-2 w-full p-4 mt-auto">
+      <div className="block md:flex xl:flex-col md:flex-row gap-2 w-full p-4 mt-auto">
         {contactAboutLinks.map((link, index) => (
           <Link
             key={index}
             href={link.href}
             target={link.target}
             rel={link.rel}
-            className="group flex w-full "
+            className="group flex w-full mb-4 sm:mb-0"
           >
             <button
               className={`group w-full flex justify-center hover:px-6 py-4 rounded-3xl gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl ${

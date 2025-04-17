@@ -37,11 +37,11 @@ const radialItemVariants = {
 
 const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
   return (
-    <div className="relative">
-      <div className="flex justify-between text-xs mb-1">
-        <span className="mx-auto select-none">{level}</span>
+    <div className="relative w-fit">
+      <div className="md:flex justify-evenly text-xs mb-1 hidden border">
+        <span className="mx-auto select-none ">{level}</span>
       </div>
-      <div className="relative w-10 h-40 mt-4">
+      <div className="relative w-6 md:w-10 h-40 mt-4">
         <div
           className="absolute inset-0 rounded-t-3xl rounded-b-3xl overflow-hidden"
           style={{ opacity: 0.4, zIndex: -1 }}
@@ -51,16 +51,16 @@ const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
         </span>
         <div
           className="w-full h-full rounded-t-3xl rounded-b-3xl transition-all duration-300 absolute
-             bottom-0 px-3 py-1  bg-black/20 dark:bg-white/20"
+             bottom-0 px-1 py-1  bg-black/20 dark:bg-white/20"
           style={{ opacity: 0.4 }}
         />
         <motion.div
-          className="w-full rounded-t-3xl rounded-b-3xl absolute bottom-0 px-3 py-1 origin-bottom bg-white"
+          className="w-full rounded-t-3xl rounded-b-3xl absolute bottom-0 py-1 origin-bottom bg-white"
           style={{
             height: level,
             opacity: 1,
           }}
-          variants={skillBarItemVariants} // This item uses skill bar variants
+          variants={skillBarItemVariants}
           whileHover={{
             scaleY: 1.1,
             transition: { type: "spring", stiffness: 300, damping: 8 },
@@ -83,10 +83,12 @@ const SkillProgression = () => {
       viewport={viewportConfig}
     >
       <div className="flex flex-col gap-4 h-full w-full">
-        <div className="flex flex-col gap-4 p-6 lg:p-8 lg:w-full">
+        <div className="flex flex-col gap-4 md:p-6 lg:p-8 lg:w-full mb-6 md:mb:0">
           <p className="font-medium text-sm opacity-70">EXPERTIZE</p>
           <div className="mt-auto">
-            <h1 className="font-bold text-5xl mb-4">Skill Progression </h1>
+            <h1 className="font-bold text-4xl md:text-5xl mb-4">
+              Skill Progression{" "}
+            </h1>
             <p className="opacity-60">
               Over the past two years, I&apos;ve made significant progress in
               mastering a wide range of skills. I&apos;ve dedicated myself to
@@ -108,7 +110,7 @@ const SkillProgression = () => {
             </div>
 
             <motion.div
-              className="grid grid-cols-[repeat(auto-fit,minmax(1.6rem,1fr))] md:flex flex-wrap gap-4 justify-evenly"
+              className="grid grid-cols-[repeat(auto-fit,minmax(1.6rem,1fr))] md:flex flex-wrap md:gap-4 justify-evenly"
               variants={containerAnimationVariants}
               initial="hidden"
               whileInView="visible"

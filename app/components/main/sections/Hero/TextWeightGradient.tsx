@@ -248,7 +248,7 @@ export default function TextWeightGradient() {
 
         <div
           ref={textContainerRef}
-          className="text-6xl md:text-8xl lg:text-[9rem] 2xl:text-[12rem] font-yapari text-center text-white cursor-default select-none whitespace-nowrap flex"
+          className="text-4xl md:text-8xl lg:text-[9rem] 2xl:text-[12rem] font-yapari text-center text-white cursor-default select-none whitespace-nowrap flex"
           aria-label={text}
           style={{ fontVariationSettings: DEFAULT_FONT_WEIGHT_SETTING }}
         >

@@ -57,13 +57,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       variants={itemAnimationVariants}
     >
       <div className="relative">
-        <div className="relative w-full h-fit dark:brightness-50 brightness-100 blur-md md:blur-xl transition-all duration-300">
+        <div className="relative dark:brightness-50 brightness-100 blur-md md:blur-xl transition-all duration-300">
           <Image
-            width={700}
-            height={500}
+            width={200}
+            height={200}
             alt="vercel"
             src={`${currentTheme === "light" ? image.light : image.dark}`}
-            className="w-full sm:h-[20rem] h-[22rem] object-top object-cover rounded-t-[2rem] scale-110 transition-all duration-200"
+            className="w-full h-[12rem] sm:h-[20rem] md:h-[20rem] object-top object-cover rounded-t-[2rem] transition-all duration-200"
           />
         </div>
 
@@ -80,15 +80,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
       <div className="flex flex-col flex-grow gap-2 justify-around p-8">
         <div>
-          <h3 className="font-bold text-2xl">{name}</h3>
-          <p className="mt-2 opacity-70 text-sm font-semibold">{description}</p>
+          <h3 className="font-bold text-xl md:text-2xl">{name}</h3>
+          <p className="mt-2 opacity-70 text-[0.7rem] leading-[1.25rem] sm:text-sm font-semibold">
+            {description}
+          </p>
         </div>
 
         <div className="flex flex-wrap mt-5 gap-2">
           {tags.map((tag) => (
             <p
               key={tag.name}
-              className="opacity-60 hover:opacity-100 cursor-pointer"
+              className="opacity-60 hover:opacity-100 cursor-pointer text-[0.625rem] md:text-base"
             >
               #{tag.name}
             </p>
@@ -96,7 +98,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         <div className="flex mt-2">
-          <div className="flex w-full gap-2">
+          <div className="flex w-full gap-2 flex-wrap">
             {buttons.map((buttonInfo, index) => {
               const isDemo = buttonInfo.label === "DEMO";
               const IconComponent = isDemo ? ArrowUpRight : Github;
@@ -128,7 +130,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   className={isDisabled ? "pointer-events-none" : ""}
                 >
                   <button
-                    className={`group rounded-xl border-accent-foreground/20 flex text-sm h-full justify-center px-3 py-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-300 bg-[var(--bg-dynamic-1)] hover:bg-white/100 text-primary dark:hover:text-primary-foreground font-light hover:font-semibold hover:rounded-lg ${
+                    className={`group rounded-xl border-accent-foreground/20 flex text-sm h-full justify-center px-3 py-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-300 bg-[var(--bg-dynamic-1)] hover:bg-white/100 text-primary dark:hover:text-primary-foreground font-light hover:font-semibold hover:rounded-lg${
                       isDisabled ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                     disabled={isDisabled}
@@ -168,22 +170,24 @@ const Portfolio = () => {
       <div className="max-w-screen-2xl m-auto z-50">
         <div>
           <p className="opacity-80 mb-6">PORTFOLIO</p>
-          <p className="font-bold text-5xl mb-4">Projects I built </p>
-        </div>
-        <div className="mt-3 text-[17px] leading-[30px] z-[30]">
-          <p className="opacity-60">
-            Following projects showcases my skills and experience through
-            real-world examples of my work. Each project is briefly described
-            with links to code repositories and live demos in it. It reflects my
-            ability to solve complex problems, work with different technologies,
-            and manage projects effectively.
+          <p className="font-bold text-4xl md:text-5xl mb-4">
+            Projects I built{" "}
           </p>
         </div>
+
+        <p className="text-base opacity-80">
+          Following projects showcases my skills and experience through
+          real-world examples of my work. Each project is briefly described with
+          links to code repositories and live demos in it. It reflects my
+          ability to solve complex problems, work with different technologies,
+          and manage projects effectively.
+        </p>
 
         <div
           className="mt-20 grid gap-6"
           style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(24rem, 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 24rem), 1fr))",
           }}
         >
           {projects.map((project, index) => (

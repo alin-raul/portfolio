@@ -30,7 +30,7 @@ export const Sidebar: React.FC = ({}) => {
   };
 
   return (
-    <div className=" absolute w-screen h-screen">
+    <div className="absolute w-screen h-screen">
       <AnimatePresence>
         {isVisible ? (
           <motion.div

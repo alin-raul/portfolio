@@ -63,7 +63,7 @@ export default function RootLayout({
           <SidebarProvider>
             <Sidebar />
             <Navbar />
-            <div className="mx-auto relative">{children}</div>
+            <div className="relative">{children}</div>
           </SidebarProvider>
           <Toaster />
         </ThemeProvider>

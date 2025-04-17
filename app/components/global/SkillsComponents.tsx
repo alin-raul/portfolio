@@ -15,7 +15,7 @@ export interface Skill {
 
 export const SkillPill: React.FC<SkillName> = ({ name }) => {
   return (
-    <div className="border border-white-500/30 px-3 py-1 rounded-full dark:bg-black-300/50 bg-white/20">
+    <div className="border border-white-500/30 px-3 py-1 rounded-full dark:bg-black-300/50 bg-white/20 text-xs sm:text-base ">
       {name}
     </div>
   );

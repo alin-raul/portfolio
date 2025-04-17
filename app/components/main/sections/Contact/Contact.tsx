@@ -23,7 +23,7 @@ const Contact = () => {
         height="600px"
       />
       <section
-        className="flex justify-center items-center rounded-2xl max-w-screen-xl mx-auto p-8 h-[50rem]"
+        className="flex justify-center items-center rounded-2xl max-w-screen-xl mx-auto md:p-8 h-[50rem]"
         id="contact"
       >
         <motion.div
@@ -43,7 +43,7 @@ const Contact = () => {
               <h1 className="text-5xl lg:text-6xl font-bold mb-6">
                 Let’s work together
               </h1>
-              <p className="text-base font-base opacity-80 mr-6">
+              <p className="text-base opacity-80 mr-6">
                 Currently available for new web development work! If you have a
                 project, a question, or just want to talk about the next big
                 thing, I&apos;d love to hear from you. Let&apos;s connect and

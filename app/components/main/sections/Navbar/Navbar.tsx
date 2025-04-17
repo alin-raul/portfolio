@@ -79,16 +79,16 @@ const NavbarComponent = () => {
       : portfolioLinks;
 
   return (
-    <div
+    <motion.div
       className="w-full h-14 fixed top-0 left-0 z-50"
-      // variants={containerAnimationVariants}
-      // initial="hidden"
-      // whileInView="visible"
-      // viewport={{ once: true, amount: 0.3 }}
+      variants={containerAnimationVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <nav
-        className="w-full h-full mx-auto max-w-[1800px] px-0 md:px-4"
-        // variants={slideInFromTop}
+      <motion.nav
+        className="w-full h-full md:mx-auto max-w-[1800px] px-0 md:px-4"
+        variants={slideInFromTop}
       >
         <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl backdrop-blur-md dark:bg-black/60 bg-white/50 md:mt-4 h-full px-6 md:px-0">
           <div className="flex font-semibold items-center py-2 pl-1 md:px-6 h-full">
@@ -99,7 +99,6 @@ const NavbarComponent = () => {
 
           <div className="font-semibold py-2 px-4 ml-auto md:px-10 h-auto hidden md:flex">
             {pathname === PATHS.CURRICULUM ? (
-              // Use the dynamically loaded component here
               <DynamicDownloadPDFButton className="ml-auto" />
             ) : (
               ""
@@ -128,8 +127,8 @@ const NavbarComponent = () => {
             )}
           </div>
         </div>
-      </nav>
-    </div>
+      </motion.nav>
+    </motion.div>
   );
 };
 

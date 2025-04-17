@@ -174,7 +174,7 @@ export default function GlobeComponent({
     return (
       <div
         style={{
-          width: width ? `${width}px` : "100%", // Use pixels if number provided, else fallback
+          width: width ? `${width}px` : "100%",
           height: height ? `${height}px` : "100%",
           display: "flex",
           alignItems: "center",

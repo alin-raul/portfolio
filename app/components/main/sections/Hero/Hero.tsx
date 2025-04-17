@@ -1,6 +1,6 @@
 import React from "react";
-import HeroTextSection from "./HeroTextSection";
 import Blob from "@/app/components/effects/Blob";
+import TextWeightGradient from "./TextWeightGradient";
 
 import Hero3dModels from "./Hero3dModels";
 
@@ -25,7 +25,14 @@ const Hero = () => {
         <div className="absolute top-[75rem] right-0 left-0 opacity-30">
           {/* <MovingLightShade fill="rgb(67, 21, 221)" /> */}
         </div>
-        <HeroTextSection />
+        <div
+          id="home"
+          className="px-4 w-full h-full z-[40] relative max-w-screen-xl mx-auto mt-[8px]"
+        >
+          <div className="flex flex-col items-center justify-center h-full w-full">
+            <TextWeightGradient />
+          </div>
+        </div>
       </section>
     </div>
   );
