@@ -16,7 +16,7 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center border">
+    <div className="flex flex-col justify-center">
       <div className="flex flex-col mx-auto min-w-20 h-20 rounded-3xl aspect-square p-4 mb-2 bg-[var(--bg-dynamic-2)]">
         <Image {...imageProps} alt="Project icon" className="object-contain" />
       </div>
