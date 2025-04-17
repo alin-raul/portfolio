@@ -11,6 +11,7 @@ import { portfolioLinks, aboutLinks, curriculumLinks } from "@/constants";
 import { motion } from "framer-motion";
 import { containerAnimationVariants, slideInFromTop } from "@/utils/motion";
 import dynamic from "next/dynamic";
+import LogoRan from "../../LogoRan";
 
 type Pathname = { pathname: string };
 
@@ -27,7 +28,7 @@ const TARGETS = {
 const baseLinkClasses = "flex items-center gap-6";
 const arrowWrapperClasses =
   "group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl";
-const logoTextClasses = "flex font-yapari text-xl";
+const logoTextClasses = "flex font-yapari text-xl my-auto";
 const mobileIconClasses = "md:hidden w-8 h-8";
 
 const LogoContent = ({ pathname }: Pathname) => {
@@ -49,12 +50,24 @@ const LogoContent = ({ pathname }: Pathname) => {
         <div className={arrowWrapperClasses}>
           <ArrowLeft className="w-4 h-4 group-hover:w-5 group-hover:h-5 transition-all duration-200" />
         </div>
-        <span className={logoTextClasses}>ran</span>
+        <div className="flex h-full w-full">
+          <div className="hidden sm:block w-8 mr-2">
+            <LogoRan />
+          </div>
+          <span className={logoTextClasses}>ran</span>
+        </div>
       </Link>
     );
   }
 
-  return <span className={logoTextClasses}>ran</span>;
+  return (
+    <div className="flex h-full w-full">
+      <div className="w-8 mr-2">
+        <LogoRan />
+      </div>
+      <span className={logoTextClasses}>ran</span>
+    </div>
+  );
 };
 
 // --- Dynamically import DownloadPDFButton ---

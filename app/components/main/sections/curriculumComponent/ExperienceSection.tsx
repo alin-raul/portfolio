@@ -37,18 +37,18 @@ const ExperienceCard = ({
   };
 
   return (
-    <GridCard className="p-8 h-full mb-4 lg:mb-0">
+    <GridCard className="p-4 sm:p-8 h-full mb-4 lg:mb-0">
       <div className="flex-col sm:flex-row flex">
-        <div className="flex order-2 sm:order-1">
-          <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3">
+        <div className="block sm:flex order-2 sm:order-1">
+          <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3 sm:p-0 my-6 sm:my-0 mx-auto">
             <Image
               {...imageProps}
               alt="Company logo"
               draggable={false}
-              className="object-contain"
+              className="object-contain "
             />
           </div>
-          <div className="flex flex-col justify-center ml-6">
+          <div className="flex flex-col justify-center items-center sm:items-start sm:ml-6">
             <h1
               className={`${
                 isLong
@@ -74,7 +74,7 @@ const ExperienceCard = ({
         </div>
       </div>
       <div className="mt-14">
-        <ul className="flex flex-col gap-2 list-disc pl-4 text-sm md:text-base">
+        <ul className="flex flex-col gap-2 list-disc pl-4 text-[0.65rem] md:text-base">
           {list.map(({ skill, description }, index) => (
             <li key={index}>
               <span className="font-bold">{skill}:</span>

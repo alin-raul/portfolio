@@ -398,11 +398,8 @@ const CurriculumPDF = () => (
         <View style={styles.profileHeaderText}>
           <Text>29 years old, Romania</Text>
           <Text>workdevraul@gmail.com</Text>
-          <PdfLink
-            src="https://portfolio-lemon-rho-10.vercel.app"
-            style={styles.link}
-          >
-            website.com {/* Replace */}
+          <PdfLink src="https://ran-portfolio.vercel.app/" style={styles.link}>
+            ran-portfolio {/* Replace */}
           </PdfLink>
         </View>
       </View>

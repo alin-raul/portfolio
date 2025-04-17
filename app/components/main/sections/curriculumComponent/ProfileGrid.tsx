@@ -16,7 +16,7 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center border">
       <div className="flex flex-col mx-auto min-w-20 h-20 rounded-3xl aspect-square p-4 mb-2 bg-[var(--bg-dynamic-2)]">
         <Image {...imageProps} alt="Project icon" className="object-contain" />
       </div>
@@ -38,11 +38,11 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
 };
 
 const ProjectsSection = () => (
-  <GridCard className="overflow-hidden p-6">
+  <GridCard className="overflow-hidden sm:p-6">
     <h1 className="text-2xl font-bold text-muted-foreground mb-4">
       Apps I made
     </h1>
-    <div className="flex flex-wrap gap-2 justify-between">
+    <div className="flex flex-wrap sm:gap-2 mb-2 sm:mb-0 scale-90 sm:scale-100 justify-between">
       {projects.map((project) => (
         <ProjectCard key={project.name} project={project} />
       ))}
@@ -63,7 +63,9 @@ const InterestsSection = () => (
           "⛰️ Traveling",
         ].map((interest) => (
           <div key={interest} className="border py-1 px-3 rounded-md bg-muted">
-            <p className="text-nowrap font-semibold">{interest}</p>
+            <p className="text-nowrap font-semibold text-xs sm:text-base">
+              {interest}
+            </p>
           </div>
         ))}
       </div>
@@ -73,7 +75,7 @@ const InterestsSection = () => (
 
 const ProfileGrid = () => (
   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-    <GridCard className="overflow-hidden w-full h-96 sm:h-full">
+    <GridCard className="overflow-hidden w-full min-h-72 sm:h-full">
       <Image
         src="/photos/profile_pic.webp"
         alt="Me"
