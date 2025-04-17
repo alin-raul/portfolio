@@ -168,8 +168,8 @@ const FlexibleCard = () => (
         atmosphereColor="white"
         width={500}
         height={500}
-        globeOffsetX={200}
-        globeOffsetY={200}
+        globeOffsetX={210}
+        globeOffsetY={250}
         globeScaleFactor={1.5}
       />
     </div>

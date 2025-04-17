@@ -107,12 +107,12 @@ const SkillProgression = () => {
               <span className="text-xs opacity-50">2+ years growth</span>
             </div>
 
-            <div
+            <motion.div
               className="grid grid-cols-[repeat(auto-fit,minmax(1.6rem,1fr))] md:flex flex-wrap gap-4 justify-evenly"
-              // variants={containerAnimationVariants}
-              // initial="hidden"
-              // whileInView="visible"
-              // viewport={viewportConfig}
+              variants={containerAnimationVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportConfig}
             >
               <SkillBar
                 name="JavaScript"
@@ -134,12 +134,15 @@ const SkillProgression = () => {
                 level="80%"
                 color="rgba(224, 72, 234)"
               />
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
             className="card-w-space p-6 w-full flex flex-col"
-            variants={itemAnimationVariants}
+            variants={containerAnimationVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
           >
             <p className="text-sm font-semibold mb-8">Advanced Experience</p>
 
@@ -196,9 +199,15 @@ const SkillProgression = () => {
 
         <motion.div
           className="md:flex flex-grow gap-4 w-full"
-          variants={itemAnimationVariants}
+          variants={containerAnimationVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
         >
-          <div className="card-w-space w-full p-6 mb-5 md:mb-0">
+          <motion.div
+            className="card-w-space w-full p-6 mb-5 md:mb-0"
+            variants={itemAnimationVariants}
+          >
             <p className="text-sm font-semibold mb-4 opacity-80">
               Actively Growing
             </p>
@@ -211,11 +220,11 @@ const SkillProgression = () => {
             <p className="text-xs mt-auto opacity-80">
               Continuously expanding my skill set...
             </p>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
             className="card-w-space w-full p-6 mb-5 md:mb-0"
-            // variants={itemAnimationVariants}
+            variants={itemAnimationVariants}
           >
             <p className="text-sm font-semibold mb-4 opacity-80">
               Planning to Grow
@@ -230,11 +239,11 @@ const SkillProgression = () => {
             <p className="text-xs mt-auto opacity-80">
               Focusing on enhancing my expertise...
             </p>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
             className="card-w-space w-full p-6 mb-5 md:mb-0"
-            // variants={itemAnimationVariants}
+            variants={itemAnimationVariants}
           >
             <p className="text-sm font-semibold opacity-60 mb-4">
               Other Skills & Tools
@@ -247,7 +256,7 @@ const SkillProgression = () => {
             <p className="text-xs mt-auto opacity-80">
               A diverse set of tools...
             </p>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </motion.section>

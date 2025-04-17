@@ -34,7 +34,7 @@ export default function GlobeComponent({
   dotResolution = 3,
   dotMargin = 0.2,
   backgroundColor = "rgba(0,0,0,0)",
-  atmosphereColor = "#bcbcbc",
+  atmosphereColor = "#fff",
   // Remove string defaults - parent must provide numbers or undefined
   width,
   height,
@@ -86,7 +86,7 @@ export default function GlobeComponent({
 
   // --- Globe Material (No changes) ---
   const globeMaterial = useMemo(
-    () => new THREE.MeshBasicMaterial({ color: "#dbdbdb" }),
+    () => new THREE.MeshBasicMaterial({ color: "#fff" }),
     []
   );
 
@@ -203,11 +203,11 @@ export default function GlobeComponent({
       // Atmosphere
       showAtmosphere={true}
       atmosphereColor={atmosphereColor}
-      atmosphereAltitude={0.25}
+      atmosphereAltitude={0.18}
       // Dots
       hexPolygonsData={landPolygons}
       hexPolygonUseDots={true}
-      hexPolygonColor={() => "#7f7c7c"} // Example color
+      hexPolygonColor={() => "#b9b9b9"} // Example color
       hexPolygonResolution={dotResolution}
       hexPolygonMargin={dotMargin}
       hexPolygonLabel={undefined}
