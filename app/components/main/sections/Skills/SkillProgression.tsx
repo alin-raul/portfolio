@@ -41,7 +41,7 @@ const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
       <div className="md:flex justify-evenly text-xs mb-1 hidden">
         <span className="mx-auto select-none ">{level}</span>
       </div>
-      <div className="relative w-6 md:w-10 h-40 mt-4">
+      <div className="relative w-6 sm:w-8 md:w-10 h-40 mt-4">
         <div
           className="absolute inset-0 rounded-t-3xl rounded-b-3xl overflow-hidden"
           style={{ opacity: 0.4, zIndex: -1 }}
