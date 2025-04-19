@@ -9,6 +9,7 @@ import {
   Globe,
   MapPin,
   GraduationCap,
+  Layout,
   Languages,
   Save,
   Terminal,
@@ -22,6 +23,7 @@ import YearsLearning from "./YearsLearning";
 import VirtualPet from "./VirtualPet";
 import { Button } from "@/components/ui/button";
 import GrowthTimeline from "./GrowthTimeline";
+import { SkillPill } from "@/app/components/global/SkillsComponents";
 import { motion } from "framer-motion";
 import {
   containerAnimationVariants,
@@ -69,16 +71,21 @@ const IntroCard = () => (
       I’m a web developer with two years of JavaScript experience, specializing
       in dynamic, responsive websites.
     </p>
-    <div className="flex gap-2 w-full">
-      <span className="flex gap-2 items-center border px-3 py-1 rounded-full bg-accent/40 mt-8">
-        <GraduationCap className="w-4 h-4" /> Software Engineer
-      </span>
+    <div className="flex flex-wrap gap-2 w-full mt-3">
+      <SkillPill
+        icon={<GraduationCap className="w-3 h-3 sm:h-4 sm:w-4" />}
+        name="Software Engineer"
+      />
+      <SkillPill
+        icon={<Layout className="w-3 h-3 sm:h-4 sm:w-4" />}
+        name="Responsive Design"
+      />
     </div>
   </Card>
 );
 
 const ProfileImageCard = () => (
-  <Card className="p-[3rem] overflow-auto md:min-h-full min-h-[32rem] w-full relative">
+  <Card className="p-[3rem] overflow-auto md:min-h-full min-h-64 sm:min-h-[32rem] w-full relative">
     <Image
       src={"/photos/me.webp"}
       alt="me"

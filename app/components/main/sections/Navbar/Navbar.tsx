@@ -4,11 +4,11 @@ import React, { memo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ArrowLeft, Download } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useSidebar } from "@/context/SidebarContext";
 import NavLinks from "./NavLinks";
 import { portfolioLinks, aboutLinks, curriculumLinks } from "@/constants";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { containerAnimationVariants, slideInFromTop } from "@/utils/motion";
 import dynamic from "next/dynamic";
 import LogoRan from "../../LogoRan";
@@ -92,56 +92,55 @@ const NavbarComponent = () => {
       : portfolioLinks;
 
   return (
-    <motion.div
-      className="w-full h-14 fixed top-0 left-0 z-50"
-      variants={containerAnimationVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-    >
-      <motion.nav
-        className="w-full h-full md:mx-auto max-w-[1800px] px-0 md:px-4"
+    <AnimatePresence mode="wait" initial={true}>
+      <motion.div
+        className="w-full h-14 fixed top-0 left-0 z-50"
         variants={slideInFromTop}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
       >
-        <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl backdrop-blur-md dark:bg-black/60 bg-white/50 md:mt-4 h-full px-6 md:px-0">
-          <div className="flex font-semibold items-center py-2 pl-1 md:px-6 h-full">
-            <span className="text-nowrap">
-              <LogoContent pathname={pathname} />
-            </span>
-          </div>
+        <nav className="w-full h-full md:mx-auto max-w-[1800px] px-0 md:px-4">
+          <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl backdrop-blur-md dark:bg-black/60 bg-white/50 md:mt-4 h-full px-6 md:px-0">
+            <div className="flex font-semibold items-center py-2 pl-1 md:px-6 h-full">
+              <span className="text-nowrap">
+                <LogoContent pathname={pathname} />
+              </span>
+            </div>
 
-          <div className="font-semibold py-2 px-4 ml-auto md:px-10 h-auto hidden md:flex">
-            {pathname === PATHS.CURRICULUM ? (
-              <DynamicDownloadPDFButton className="ml-auto" />
-            ) : (
-              ""
-            )}
-            <NavLinks links={currentLinks} />
-          </div>
+            <div className="font-semibold py-2 px-4 ml-auto md:px-10 h-auto hidden md:flex">
+              {pathname === PATHS.CURRICULUM ? (
+                <DynamicDownloadPDFButton className="ml-auto" />
+              ) : (
+                ""
+              )}
+              <NavLinks links={currentLinks} />
+            </div>
 
-          <div className="flex items-center md:hidden">
-            {pathname === PATHS.CURRICULUM ? (
-              <DynamicDownloadPDFButton className="ml-auto" />
-            ) : (
-              <div className="flex">
-                <button
-                  onClick={toggleSidebar}
-                  className="z-50 relative p-2 mr-2"
-                  aria-label={isVisible ? "Close menu" : "Open menu"}
-                  aria-expanded={isVisible}
-                >
-                  {isVisible ? (
-                    <XMarkIcon className={mobileIconClasses} />
-                  ) : (
-                    <Bars2Icon className={mobileIconClasses} />
-                  )}
-                </button>
-              </div>
-            )}
+            <div className="flex items-center md:hidden">
+              {pathname === PATHS.CURRICULUM ? (
+                <DynamicDownloadPDFButton className="ml-auto" />
+              ) : (
+                <div className="flex">
+                  <button
+                    onClick={toggleSidebar}
+                    className="z-50 relative p-2 mr-2"
+                    aria-label={isVisible ? "Close menu" : "Open menu"}
+                    aria-expanded={isVisible}
+                  >
+                    {isVisible ? (
+                      <XMarkIcon className={mobileIconClasses} />
+                    ) : (
+                      <Bars2Icon className={mobileIconClasses} />
+                    )}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </motion.nav>
-    </motion.div>
+        </nav>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

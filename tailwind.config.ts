@@ -125,6 +125,13 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      screens: {
+        xs: "480px",
+        // "3xl": "1920px",
+        portrait: { raw: "(orientation: portrait)" },
+        "dark-mode": { raw: "(prefers-color-scheme: dark)" },
+        retina: { raw: "(-webkit-min-device-pixel-ratio: 2)" },
+      },
     },
   },
   plugins: [

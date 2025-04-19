@@ -6,7 +6,6 @@ import {
   SiSqlite,
   SiShadcnui,
   SiReactquery,
-  SiReactrouter,
   SiPostman,
   SiVite,
   SiMongoosedotws,
@@ -24,13 +23,11 @@ export const portfolioLinks: NavLink[] = [
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
-  { href: "#hero", isIcon: true, ariaLabel: "Scroll to top" },
 ];
 
 export const aboutLinks: NavLink[] = [
   { href: "#about-me", label: "About" },
   { href: "#experience", label: "Experience" },
-  { href: "#top", isIcon: true, ariaLabel: "Scroll to top" },
 ];
 
 export const curriculumLinks: NavLink[] = [];

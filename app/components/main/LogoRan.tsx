@@ -9,7 +9,7 @@ const ALL_ELEMENT_CLASSES = ["g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8"];
 
 function LogoRan() {
   return (
-    <div className="invert">
+    <div className="dark:invert">
       <svg
         className="hoverAnimateSvg"
         xmlns="http://www.w3.org/2000/svg"

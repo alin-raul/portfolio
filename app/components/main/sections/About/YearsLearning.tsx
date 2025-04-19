@@ -16,8 +16,8 @@ export default function YearsLearning() {
             2{" "}
             <span
               style={{
-                WebkitTextStroke: "none", // Disables the stroke for the plus sign
-                WebkitTextFillColor: "currentColor", // Fills the plus sign with solid color
+                WebkitTextStroke: "none",
+                WebkitTextFillColor: "currentColor",
               }}
               className="text-5xl"
             >
@@ -27,13 +27,13 @@ export default function YearsLearning() {
 
           <p
             className="flex justify-center items-center gap-2 font-bold opacity-80"
-            style={{ fontSize: "clamp(0.8rem, 1.6vw, 1rem)" }}
+            style={{ fontSize: "clamp(1rem, 1.6vw, 1rem)" }}
           >
             <SparklesIcon
               className="flex-shrink-0"
               style={{
-                width: "clamp(0.8rem, 1.8vw, 1.2rem)",
-                height: "clamp(0.8rem, 1.8vw, 1.2rem)",
+                width: "clamp(0.9rem, 1.8vw, 1.2rem)",
+                height: "clamp(0.9rem, 1.8vw, 1.2rem)",
               }}
             />
             <span>Years</span>

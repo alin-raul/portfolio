@@ -9,6 +9,24 @@ import { Feature } from "geojson";
 const ROTATION_SPEED = 0.15;
 const AXIAL_TILT_DEGREES = 23.5;
 
+// Convert DD°MM′SS″ to Decimal Degrees
+const dmsToDecimal = (
+  degrees: number,
+  minutes: number,
+  seconds: number,
+  direction: "N" | "S" | "E" | "W"
+) => {
+  let decimal = degrees + minutes / 60 + seconds / 3600;
+  if (direction === "S" || direction === "W") {
+    decimal *= -1;
+  }
+  return decimal;
+};
+
+// Your Location Coordinates (Brașov, Romania)
+const MY_LAT = dmsToDecimal(45, 39, 0, "N"); // 45.65
+const MY_LNG = dmsToDecimal(25, 36, 36, "E"); // 25.61
+
 // --- Component Props Interface ---
 interface DotGlobeComponentProps {
   geojsonPath?: string;
@@ -35,7 +53,6 @@ export default function GlobeComponent({
   dotMargin = 0.2,
   backgroundColor = "rgba(0,0,0,0)",
   atmosphereColor = "#fff",
-  // Remove string defaults - parent must provide numbers or undefined
   width,
   height,
   globeOffsetX = 0,
@@ -44,13 +61,14 @@ export default function GlobeComponent({
 }: DotGlobeComponentProps) {
   const [landPolygons, setLandPolygons] = useState<Feature[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  // FIX 1: Initialize useRef with null
   const globeEl = useRef<GlobeMethods | undefined>(undefined);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const globeObjectRef = useRef<THREE.Object3D | null>(null);
 
-  const [initialCoords] = useState({ lat: 45.6579, lng: 25.6012 });
   const [baseInitialAltitude] = useState(2.0);
+
+  // --- Data for your location point ---
+  const myLocationPoint = useMemo(() => [{ lat: MY_LAT, lng: MY_LNG }], []); // Memoize the single point data
 
   // --- Data Loading Effect (No changes) ---
   useEffect(() => {
@@ -127,21 +145,25 @@ export default function GlobeComponent({
     }
   }, [isLoading, globeScaleFactor]);
 
-  // --- Auto-Rotation & Camera Positioning Effect (No changes) ---
+  // --- Auto-Rotation & Camera Positioning Effect ---
+  // Modified slightly to initially focus on your location
   useEffect(() => {
     if (isLoading || !globeEl.current || !globeScaleFactor) return;
     let frameId: number | null = null;
     const safeScaleFactor = Math.max(0.1, globeScaleFactor);
     const adjustedInitialAltitude = baseInitialAltitude / safeScaleFactor;
-    // console.log(`Base Alt: ${baseInitialAltitude}, Scale: ${globeScaleFactor}, Adjusted Alt: ${adjustedInitialAltitude}`);
+
+    // Point camera to your location initially
     globeEl.current.pointOfView(
       {
-        lat: initialCoords.lat,
-        lng: initialCoords.lng,
+        lat: MY_LAT, // Use your location lat
+        lng: MY_LNG, // Use your location lng
         altitude: adjustedInitialAltitude,
       },
-      0
+      0 // Duration 0 for instant move
     );
+
+    // Add a slight delay before starting rotation so the user sees the initial location
     const rotationTimeout = setTimeout(() => {
       if (!globeEl.current) return;
       let lastPov = globeEl.current.pointOfView();
@@ -160,13 +182,14 @@ export default function GlobeComponent({
         if (frameId !== null) frameId = requestAnimationFrame(rotateGlobe);
       };
       frameId = requestAnimationFrame(rotateGlobe);
-    }, 50);
+    }, 1000); // Start rotation after a 1 second delay
+
     return () => {
       clearTimeout(rotationTimeout);
       if (frameId !== null) cancelAnimationFrame(frameId);
       frameId = null;
     };
-  }, [isLoading, initialCoords, baseInitialAltitude, globeScaleFactor]);
+  }, [isLoading, baseInitialAltitude, globeScaleFactor]); // initialCoords is now based on MY_LAT/MY_LNG
 
   // --- Render the Globe ---
   if (isLoading) {
@@ -187,31 +210,34 @@ export default function GlobeComponent({
     );
   }
 
-  // Pass props directly to the Globe component
-  // width/height are now number | undefined, matching the expected type
   return (
     <Globe
       ref={globeEl}
       // --- Direct Canvas Control ---
-      width={width} // Pass number or undefined
-      height={height} // Pass number or undefined
+      width={width}
+      height={height}
       globeOffset={[globeOffsetX, globeOffsetY]}
       backgroundColor={backgroundColor}
       // Appearance
       globeMaterial={globeMaterial}
-      globeImageUrl={null}
+      globeImageUrl={null} // Using dots instead of image
       // Atmosphere
       showAtmosphere={true}
       atmosphereColor={atmosphereColor}
-      atmosphereAltitude={0.18}
-      // Dots
+      atmosphereAltitude={0.22}
+      // Dots for Land Polygons
       hexPolygonsData={landPolygons}
       hexPolygonUseDots={true}
-      hexPolygonColor={() => "#b9b9b9"} // Example color
+      hexPolygonColor={() => "#b9b9b9"}
       hexPolygonResolution={dotResolution}
       hexPolygonMargin={dotMargin}
       hexPolygonLabel={undefined}
-      // Interaction
+      // Your Location Point
+      pointsData={myLocationPoint} // Add the data for your point
+      pointAltitude={0.005} // Altitude above the surface (slightly above dots)
+      pointRadius={0.3} // Size of the point (relative to globe radius 1)
+      pointColor={() => "red"} // Color of the point
+      pointResolution={12} // Resolution for the sphere geometry
       enablePointerInteraction={false}
     />
   );

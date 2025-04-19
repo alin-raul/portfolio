@@ -388,6 +388,14 @@ canvas {
   filter: none;
 }
 
+.icon-invert {
+  filter: invert();
+}
+
+.dark-invert .icon {
+  filter: invert();
+}
+
 .animate-gradient {
   background-size: 300%;
   -webkit-animation: animatedgradient 6s ease infinite alternate;

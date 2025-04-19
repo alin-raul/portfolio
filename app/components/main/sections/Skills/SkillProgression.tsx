@@ -41,7 +41,7 @@ const SkillBar: React.FC<Skill> = ({ name, level, color }) => {
       <div className="md:flex justify-evenly text-xs mb-1 hidden">
         <span className="mx-auto select-none ">{level}</span>
       </div>
-      <div className="relative w-6 sm:w-8 md:w-10 h-40 mt-4">
+      <div className="relative w-6 xs:w-10 h-40 mt-4">
         <div
           className="absolute inset-0 rounded-t-3xl rounded-b-3xl overflow-hidden"
           style={{ opacity: 0.4, zIndex: -1 }}
@@ -149,7 +149,7 @@ const SkillProgression = () => {
             <p className="text-sm font-semibold mb-8">Advanced Experience</p>
 
             <div className="w-full flex-1 min-h-0">
-              <div className="grid gap-6 sm:gap-8 place-items-center grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] md:grid-cols-4 h-full">
+              <div className="grid gap-4 sm:gap-8 place-items-center grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] md:grid-cols-4 h-full border">
                 <motion.div variants={radialItemVariants}>
                   <RadialSkill
                     name="TypeScript"

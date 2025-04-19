@@ -4,6 +4,7 @@ import { Inter, Zen_Dots, Orbitron } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/global/ThemeProvider";
 import { SidebarProvider } from "@/context/SidebarContext";
+import { VisibilityProvider } from "@/context/VisibilityProviderContext";
 import { Sidebar } from "./components/main/sections/Navbar/Sidebar";
 import Navbar from "./components/main/sections/Navbar/Navbar";
 import { Toaster } from "sonner";
@@ -61,9 +62,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider>
-            <Sidebar />
-            <Navbar />
-            <div className="relative">{children}</div>
+            <VisibilityProvider>
+              <Sidebar />
+              <Navbar />
+              <div className="relative">{children}</div>
+            </VisibilityProvider>
           </SidebarProvider>
           <Toaster />
         </ThemeProvider>

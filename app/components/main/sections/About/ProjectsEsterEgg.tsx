@@ -65,13 +65,13 @@ export default function ProjectsEsterEgg() {
 
           <p
             className="flex justify-center items-center gap-2 font-bold opacity-80"
-            style={{ fontSize: "clamp(0.8rem, 1.6vw, 1rem)" }}
+            style={{ fontSize: "clamp(1rem, 1.6vw, 1rem)" }}
           >
             <FolderOpenDot
               className="flex-shrink-0"
               style={{
-                width: "clamp(0.6rem, 1.8vw, 1.2rem)",
-                height: "clamp(0.6rem, 1.8vw, 1.2rem)",
+                width: "clamp(0.9rem, 1.8vw, 1.2rem)",
+                height: "clamp(0.9rem, 1.8vw, 1.2rem)",
               }}
             />
             <span>Projects</span>
