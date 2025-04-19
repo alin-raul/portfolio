@@ -7,6 +7,7 @@ export function slideInFromLeft(delay: number) {
       transition: {
         delay: delay,
         duration: 0.5,
+        ease: "easeOut",
       },
     },
   };
@@ -21,6 +22,7 @@ export function slideInFromRight(delay: number) {
       transition: {
         delay: delay,
         duration: 0.5,
+        ease: "easeOut",
       },
     },
   };
@@ -34,6 +36,7 @@ export const slideInFromTop = {
     transition: {
       delay: 0.5,
       duration: 0.5,
+      ease: "easeOut",
     },
   },
 };
@@ -43,18 +46,44 @@ export const containerAnimationVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
+      ease: "easeOut",
     },
   },
 };
 
 export const itemAnimationVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 1.2,
+      ease: "easeOut",
+    },
+  },
+};
+
+export const portfolioAnimationVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 2,
+      ease: "easeOut",
+    },
+  },
+};
+
+export const sectionFadeInVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.4,
+      ease: "easeOut",
     },
   },
 };

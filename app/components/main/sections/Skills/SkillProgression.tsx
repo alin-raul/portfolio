@@ -139,13 +139,7 @@ const SkillProgression = () => {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            className="card-w-space p-6 w-full flex flex-col"
-            variants={containerAnimationVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-          >
+          <div className="card-w-space p-6 w-full flex flex-col">
             <p className="text-sm font-semibold mb-8">Advanced Experience</p>
 
             <div className="w-full flex-1 min-h-0">
@@ -196,7 +190,7 @@ const SkillProgression = () => {
                 </motion.div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         <motion.div

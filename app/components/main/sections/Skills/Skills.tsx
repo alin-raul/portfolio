@@ -7,9 +7,9 @@ import Blob from "@/app/components/effects/Blob";
 
 const Skills = () => {
   return (
-    <div className="relative max-w-[160rem] mt-40 mx-auto">
+    <div className="relative max-w-[160rem] mt-40 mx-auto overflow-visible">
       <Blob
-        blobClass="blob-2"
+        blobClass="blob-3"
         position={{
           right: "5rem",
           top: "16rem",

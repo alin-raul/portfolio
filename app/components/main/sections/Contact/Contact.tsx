@@ -12,14 +12,14 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <div className="relative max-w-[160rem] my-40 mx-auto">
+    <div className="relative max-w-[160rem] my-40 mx-auto overflow-visible">
       <Blob
-        blobClass="blob-2"
+        blobClass="blob-4"
         position={{
-          right: "0rem",
-          top: "30rem",
+          right: "20rem",
+          bottom: "2rem",
         }}
-        width="900px"
+        width="600px"
         height="600px"
       />
       <section
@@ -31,7 +31,7 @@ const Contact = () => {
           variants={containerAnimationVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {/* Text Section */}
           <motion.div
@@ -40,7 +40,7 @@ const Contact = () => {
           >
             <p className="font-medium text-sm opacity-70 mb-8">CONTACT ME</p>
             <div className="mb-1">
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+              <h1 className="text-3xl sx:text-5xl lg:text-6xl font-bold mb-6">
                 Let’s work together
               </h1>
               <p className="text-base opacity-80 mr-6">

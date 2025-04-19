@@ -1,9 +1,13 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GridCard } from "./Curriculum";
 import { projects } from "@/constants";
+import { motion } from "framer-motion";
+import { sectionFadeInVariants } from "@/utils/motion";
 
 const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
   const { name, icon, live_demo } = project;
@@ -74,7 +78,13 @@ const InterestsSection = () => (
 );
 
 const ProfileGrid = () => (
-  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+  <motion.div
+    className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.1 }}
+    variants={sectionFadeInVariants}
+  >
     <GridCard className="overflow-hidden w-full min-h-72 sm:h-full">
       <Image
         src="/photos/profile_pic.webp"
@@ -90,7 +100,7 @@ const ProfileGrid = () => (
     <ProjectsSection />
 
     <InterestsSection />
-  </div>
+  </motion.div>
 );
 
 export default ProfileGrid;

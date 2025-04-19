@@ -1,7 +1,11 @@
+"use client";
+
 import React from "react";
 import Wrapper from "../../Wrapper";
 import ProfileHeader from "./ProfileHeader";
 import ProfileGrid from "./ProfileGrid";
+import { sectionFadeInVariants, itemAnimationVariants } from "@/utils/motion";
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 const DynamicExperienceSection = dynamic(() => import("./ExperienceSection"));
@@ -15,10 +19,16 @@ export const GridCard = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <div className={`grid-card relative ${className}`}>
+  <motion.div
+    className={`grid-card relative ${className}`}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.1 }}
+    variants={sectionFadeInVariants}
+  >
     {children}
     <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-white/60 dark:before:from-black/40 dark:before:to-black/20 before:rounded-[2rem] z-[-1]" />
-  </div>
+  </motion.div>
 );
 
 export const Section = ({
@@ -28,19 +38,33 @@ export const Section = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <div className="mt-20">
+  <motion.div
+    className="mt-20"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.1 }}
+    variants={sectionFadeInVariants}
+  >
     <h1 className="text-4xl font-semibold whitespace-nowrap lg:mb-0 mb-8 text-primary">
       {title}
     </h1>
     {children}
-  </div>
+  </motion.div>
 );
 
 const Curriculum = () => {
   return (
     <Wrapper>
-      <section className="mt-40 mb-20 max-w-screen-xl mx-auto" id="top">
-        <ProfileHeader />
+      <section className="mt-40 mb-20 max-w-screen-xl mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={sectionFadeInVariants}
+        >
+          <ProfileHeader />
+        </motion.div>
+
         <ProfileGrid />
         <DynamicExperienceSection />
         <DynamicEducationSection />

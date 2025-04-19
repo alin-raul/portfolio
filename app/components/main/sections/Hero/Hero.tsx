@@ -6,7 +6,7 @@ import Hero3dModels from "./Hero3dModels";
 
 const Hero = () => {
   return (
-    <div className="relative max-w-[160rem] m-auto">
+    <div className="relative max-w-[160rem] m-auto overflow-visible">
       <Blob
         blobClass="blob-1"
         position={{

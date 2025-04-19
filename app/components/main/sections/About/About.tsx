@@ -85,7 +85,7 @@ const IntroCard = () => (
 );
 
 const ProfileImageCard = () => (
-  <Card className="p-[3rem] overflow-auto md:min-h-full min-h-64 sm:min-h-[32rem] w-full relative">
+  <Card className="p-[3rem] overflow-auto md:min-h-full min-h-64 xs:min-h-[32rem] w-full relative">
     <Image
       src={"/photos/me.webp"}
       alt="me"
@@ -262,7 +262,6 @@ const RetroTech = () => (
         <span className="text-xs opacity-60 ml-auto">x86_64</span>
       </div>
 
-      {/* Terminal Body */}
       <div className="flex-grow border border-arch-silver/20 rounded-sm bg-arch-dark/90 p-2">
         <div className="font-mono text-xs text-arch-silver space-y-1">
           <div className="flex items-center gap-1">
@@ -281,7 +280,6 @@ const RetroTech = () => (
         </div>
       </div>
 
-      {/* Arch-specific Footer */}
       <div className="flex gap-1.5 mt-2 flex-wrap">
         <span className="px-1.5 py-0.5 bg-arch-blue/20 rounded text-[0.6rem] tracking-tighter border border-arch-blue/30">
           Pacman
@@ -308,12 +306,22 @@ const RetroTech = () => (
 <GrowthTimeline />;
 
 const About = () => (
-  <div className="relative max-w-[160rem] mt-40 mx-auto " id="about">
+  <div
+    className="relative max-w-[160rem] mt-40 mx-auto overflow-visible"
+    id="about"
+  >
     <Blob
-      blobClass="blob-2"
+      blobClass="blob-2 h-[60rem] xs:h-[30rem]"
       position={{ left: "25rem", top: "16rem" }}
       width="900px"
       height="600px"
+    />
+
+    <Blob
+      blobClass="blob-5 h-[60rem] xs:h-[30rem]"
+      position={{ right: "-25rem", bottom: "-20rem" }}
+      width="00px"
+      height="700px"
     />
 
     <section className="max-w-screen-2xl mx-auto">
@@ -322,7 +330,6 @@ const About = () => (
         variants={containerAnimationVariants}
         initial="hidden"
         whileInView="visible"
-        onViewportEnter={() => console.log("CONTAINER ENTERED VIEWPORT")}
         viewport={{ once: true, amount: 0.1 }}
       >
         <motion.div
