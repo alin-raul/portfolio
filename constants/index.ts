@@ -278,7 +278,7 @@ export const socialLinks = [
   },
   {
     name: "CV Download",
-    url: "/path/to/your-cv.pdf",
+    url: "/pdf-assets/Nastase_Raul_Alin_CV.pdf",
     icon: Download,
   },
 ];
@@ -412,6 +412,7 @@ export const educationData = [
         description: "Implemented authentication solutions",
       },
     ],
+    certificate: "/certificate/Digital-Nation-Certificate.pdf",
   },
   {
     name: "Transilvania University",

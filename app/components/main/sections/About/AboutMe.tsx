@@ -11,6 +11,14 @@ import {
   itemAnimationVariants,
 } from "@/utils/motion";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
+const commonCardClasses =
+  "group w-fit px-5 hover:px-6 py-4 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl";
+const commonSpanClasses =
+  "group-hover:opacity-100 cursor-pointer flex justify-center items-center gap-1 transition-opacity duration-400";
+const commonIconClasses =
+  "opacity-70 hidden hover:flex group-hover:flex transition-opacity duration-400";
 
 const AboutMe = () => {
   return (
@@ -65,6 +73,7 @@ const AboutMe = () => {
                   intuitive, and accessible web applications that provide value
                   to users.
                 </p>
+
                 <p>
                   While I am just starting my professional journey, I have
                   worked on small personal projects and am eager to take on new
@@ -72,6 +81,15 @@ const AboutMe = () => {
                   contribute to meaningful projects, and further develop my
                   skills in both front-end and back-end technologies.
                 </p>
+
+                <Link
+                  href="/certificate/Digital-Nation-Certificate.pdf"
+                  target="_blank"
+                  className={`${commonCardClasses} ml-auto mt-8 mb-4`}
+                >
+                  <ArrowUpRight className={commonIconClasses} />
+                  View certificate
+                </Link>
               </div>
             </div>
           </motion.section>

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { educationData } from "@/constants";
 import { GridCard, Section } from "./Curriculum";
 
@@ -28,6 +29,7 @@ const EducationCard = ({
     role,
     specialization,
     duration,
+    certificate,
     list,
   } = education;
 
@@ -81,6 +83,16 @@ const EducationCard = ({
           </ul>
         </div>
       )}
+      {certificate ? (
+        <div className="w-fit border ml-auto mt-4 p-2 rounded-lg">
+          <Link
+            href="/certificate/Digital-Nation-Certificate.pdf"
+            target="_blank"
+          >
+            <span className="ml-auto mt-4 ">View Certificate</span>
+          </Link>
+        </div>
+      ) : null}
     </GridCard>
   );
 };

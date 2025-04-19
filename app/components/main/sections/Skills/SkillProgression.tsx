@@ -149,7 +149,7 @@ const SkillProgression = () => {
             <p className="text-sm font-semibold mb-8">Advanced Experience</p>
 
             <div className="w-full flex-1 min-h-0">
-              <div className="grid gap-4 sm:gap-8 place-items-center grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] md:grid-cols-4 h-full border">
+              <div className="grid gap-2 sm:gap-8 place-items-center grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] md:grid-cols-4 h-full">
                 <motion.div variants={radialItemVariants}>
                   <RadialSkill
                     name="TypeScript"

@@ -28,8 +28,8 @@ const TARGETS = {
 const baseLinkClasses = "flex items-center gap-6";
 const arrowWrapperClasses =
   "group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl";
-const logoTextClasses = "flex font-yapari text-xl my-auto";
-const mobileIconClasses = "md:hidden w-8 h-8";
+const logoTextClasses = "flex font-yapari text-base xs:text-xl my-auto";
+const mobileIconClasses = "md:hidden w-6 h-6 xs:w-8 xs:h-8";
 
 const LogoContent = ({ pathname }: Pathname) => {
   // ... (LogoContent implementation remains the same)
@@ -51,7 +51,7 @@ const LogoContent = ({ pathname }: Pathname) => {
           <ArrowLeft className="w-4 h-4 group-hover:w-5 group-hover:h-5 transition-all duration-200" />
         </div>
         <div className="flex h-full w-full">
-          <div className="hidden sm:block w-8 mr-2">
+          <div className="hidden sm:block w-6 xs:w-8 mr-2">
             <LogoRan />
           </div>
           <span className={logoTextClasses}>ran</span>
@@ -62,7 +62,7 @@ const LogoContent = ({ pathname }: Pathname) => {
 
   return (
     <div className="flex h-full w-full">
-      <div className="w-8 mr-2">
+      <div className="w-6 xs:w-8 mr-2">
         <LogoRan />
       </div>
       <span className={logoTextClasses}>ran</span>
@@ -94,7 +94,7 @@ const NavbarComponent = () => {
   return (
     <AnimatePresence mode="wait" initial={true}>
       <motion.div
-        className="w-full h-14 fixed top-0 left-0 z-50"
+        className="w-full h-10 xs:h-14 fixed top-0 left-0 z-50"
         variants={slideInFromTop}
         initial="hidden"
         animate="visible"
