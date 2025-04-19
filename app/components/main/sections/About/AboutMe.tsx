@@ -30,7 +30,7 @@ const AboutMe = () => {
           viewport={{ once: true, amount: 0.1 }} // Trigger when 10% is visible
           variants={sectionFadeInVariants} // Apply the new variant
         >
-          Hello, I'm Raul Alin Nastase
+          Hello, I&apos;m Raul Alin Nastase
           <br />
           <span>Full-Stack Web Developer</span>
         </motion.p>
@@ -111,7 +111,7 @@ const AboutMe = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }} // Trigger when 10% is visible
-          variants={sectionFadeInVariants} // Apply the new variant
+          variants={sectionFadeInVariants}
         >
           <HobbiesCarousel reverse={false} />
         </motion.div>
