@@ -40,16 +40,28 @@ const EducationCard = ({
   };
 
   return (
-    <GridCard className="p-4 sm:p-8 h-full mb-4 lg:mb-0">
+    <GridCard className="p-6 sm:p-8 h-full mb-4 lg:mb-0">
       <div className="flex-col sm:flex-row flex">
         <div className="block sm:flex order-2 sm:order-1">
-          <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3 sm:p-0 my-6 sm:my-0 mx-auto">
-            <Image
-              {...imageProps}
-              alt="institution logo"
-              draggable={false}
-              className={`object-contain ${reverse ? "dark:invert" : ""}`}
-            />
+          <div className="relative w-fit mx-auto">
+            <div className="w-24 h-24 md:w-20 md:h-20 flex-shrink-0 flex justify-center items-center bg-primary-foreground overflow-hidden rounded-full p-3 sm:p-0 mt-2 mb-6 sm:my-0 blur-2xl relative">
+              <Image
+                {...imageProps}
+                alt="institution logo"
+                draggable={false}
+                className={`object-contain ${reverse ? "dark:invert" : ""}`}
+              />
+            </div>
+            <div className="absolute inset-0 w-24 h-24 md:w-24 md:h-24 flex-shrink-0 flex justify-center items-center overflow-hidden rounded-full">
+              <Image
+                {...imageProps}
+                alt="institution logo"
+                draggable={false}
+                className={`object-contain scale-150 sm:scale-100 ${
+                  reverse ? "dark:invert" : ""
+                }`}
+              />
+            </div>
           </div>
           <div className="flex flex-col justify-center items-center sm:items-start sm:ml-6 mr-2">
             <h1
@@ -57,7 +69,7 @@ const EducationCard = ({
                 isLong
                   ? "text-xl lg:text-xl xl:text-2xl 2xl:text-3xl"
                   : "text-2xl"
-              } font-bold text-muted-foreground whitespace-nowrap truncate`}
+              } font-bold whitespace-nowrap truncate`}
             >
               {name}
             </h1>
@@ -66,14 +78,14 @@ const EducationCard = ({
           </div>
         </div>
         <div className="ml-auto order-1 sm:order-2">
-          <div className="rounded-lg font-bold py-2 px-3 bg-primary-foreground whitespace-nowrap">
+          <div className="rounded-3xl font-bold py-2 px-3 bg-primary-foreground whitespace-nowrap">
             {duration}
           </div>
         </div>
       </div>
       {list && (
         <div className="mt-14">
-          <ul className="flex flex-col gap-2 list-disc pl-4 text-[0.65rem] md:text-base">
+          <ul className="flex flex-col gap-2 list-disc pl-4 text-[0.85rem] xs:text-base">
             {list.map(({ skill, description }, index) => (
               <li key={index}>
                 <span className="font-bold">{skill}:</span>

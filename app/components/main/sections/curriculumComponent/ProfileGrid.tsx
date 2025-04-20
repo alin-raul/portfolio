@@ -43,9 +43,9 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
 
 const ProjectsSection = () => (
   <GridCard className="overflow-hidden sm:p-6">
-    <h1 className="text-2xl font-bold text-muted-foreground mb-4">
+    <h3 className="text-2xl font-bold text-muted-foreground mb-3">
       Apps I made
-    </h1>
+    </h3>
     <div className="flex flex-wrap sm:gap-2 mb-2 sm:mb-0 scale-90 sm:scale-100 justify-between">
       {projects.map((project) => (
         <ProjectCard key={project.name} project={project} />
