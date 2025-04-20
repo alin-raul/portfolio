@@ -417,7 +417,7 @@ const CurriculumPDF = () => (
         >
           <Image
             style={styles.profileImage}
-            src={"/pdf-assets/profile_pic.jpeg"}
+            src={"/pdf-assets-jpg/profile_pic.jpg"}
           />
         </View>
 

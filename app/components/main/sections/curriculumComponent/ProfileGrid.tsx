@@ -42,11 +42,9 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => {
 };
 
 const ProjectsSection = () => (
-  <GridCard className="overflow-hidden sm:p-6">
-    <h3 className="text-2xl font-bold text-muted-foreground mb-3">
-      Apps I made
-    </h3>
-    <div className="flex flex-wrap sm:gap-2 mb-2 sm:mb-0 scale-90 sm:scale-100 justify-between">
+  <GridCard className="overflow-hidden p-4 sm:p-6 flex flex-col">
+    <h3 className="text-2xl font-bold text-muted-foreground ">Apps I made</h3>
+    <div className="flex flex-wrap flex-grow sm:gap-2 mb-2 sm:mb-0 scale-90 sm:scale-100 justify-between">
       {projects.map((project) => (
         <ProjectCard key={project.name} project={project} />
       ))}
@@ -55,7 +53,7 @@ const ProjectsSection = () => (
 );
 
 const InterestsSection = () => (
-  <GridCard className="overflow-hidden p-6 h-full lg:col-span-1 sm:col-span-2">
+  <GridCard className="overflow-hidden p-4 sm:p-6 h-full lg:col-span-1 sm:col-span-2">
     <h3 className="text-2xl font-bold text-muted-foreground mb-3">Interests</h3>
     <div className="flex flex-col h-[calc(100%-3rem)]">
       <div className="flex flex-wrap gap-2 my-auto p-1">
@@ -66,7 +64,10 @@ const InterestsSection = () => (
           "📸 Photography",
           "⛰️ Traveling",
         ].map((interest) => (
-          <div key={interest} className="border py-1 px-3 rounded-md bg-muted">
+          <div
+            key={interest}
+            className="border py-1 px-3 sm:py-2 rounded-md sm:rounded-xl bg-muted"
+          >
             <p className="text-nowrap font-semibold text-xs sm:text-base">
               {interest}
             </p>

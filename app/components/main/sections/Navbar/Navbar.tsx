@@ -94,14 +94,14 @@ const NavbarComponent = () => {
   return (
     <AnimatePresence mode="wait" initial={true}>
       <motion.div
-        className="w-full h-10 xs:h-14 fixed top-0 left-0 z-50"
+        className="w-full h-12 xs:h-14 fixed top-0 left-0 z-50"
         variants={slideInFromTop}
         initial="hidden"
         animate="visible"
         exit="hidden"
       >
         <nav className="w-full h-full md:mx-auto max-w-[1800px] px-0 md:px-4">
-          <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl backdrop-blur-md dark:bg-black/60 bg-white/50 md:mt-4 h-full px-6 md:px-0">
+          <div className="flex items-center justify-between outline outline-1 outline-muted-foreground/20 rounded-none md:rounded-2xl backdrop-blur-md dark:bg-black/60 bg-white/50 md:mt-4 h-full px-2 md:px-0">
             <div className="flex font-semibold items-center py-2 pl-1 md:px-6 h-full">
               <span className="text-nowrap">
                 <LogoContent pathname={pathname} />

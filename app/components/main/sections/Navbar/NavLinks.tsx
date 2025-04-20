@@ -16,7 +16,7 @@ export type NavLink = {
   label?: string;
   icon?: React.ElementType;
   hasIcon?: boolean;
-  isButton?: boolean;
+  isButton?: boolean; // Not currently used in styling logic, but kept for type safety
   ariaLabel?: string;
 };
 
@@ -24,22 +24,23 @@ export type NavLink = {
 interface NavLinksProps {
   links: NavLink[];
   className?: string;
+  isSidebar?: boolean; // Add the prop here
 }
 
-// Reusable class strings for consistency
+// Define base classes (will be applied conditionally)
 const baseLinkClasses =
   "cursor-pointer rounded-3xl md:rounded-2xl transition-all duration-200 ease-in-out hover:bg-accent/20 text-center";
 const textLinkClasses =
   "group w-fit px-3 hover:px-4 py-2 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/0 hover:outline-accent-foreground/20 transition-all duration-400 font-extralight hover:font-semibold hover:rounded-xl";
 const iconLinkClasses =
-  "group px-3 hover:px-4 py-2 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground text-primary/60 hover:text-primary  font-extralight hover:font-semibold hover:rounded-xl ml-4"; // Using Portfolio's padding as base
+  "group px-3 hover:px-4 py-2 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground text-primary/60 hover:text-primary  font-extralight hover:font-semibold hover:rounded-xl ml-4";
 const iconSizeClasses =
   "w-8 h-8 md:w-4 md:h-4 group-hover:w-5 group-hover:h-5 transition-all duration-200";
 
-const NavLinks: React.FC<NavLinksProps> = ({ links, className }) => {
+const NavLinks: React.FC<NavLinksProps> = ({ links, className, isSidebar }) => {
   const { isVisible, hideSidebar } = useSidebar();
   const pathname = usePathname();
-  console.log(pathname);
+  console.log(pathname); // Consider removing console.log in production
 
   useEffect(() => {
     if (isVisible) {
@@ -67,10 +68,29 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className }) => {
 
   const { isTopVisible } = useVisibility();
 
+  // Determine which classes to apply based on isSidebar prop
+  const appliedBaseLinkClasses = isSidebar ? "" : baseLinkClasses;
+  const appliedTextLinkClasses = isSidebar ? "" : textLinkClasses;
+  const appliedIconLinkClasses = isSidebar ? "" : iconLinkClasses;
+  const appliedIconSizeClasses = isSidebar ? "" : iconSizeClasses; // Apply condition to icon sizes too
+
   return (
-    <div className={clsx("flex md:items-center gap-1", className)}>
+    // The outer div can still take the className prop for parent styling
+    <div
+      className={clsx("flex md:items-center gap-1", className, {
+        // Optionally add base sidebar styles here if needed,
+        // or leave it empty for the parent to define everything
+        "flex-col items-start gap-4": isSidebar, // Example: Basic sidebar structure
+      })}
+    >
       {links.map((link) => {
         const linkContent = <span>{link.label}</span>;
+
+        // Conditional classes for mapped links
+        const linkClasses = clsx(
+          appliedBaseLinkClasses,
+          link.hasIcon ? appliedIconLinkClasses : appliedTextLinkClasses
+        );
 
         return (
           <motion.div key={link.href} layout>
@@ -78,17 +98,18 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className }) => {
               key={link.href}
               href={link.href}
               onClick={hideSidebar}
-              className={clsx(
-                baseLinkClasses,
-                link.hasIcon ? iconLinkClasses : textLinkClasses
-              )}
+              className={linkClasses} // Use the calculated conditional classes
               aria-label={link.ariaLabel || link.label}
             >
+              {/* If you want to conditionally render icons too, add logic here */}
+              {/* For now, assuming linkContent is always rendered */}
               {linkContent}
             </Link>
           </motion.div>
         );
       })}
+
+      {/* Special Buttons - Also apply conditional styling */}
       <AnimatePresence mode="wait" initial={false}>
         {!isTopVisible && pathname === "/" && (
           <motion.div
@@ -98,8 +119,11 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className }) => {
             animate="visible"
             exit="hidden"
           >
-            <Link href="/curriculum" className={textLinkClasses}>
-              <ArrowUpRight className="opacity-70 hidden hover:flex group-hover:flex transition-opacity duration-400 w-5 h-5" />
+            <Link href="/curriculum" className={appliedTextLinkClasses}>
+              {/* Optionally hide icon if isSidebar is true */}
+              {!isSidebar && (
+                <ArrowUpRight className="opacity-70 hidden hover:flex group-hover:flex transition-opacity duration-400 w-5 h-5" />
+              )}
               <span>View CV</span>
             </Link>
           </motion.div>
@@ -108,7 +132,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className }) => {
       <AnimatePresence mode="wait" initial={false}>
         {!isTopVisible && (
           <motion.div
-            key="view-cv-button"
+            key="scroll-to-top-button" // Give a unique key if possible
             variants={specialButtonsVariants}
             initial="hidden"
             animate="visible"
@@ -117,15 +141,18 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className }) => {
             <button
               type="button"
               onClick={handleScrollToTop}
-              className={clsx(iconLinkClasses)}
+              className={appliedIconLinkClasses} // Use conditional classes
               aria-label="Scroll to top"
             >
-              <ArrowUp className={iconSizeClasses} aria-hidden="true" />
+              {/* Apply conditional classes to the icon */}
+              <ArrowUp className={appliedIconSizeClasses} aria-hidden="true" />
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
+      {/* ModeToggle - Keep as is unless you need conditional rendering/styling for it */}
+      {/* {!isSidebar && <ModeToggle />} <- Example if you don't want it in sidebar */}
       <ModeToggle />
     </div>
   );

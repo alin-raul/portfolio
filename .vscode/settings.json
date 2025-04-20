@@ -7,5 +7,6 @@
     "sonner",
     "Teleperformance",
     "yapari"
-  ]
+  ],
+  "editor.wordWrap": "on"
 }

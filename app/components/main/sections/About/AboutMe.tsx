@@ -11,10 +11,10 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 const commonCardClasses =
-  "group w-fit px-5 hover:px-6 py-4 rounded-3xl flex gap-2 items-center outline outline-1 outline-accent-foreground/10 hover:outline-accent-foreground/20 transition-all duration-400 bg-[var(--bg-dynamic-1)] hover:bg-white/100 dark:hover:text-primary-foreground font-extralight hover:font-semibold hover:rounded-xl";
+  "group w-fit px-5 hover:px-6 py-4 flex gap-2 items-center transition-all duration-400 underline font-light hover:font-semibold hover:rounded-xl";
 
 const commonIconClasses =
-  "opacity-70 hidden hover:flex group-hover:flex transition-opacity duration-400";
+  "opacity-90 hidden hover:flex group-hover:flex transition-opacity duration-400";
 
 const AboutMe = () => {
   return (

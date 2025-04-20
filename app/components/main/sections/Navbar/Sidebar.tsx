@@ -35,13 +35,14 @@ export const Sidebar: React.FC = ({}) => {
         {isVisible ? (
           <motion.div
             variants={backdropVariants}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="fixed inset-0 md:hidden bg-white/40 dark:bg-black/40 backdrop-blur-md z-50"
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="fixed inset-0 md:hidden bg-white/40 dark:bg-black/80 backdrop-blur-md z-50 "
             onClick={hideSidebar}
           >
             <NavLinks
               links={currentLinks}
-              className="flex flex-col gap-y-10 items-end text-right mt-20 mr-8 text-5xl"
+              className="flex flex-col gap-y-6 ml-10 mt-20 text-2xl font-semibold"
+              isSidebar={true}
             />
           </motion.div>
         ) : (
