@@ -448,6 +448,60 @@ export const educationData = [
   },
 ];
 
+export const TechStackCV = [
+  {
+    skill_name: "HTML 5",
+    icon: "/assets/html.webp",
+    width: 35,
+    height: 35,
+  },
+  {
+    skill_name: "CSS",
+    icon: "/assets/css.webp",
+    width: 35,
+    height: 35,
+  },
+  {
+    skill_name: "JavaScript",
+    icon: "/assets/js.webp",
+    width: 35,
+    height: 35,
+  },
+  {
+    skill_name: "React",
+    icon: "/assets/react.webp",
+    width: 35,
+    height: 35,
+  },
+
+  {
+    skill_name: "Next.js 15",
+    icon: "/assets/next.webp",
+    width: 35,
+    height: 35,
+    invert: true,
+  },
+  {
+    skill_name: "Tailwind CSS",
+    icon: "/assets/tailwind.webp",
+    width: 35,
+    height: 35,
+  },
+  {
+    skill_name: "Framer Motion",
+    icon: "/assets/framer.webp",
+    width: 35,
+    height: 35,
+  },
+  {
+    skill_name: "Three.js",
+    icon: "/assets/three.webp",
+    width: 45,
+    height: 45,
+    invert: true,
+  },
+];
+
 export const designTools = [
   {
     name: "Photoshop",

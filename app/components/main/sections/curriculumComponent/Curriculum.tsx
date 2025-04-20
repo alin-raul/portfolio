@@ -21,10 +21,7 @@ export const GridCard = ({
 }) => (
   <motion.div
     className={`grid-card relative ${className}`}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.1 }}
-    variants={sectionFadeInVariants}
+    variants={itemAnimationVariants}
   >
     {children}
     <div className="absolute inset-0 pointer-events-none before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-transparent before:to-white/60 dark:before:from-black/40 dark:before:to-black/20 before:rounded-[2rem] z-[-1]" />
@@ -55,21 +52,21 @@ export const Section = ({
 const Curriculum = () => {
   return (
     <Wrapper>
-      <section className="mt-40 mb-20 max-w-screen-xl mx-auto">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={sectionFadeInVariants}
-        >
+      <motion.section
+        className="mt-40 mb-20 max-w-screen-xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={sectionFadeInVariants}
+      >
+        <motion.div>
           <ProfileHeader />
         </motion.div>
-
         <ProfileGrid />
         <DynamicExperienceSection />
         <DynamicEducationSection />
         <DynamicSkillsSection />
-      </section>
+      </motion.section>
     </Wrapper>
   );
 };

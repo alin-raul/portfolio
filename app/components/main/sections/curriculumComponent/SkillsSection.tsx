@@ -1,7 +1,7 @@
 import React from "react";
 import { GridCard, Section } from "./Curriculum";
 import Image from "next/image";
-import { TechStack, designTools, otherSkills } from "@/constants";
+import { TechStackCV, designTools, otherSkills } from "@/constants";
 
 const SkillsSection = () => (
   <Section title="Skills">
@@ -20,16 +20,21 @@ const CodingSkills = () => (
       Coding
     </h3>
     <div className="grid grid-cols-4 sm:grid-cols-8 gap-6 justify-items-center items-center w-full">
-      {TechStack.map(({ skill_name, icon, color }) => {
-        const IconComponent = icon;
+      {TechStackCV.map(({ skill_name, icon, width, height, invert }) => {
         return (
           <div
             key={skill_name}
-            className="w-fit h-fit flex flex-wrap gap-2 justify-around items-center aspect-square bg-primary-foreground p-2.5 rounded-[1.2rem]"
+            className="w-16 h-16 flex flex-wrap gap-2 justify-around items-center aspect-square bg-primary-foreground p-2.5 rounded-[1.2rem]"
           >
             <abbr title={skill_name}>
-              <IconComponent
-                className={`text-2xl sm:text-4xl xl:text-5xl opacity-80 ${color}`}
+              <Image
+                src={icon}
+                alt={skill_name}
+                width={width}
+                height={height}
+                className={`object-contain ${
+                  invert ? "dark:invert invert-0" : ""
+                }`}
               />
             </abbr>
           </div>
