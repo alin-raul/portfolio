@@ -9,14 +9,15 @@ const TermsPage = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
           <p className="mb-4">
-            Welcome to Raul's portfolio website. These terms and conditions
-            outline the rules and regulations for the use of Raul's Website.
+            Welcome to Raul&apos;s portfolio website. These terms and conditions
+            outline the rules and regulations for the use of Raul&apos;s
+            Website.
           </p>
           <p>
             By accessing this website, we assume you accept these terms and
-            conditions. Do not continue to use Raul's portfolio website if you
-            do not agree to take all of the terms and conditions stated on this
-            page.
+            conditions. Do not continue to use Raul&apos;s portfolio website if
+            you do not agree to take all of the terms and conditions stated on
+            this page.
           </p>
         </section>
 
@@ -24,17 +25,18 @@ const TermsPage = () => {
           <h2 className="text-2xl font-semibold mb-4">2. License</h2>
           <p className="mb-4">
             Unless otherwise stated, Raul and/or its licensors own the
-            intellectual property rights for all material on Raul's portfolio
-            website.
+            intellectual property rights for all material on Raul&apos;s
+            portfolio website.
           </p>
           <p>You must not:</p>
           <ul className="list-disc pl-6">
-            <li>Republish material from Raul's portfolio website</li>
+            <li>Republish material from Raul&apos;s portfolio website</li>
             <li>
-              Sell, rent or sub-license material from Raul's portfolio website
+              Sell, rent or sub-license material from Raul&apos;s portfolio
+              website
             </li>
             <li>
-              Reproduce, duplicate or copy material from Raul's portfolio
+              Reproduce, duplicate or copy material from Raul&apos;s portfolio
               website
             </li>
           </ul>
