@@ -9,8 +9,9 @@ const PrivacyPage = () => {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
           <p className="mb-4">
-            This Privacy Policy describes how Raul's portfolio website collects,
-            uses, and discloses information when you visit or use the site.
+            This Privacy Policy describes how Raul&apos;s portfolio website
+            collects, uses, and discloses information when you visit or use the
+            site.
           </p>
           <p>
             By using this website, you agree to the collection and use of
