@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { ModeToggle } from "../../../global/ModeToggle"; // Adjust path if needed
 import clsx from "clsx";
 import { useSidebar } from "@/context/SidebarContext";
 import { AnimatePresence, motion } from "framer-motion";
@@ -68,25 +67,20 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className, isSidebar }) => {
 
   const { isTopVisible } = useVisibility();
 
-  // Determine which classes to apply based on isSidebar prop
   const appliedBaseLinkClasses = isSidebar ? "" : baseLinkClasses;
   const appliedTextLinkClasses = isSidebar ? "" : textLinkClasses;
   const appliedIconLinkClasses = isSidebar ? "" : iconLinkClasses;
-  const appliedIconSizeClasses = isSidebar ? "" : iconSizeClasses; // Apply condition to icon sizes too
+  const appliedIconSizeClasses = isSidebar ? "" : iconSizeClasses;
 
   return (
-    // The outer div can still take the className prop for parent styling
     <div
       className={clsx("flex md:items-center gap-1", className, {
-        // Optionally add base sidebar styles here if needed,
-        // or leave it empty for the parent to define everything
-        "flex-col items-start gap-4": isSidebar, // Example: Basic sidebar structure
+        "flex-col items-start gap-4": isSidebar,
       })}
     >
       {links.map((link) => {
         const linkContent = <span>{link.label}</span>;
 
-        // Conditional classes for mapped links
         const linkClasses = clsx(
           appliedBaseLinkClasses,
           link.hasIcon ? appliedIconLinkClasses : appliedTextLinkClasses
@@ -98,11 +92,9 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className, isSidebar }) => {
               key={link.href}
               href={link.href}
               onClick={hideSidebar}
-              className={linkClasses} // Use the calculated conditional classes
+              className={linkClasses}
               aria-label={link.ariaLabel || link.label}
             >
-              {/* If you want to conditionally render icons too, add logic here */}
-              {/* For now, assuming linkContent is always rendered */}
               {linkContent}
             </Link>
           </motion.div>
@@ -150,10 +142,6 @@ const NavLinks: React.FC<NavLinksProps> = ({ links, className, isSidebar }) => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* ModeToggle - Keep as is unless you need conditional rendering/styling for it */}
-      {/* {!isSidebar && <ModeToggle />} <- Example if you don't want it in sidebar */}
-      <ModeToggle />
     </div>
   );
 };

@@ -1,42 +1,29 @@
 import React from "react";
-import Image from "next/image";
+import Link from "next/link"; // Import the Link component
 
 const Footer = () => {
   return (
+    // Added bg-white or a similar background if it sits on top of content
     <section className="pt-6 pb-3 border-t flex justify-between items-center flex-wrap gap-5 mx-auto z-30 px-4">
-      <div className="flex gap-2">
-        <p>Terms & Conditions</p>
-        <p>|</p>
-        <p>Privacy Policy</p>
+      {" "}
+      {/* Added bg/text colors for context */}
+      <div className="flex gap-2 items-center">
+        {" "}
+        {/* Added items-center for vertical alignment */}
+        {/* Use Link for navigation */}
+        <Link href="/terms" className="hover:underline">
+          {" "}
+          {/* Added basic hover style */}
+          Terms & Conditions
+        </Link>
+        <p>|</p> {/* The separator remains a p tag */}
+        <Link href="/privacy" className="hover:underline">
+          {" "}
+          {/* Added basic hover style */}
+          Privacy Policy
+        </Link>
       </div>
-      {/* <div className="flex gap-3">
-        <div className="social-icon">
-          <Image
-            src="/assets-2/github.svg"
-            alt="github icon"
-            width={30}
-            height={30}
-          />
-        </div>
-        <div className="social-icon">
-          <Image
-            src="/assets-2/twitter.svg"
-            alt="github icon"
-            width={30}
-            height={30}
-          />
-        </div>
-        <div className="social-icon">
-          <Image
-            src="/assets-2/instagram.svg"
-            alt="github icon"
-            width={30}
-            height={30}
-          />
-        </div>
-      </div> */}
-
-      <p>© 2025 Raul. All rights reserved.</p>
+      <p>© 2025 RAN. All rights reserved.</p>
     </section>
   );
 };
